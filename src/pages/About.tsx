@@ -46,7 +46,7 @@ const About = () => {
             About JuveniQ
           </h1>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            We're a young, dynamic African tech startup on a mission to make 
+            We're a young, dynamic African tech startup on a mission to make
             technology accessible and impactful for businesses across the continent.
           </p>
         </div>
@@ -59,8 +59,8 @@ const About = () => {
               Our Mission
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              To democratize technology access for African businesses by providing 
-              simple, affordable, and impactful software solutions. We believe that 
+              To democratize technology access for African businesses by providing
+              simple, affordable, and impactful software solutions. We believe that
               every business, regardless of size, deserves access to world-class technology.
             </p>
           </div>
@@ -70,8 +70,8 @@ const About = () => {
               Our Vision
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              To become Africa's most trusted technology partner, known for creating 
-              solutions that drive real business growth and positive social impact 
+              To become Africa's most trusted technology partner, known for creating
+              solutions that drive real business growth and positive social impact
               across the continent.
             </p>
           </div>
@@ -87,34 +87,29 @@ const About = () => {
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
-                alt="Founders working together" 
+              <img
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                alt="Founders working together"
                 className="rounded-2xl w-full h-80 object-cover shadow-2xl lift hover:shadow-3xl transition-shadow"
               />
             </div>
-            <div className="order-1 lg:order-2 space-y-6">
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                JuveniQ was founded by <strong className="text-primary">Alwande "Jay" Nhlapho</strong> and{" "}
-                <strong className="text-primary">Sthembiso Ndlovu</strong>, two passionate 
-                technologists who met while studying computer science in eMalahleni.
+            <div className="order-1 lg:order-2">
+              <p className="text-lg text-tertiary leading-relaxed mb-6">
+                JuveniQ was started by a team of passionate technologists with a shared
+                vision for using innovation to empower African businesses.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                After witnessing countless small businesses struggle with outdated systems 
-                and expensive software solutions, they decided to create a company that 
-                would bridge the technology gap for African entrepreneurs.
+              <p className="text-lg text-tertiary leading-relaxed mb-6">
+                After witnessing countless small businesses struggle with outdated systems
+                and expensive software solutions, the team set out to create a company
+                that would bridge the technology gap for African entrepreneurs.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Starting from a small shared workspace, they've grown JuveniQ into a 
-                trusted partner for businesses, NGOs, and individuals across South Africa 
+              <p className="text-lg text-tertiary leading-relaxed">
+                Beginning from a small shared workspace, JuveniQ has grown into a
+                trusted partner for businesses, NGOs, and individuals across South Africa
                 and beyond.
               </p>
-              <div className="flex items-center gap-2 text-sm text-primary font-medium">
-                <span>Founded in eMalahleni, 2025</span>
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span>Now serving clients across Africa</span>
-              </div>
             </div>
+
           </div>
         </div>
 
@@ -133,8 +128,8 @@ const About = () => {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <Card 
-                  key={value.title} 
+                <Card
+                  key={value.title}
                   className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
@@ -160,7 +155,7 @@ const About = () => {
         </div>
 
         {/* === Tagline CTA === */}
-        
+
       </div>
     </div>
   );
