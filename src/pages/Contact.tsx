@@ -11,13 +11,12 @@ import {
   Clock,
   Send,
   Facebook,
-  Twitter,
   Linkedin,
   MessageCircle,
   Github,
   Instagram
 } from "lucide-react";
-import icon from "/JIQ_main_logo_no_bg.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const Contact = () => {
   useEffect(() => {
@@ -79,25 +78,21 @@ const Contact = () => {
       icon: Facebook,
       name: "Facebook",
       url: "https://www.facebook.com/profile.php?id=100066476117731",
-      color: "hover:text-blue-600"
     },
     {
       icon: Github,
       name: "GitHub",
       url: "https://github.com/JuveniQ",
-      color: "hover:text-blue-400"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
       url: "https://www.linkedin.com/company/juveniq",
-      color: "hover:text-blue-700"
     },
     {
       icon: Instagram,
       name: 'Instagram',
       url: 'https://instagram.com/juveniq',
-      color: 'hover:text-purple-700'
     }
   ];
 
@@ -107,8 +102,8 @@ const Contact = () => {
         {/* === Header === */}
         <div className="text-center mb-16 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="logo-space-small w-24 h-24 bg-primary rounded-full shadow-xl group">
-              <img src={icon} alt="JuveniQ Logo" className="h-24 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
+              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -122,7 +117,7 @@ const Contact = () => {
         {/* === Slogan Anchor === */}
         <div className="text-center mb-16 fade-in">
           <p className="text-lg text-muted-foreground italic max-w-2xl mx-auto">
-            “<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>” — We listen, we build, we support.
+            "<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>" — We listen, we build, we support.
           </p>
         </div>
 
@@ -229,7 +224,6 @@ const Contact = () => {
                   <Card
                     key={info.title}
                     className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-6 text-center">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -257,13 +251,12 @@ const Contact = () => {
             {/* === Map Placeholder === */}
             <Card className="card-3d lift border-primary/20">
               <CardContent className="p-0">
-                <div className="h-48 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg flex items-center justify-center relative overflow-hidden">
+                <div className="h-48 bg-secondary rounded-lg flex items-center justify-center relative overflow-hidden">
                   <div className="text-center z-10">
                     <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                    <p className="text-muted-foreground font-medium">eMalahleni, South Africa</p>
-                    <p className="text-sm text-muted-foreground">Serving clients across Africa</p>
+                    <p className="text-foreground font-medium">eMalahleni, South Africa</p>
+                    <p className="text-sm text-muted-foreground">Serving clients across South Africa</p>
                   </div>
-                  <div className="pointer-events-none absolute -bottom-10 -right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
                 </div>
               </CardContent>
             </Card>
@@ -283,7 +276,7 @@ const Contact = () => {
                       <a
                         key={social.name}
                         href={social.url}
-                        className={`text-muted-foreground ${social.color} transition-all duration-300 hover:scale-110`}
+                        className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                         aria-label={social.name}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -327,7 +320,7 @@ const Contact = () => {
               {
                 question: "Can you work with existing systems?",
                 answer:
-                  "Absolutely. We specialize in integrating with existing software and databases to enhance your current setup.",
+                  "Absolutely. We specialise in integrating with existing software and databases to enhance your current setup.",
               },
               {
                 question: "What technologies do you use?",
@@ -338,10 +331,9 @@ const Contact = () => {
               <Card
                 key={index}
                 className="card-3d lift border-primary/20 hover:border-primary/40 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-foreground mb-2">
                     {faq.question}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">

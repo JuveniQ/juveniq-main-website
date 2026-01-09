@@ -60,6 +60,18 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				navy: {
+					50: 'hsl(220 60% 96%)',
+					100: 'hsl(220 50% 90%)',
+					200: 'hsl(220 50% 80%)',
+					300: 'hsl(220 50% 65%)',
+					400: 'hsl(220 55% 50%)',
+					500: 'hsl(220 60% 35%)',
+					600: 'hsl(220 60% 25%)',
+					700: 'hsl(220 60% 20%)',
+					800: 'hsl(220 60% 15%)',
+					900: 'hsl(220 65% 10%)',
 				}
 			},
 			borderRadius: {
