@@ -2,71 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Definition of the design system. Navy, Black, White with Grey shades */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%; /* Dark navy text */
+    --foreground: 220 20% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 220 20% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 220 20% 8%;
 
-    
-    --primary: 215 100% 12%;       /* Navy */
-    --primary-foreground: 0 0% 98%;
+    --primary: 220 60% 20%;          /* Deep Navy */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 80% 60%;      /* Baby Blue */
-    --secondary-foreground: 215 100% 20%;
+    --secondary: 220 40% 96%;        /* Light Grey */
+    --secondary-foreground: 220 20% 15%;
 
-    --accent: 45 100% 35%;         /* Gold */
-    --accent-foreground: 220 20% 10%;
+    --tertiary: 220 15% 45%;         /* Medium Grey */
+    --tertiary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 35%;             /* Light Grey */
-    --muted-foreground: 220 10% 40%;
+    --accent: 220 80% 35%;           /* Accent Navy Blue */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 55%;      
+    --muted: 220 15% 94%;            /* Very Light Grey */
+    --muted-foreground: 220 15% 40%;
+
+    --destructive: 0 72% 50%;      
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 85%;
-    --input: 220 15% 85%;
-    --ring: 215 100% 30%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 60% 35%;
 
-    --radius: 0.75rem; /* More modern rounded */
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 220 20% 8%;
+    --background: 220 25% 6%;
     --foreground: 0 0% 98%;
 
-    --card: 220 20% 10%;
+    --card: 220 25% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 20% 10%;
+    --popover: 220 25% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 215 80% 40%;        /* Lighter navy */
+    --primary: 220 70% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 90% 20%;      /* Soft baby blue */
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 0 0% 95%;
 
-    --accent: 45 100% 30%;         /* Brighter gold */
-    --accent-foreground: 220 20% 10%;
+    --tertiary: 220 15% 60%;
+    --tertiary-foreground: 220 20% 10%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 15% 70%;
+    --accent: 220 80% 55%;
+    --accent-foreground: 0 0% 100%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 25%;
-    --ring: 215 80% 50%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 65%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 220 70% 55%;
   }
 }
 
-/* === Gradient Animation (Existing) === */
+/* === Gradient Animation === */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -78,7 +83,7 @@
   animation: gradient 5s ease infinite;
 }
 
-/* === New: Smooth Fade-In Animation === */
+/* === Smooth Fade-In Animation === */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -91,36 +96,35 @@
 }
 
 .fade-in {
-  animation: fade-in 0.8s ease-out forwards;
+  opacity: 0;
+  animation: fade-in 0.7s ease-out forwards;
+  animation-delay: var(--delay, 0.1s);
 }
 
-/* === New: Stagger Delay Utility === */
+.fade-in-up {
+  opacity: 0;
+  animation: fade-in 0.8s ease-out forwards;
+  animation-delay: var(--delay, 0.1s);
+}
+
+/* === Stagger Delay Utility === */
 .stagger-0 { --delay: 0s; }
 .stagger-1 { --delay: 0.1s; }
 .stagger-2 { --delay: 0.2s; }
 .stagger-3 { --delay: 0.3s; }
 .stagger-4 { --delay: 0.4s; }
 
-.fade-in {
-  opacity: 0;
-  animation: fade-in 0.7s ease-out forwards;
-}
-.fade-in {
-  --delay: 0.1s;
-  animation-delay: var(--delay);
-}
-
-/* === New: Subtle Pulse for CTAs (Optional Highlight) === */
+/* === Subtle Pulse for CTAs === */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+  50% { opacity: 0.85; }
 }
 
 .pulse {
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* ---------- Brand helpers (use CSS vars directly) ---------- */
+/* ---------- Brand helpers ---------- */
 @layer utilities {
   .bg-app { background-color: hsl(var(--background)); }
   .text-app { color: hsl(var(--foreground)); }
@@ -131,16 +135,17 @@
   .text-secondary-var { color: hsl(var(--secondary)); }
   .bg-accent-var { background-color: hsl(var(--accent)); }
   .text-accent-var { color: hsl(var(--accent)); }
+  .text-tertiary { color: hsl(var(--tertiary)); }
 
   .border-var { border-color: hsl(var(--border)); }
   .ring-var { --tw-ring-color: hsl(var(--ring)); }
 
-  /* Subtle gradient using baby blue → gold */
+  /* Navy gradient */
   .brand-gradient {
     background-image: linear-gradient(135deg,
-      hsl(var(--secondary)) 0%,
-      hsl(var(--primary)) 55%,
-      hsl(var(--accent)) 100%
+      hsl(220 60% 25%) 0%,
+      hsl(220 60% 15%) 50%,
+      hsl(220 40% 8%) 100%
     );
   }
 
@@ -161,7 +166,7 @@
     --tw-ring-offset-color: hsl(var(--background));
   }
 
-  /* Nav link underline + color fixes */
+  /* Nav link underline + color */
   .nav-a {
     position: relative;
     color: hsl(var(--foreground));
@@ -169,11 +174,21 @@
   .nav-a::after {
     content: "";
     position: absolute; left: 50%; bottom: -6px; height: 2px; width: 0;
-    background: hsl(var(--accent)); transform: translateX(-50%);
+    background: hsl(var(--primary)); transform: translateX(-50%);
     transition: width .25s ease;
   }
-  .nav-a:hover { color: hsl(var(--accent)); }
-  .nav-a:hover::after, .nav-a[aria-current="page"]::after { width: 100%; }
+  .nav-a:hover { color: hsl(var(--primary)); }
+  .nav-a:hover::after { width: 100%; }
+  
+  /* Active nav link */
+  .nav-a.active::after { 
+    width: 100%; 
+    background: hsl(var(--primary));
+  }
+  .nav-a.active {
+    color: hsl(var(--primary));
+    font-weight: 600;
+  }
 
   /* Buttons */
   .btn { 
@@ -189,14 +204,14 @@
     color: hsl(var(--primary-foreground));
     box-shadow: 0 10px 24px -12px rgba(0,0,0,.5);
   }
-  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-primary:hover { filter: brightness(1.15); }
 
   .btn-secondary {
     background: hsl(var(--secondary));
     color: hsl(var(--secondary-foreground));
-    box-shadow: 0 10px 22px -14px rgba(0,0,0,.45);
+    box-shadow: 0 10px 22px -14px rgba(0,0,0,.25);
   }
-  .btn-secondary:hover { filter: saturate(1.05); }
+  .btn-secondary:hover { background: hsl(220 15% 90%); }
 
   .btn-ghost {
     background: transparent; 
@@ -213,23 +228,23 @@
     color: hsl(var(--card-foreground));
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
-    box-shadow: 0 12px 30px -16px rgba(0,0,0,.35);
+    box-shadow: 0 12px 30px -16px rgba(0,0,0,.2);
     transition: transform .2s ease, box-shadow .2s ease;
   }
-  .card-3d:hover { transform: translateY(-6px); box-shadow: 0 22px 46px -20px rgba(0,0,0,.45); }
+  .card-3d:hover { transform: translateY(-6px); box-shadow: 0 22px 46px -20px rgba(0,0,0,.3); }
 
-  /* === New: Hover Glow for Primary Elements === */
+  /* Hover Glow for Primary Elements */
   .hover-glow:hover {
-    text-shadow: 0 0 8px rgba(66, 153, 225, 0.3);
-    box-shadow: 0 0 16px -6px hsl(var(--primary) / 0.4), 0 18px 40px -18px rgba(0,0,0,.35);
+    text-shadow: 0 0 8px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 0 16px -6px hsl(var(--primary) / 0.3), 0 18px 40px -18px rgba(0,0,0,.25);
   }
 
-  /* === New: Smooth Transition for Color Changes === */
+  /* Smooth Transition for Color Changes */
   .transition-colors {
     transition: color .25s ease, background-color .25s ease, border-color .25s ease, opacity .25s ease;
   }
 
-  /* === New: Emphasize Primary Color Dominance === */
+  /* Emphasize Primary Color Dominance */
   .text-primary-dominant {
     color: hsl(var(--primary));
     font-weight: 700;
@@ -239,7 +254,7 @@
     border-color: hsl(var(--primary));
   }
 
-  /* === New: Subtle Float Animation for Decorative Elements === */
+  /* Subtle Float Animation for Decorative Elements */
   @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

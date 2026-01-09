@@ -4,11 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
-import icon from '/JIQ_main_logo_no_bg.png';
 import { projects } from "@/lib/data";
+import logoWhite from "@/assets/logo-white.png";
 
 const Portfolio = () => {
-  // Scroll to top on load
   useEffect(() => {
     window.scrollTo({ behavior: 'smooth', top: 0 });
   }, []);
@@ -19,22 +18,22 @@ const Portfolio = () => {
         {/* === Header === */}
         <div className="text-center mb-16 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="logo-space-small w-24 h-24  bg-primary rounded-full shadow-xl group">
-              <img src={icon} alt="JuveniQ Logo" className="h-24 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
+              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Our Portfolio
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Discover how we've helped businesses across Africa transform their operations with custom technology solutions.
+            Discover how we've helped businesses across South Africa transform their operations with custom technology solutions.
           </p>
         </div>
 
         {/* === Slogan Anchor === */}
         <div className="text-center mb-16 fade-in">
           <p className="text-lg text-muted-foreground italic max-w-2xl mx-auto">
-            “<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>” — We build tools that solve real problems for real people.
+            "<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>" — We build tools that solve real problems for real people.
           </p>
         </div>
 
@@ -48,11 +47,11 @@ const Portfolio = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Image */}
-                <div className="relative h-64 lg:h-full">
+                <div className="relative h-64 lg:h-full bg-muted">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-primary text-primary-foreground px-3 py-1 text-sm">
@@ -83,7 +82,7 @@ const Portfolio = () => {
                           <Badge
                             key={tech}
                             variant="outline"
-                            className="border-primary/20 text-primary text-sm px-2 py-1 hover:bg-primary/10 transition-colors"
+                            className="border-primary/30 text-primary text-sm px-2 py-1"
                           >
                             {tech}
                           </Badge>
@@ -98,8 +97,8 @@ const Portfolio = () => {
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {project.features.map((feature) => (
-                          <li key={feature} className="flex items-center text-sm text-muted-foreground group">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0 transition-transform group-hover:translate-x-1" />
+                          <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -118,15 +117,15 @@ const Portfolio = () => {
 
                     {/* Action Buttons */}
                     {project.link && (
-                      <Link to={project.link}>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
                         <Button
                           variant="outline"
-                          className="flex items-center gap-2 border-primary text-primary hover:bg-primary/10 hover:text-primary lift px-6 py-2 text-sm group"
+                          className="flex items-center gap-2 border-primary text-primary hover:bg-primary/5 lift px-6 py-2 text-sm"
                         >
-                          <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                          <ExternalLink className="w-4 h-4" />
                           View Project
                         </Button>
-                      </Link>
+                      </a>
                     )}
                   </CardContent>
                 </div>
@@ -135,15 +134,12 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* === Stats Section (Now Enabled) === */}
-        <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 lg:p-12 mb-16 card-3d shadow-lg relative overflow-hidden fade-in">
-          {/* Floating accent shape */}
-          <div className="pointer-events-none absolute -top-16 -right-16 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
-
+        {/* === Stats Section === */}
+        <div className="bg-secondary rounded-2xl p-8 lg:p-12 mb-16 shadow-lg fade-in">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Impact in Numbers</h2>
             <p className="text-lg text-muted-foreground">
-              Real results for real businesses across Africa
+              Real results for real businesses across South Africa
             </p>
           </div>
 
@@ -151,13 +147,12 @@ const Portfolio = () => {
             {[
               { number: "50+", label: "Projects Completed" },
               { number: "30+", label: "Happy Clients" },
-              { number: "1", label: "Countries Served" },
+              { number: "1", label: "Country Served" },
               { number: "99%", label: "Client Satisfaction" }
             ].map((stat, index) => (
               <div
                 key={stat.label}
-                className="text-center fade-in"
-                style={{ '--delay': `${index * 0.2}s` } as React.CSSProperties}
+                className="text-center"
               >
                 <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
                   {stat.number}
@@ -171,17 +166,17 @@ const Portfolio = () => {
         </div>
 
         {/* === CTA Section === */}
-        <div className="text-center bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-12 card-3d shadow-xl fade-in-up">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
+        <div className="text-center bg-primary rounded-2xl p-12 shadow-xl fade-in-up">
+          <h2 className="text-3xl font-bold text-primary-foreground mb-4">
             Ready to Start Your Project?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Let's discuss how we can create a custom solution that drives real results for your business.
           </p>
           <Link to="/contact">
             <Button
               size="lg"
-              className="btn-primary lift px-8 py-3 text-lg gap-3 group"
+              className="bg-white text-primary hover:bg-white/95 lift px-8 py-3 text-lg gap-3 group font-semibold"
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

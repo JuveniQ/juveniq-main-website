@@ -1,10 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Target, Heart, TrendingUp, Link } from "lucide-react";
+import { Users, Target, Heart, TrendingUp } from "lucide-react";
 import { useEffect } from "react";
-import icon from '/JIQ_main_logo_no_bg.png';
+import logoWhite from "@/assets/logo-white.png";
 
 const About = () => {
-  // Scroll to top on load
   useEffect(() => {
     window.scrollTo({ behavior: 'smooth', top: 0 });
   }, []);
@@ -23,7 +22,7 @@ const About = () => {
     {
       icon: TrendingUp,
       title: "Growth",
-      description: "We're committed to growing alongside our clients and the broader African tech ecosystem."
+      description: "We're committed to growing alongside our clients and the broader South African tech ecosystem."
     },
     {
       icon: Users,
@@ -38,16 +37,16 @@ const About = () => {
         {/* === Header === */}
         <div className="text-center mb-20 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="logo-space-small w-24 h-24 rounded-full bg-primary shadow-xl group">
-              <img src={icon} alt="JuveniQ Logo" className="h-24 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <div className="w-24 h-24 rounded-full bg-primary shadow-xl flex items-center justify-center group">
+              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             About JuveniQ
           </h1>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            We're a young, dynamic African tech startup on a mission to make
-            technology accessible and impactful for businesses across the continent.
+            We're a dynamic South African tech company on a mission to make
+            technology accessible and impactful for businesses across the country.
           </p>
         </div>
 
@@ -59,57 +58,52 @@ const About = () => {
               Our Mission
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              To democratize technology access for African businesses by providing
+              To democratise technology access for South African businesses by providing
               simple, affordable, and impactful software solutions. We believe that
               every business, regardless of size, deserves access to world-class technology.
             </p>
           </div>
           <div className="fade-in-up" style={{ '--delay': '0.3s' } as React.CSSProperties}>
             <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
-              <Target className="text-accent" size={28} />
+              <Target className="text-primary" size={28} />
               Our Vision
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              To become Africa's most trusted technology partner, known for creating
+              To become South Africa's most trusted technology partner, known for creating
               solutions that drive real business growth and positive social impact
-              across the continent.
+              across the nation.
             </p>
           </div>
         </div>
 
         {/* === Founders Story === */}
-        <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl p-8 lg:p-16 mb-24 card-3d shadow-xl relative overflow-hidden">
-          {/* Decorative floating shape */}
-          <div className="pointer-events-none absolute -top-16 -right-16 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
-
+        <div className="bg-secondary rounded-2xl p-8 lg:p-16 mb-24 shadow-lg relative overflow-hidden">
           <h2 className="text-4xl font-bold text-foreground mb-12 text-center z-10 relative">
-            Our Founding Story
+            Our Story
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-                alt="Founders working together"
-                className="rounded-2xl w-full h-80 object-cover shadow-2xl lift hover:shadow-3xl transition-shadow"
+                alt="Team working together"
+                className="rounded-xl w-full h-80 object-cover shadow-xl"
               />
             </div>
             <div className="order-1 lg:order-2">
-              <p className="text-lg text-tertiary leading-relaxed mb-6">
-                JuveniQ was started by a team of passionate technologists with a shared
-                vision for using innovation to empower African businesses.
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                JuveniQ was founded by a team of passionate technologists with a shared
+                vision for using innovation to empower South African businesses.
               </p>
-              <p className="text-lg text-tertiary leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 After witnessing countless small businesses struggle with outdated systems
                 and expensive software solutions, the team set out to create a company
-                that would bridge the technology gap for African entrepreneurs.
+                that would bridge the technology gap for local entrepreneurs.
               </p>
-              <p className="text-lg text-tertiary leading-relaxed">
-                Beginning from a small shared workspace, JuveniQ has grown into a
-                trusted partner for businesses, NGOs, and individuals across South Africa
-                and beyond.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                From our base in Mpumalanga, JuveniQ has grown into a
+                trusted partner for businesses, NGOs, and individuals across South Africa.
               </p>
             </div>
-
           </div>
         </div>
 
@@ -135,7 +129,7 @@ const About = () => {
                 >
                   <CardContent className="p-8">
                     <div className="flex items-start space-x-6">
-                      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                         <Icon className="h-8 w-8 text-primary" />
                       </div>
                       <div>
@@ -153,9 +147,6 @@ const About = () => {
             })}
           </div>
         </div>
-
-        {/* === Tagline CTA === */}
-
       </div>
     </div>
   );

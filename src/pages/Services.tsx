@@ -12,28 +12,10 @@ import {
 } from "lucide-react";
 import { useEffect } from "react";
 import { FaAndroid, FaApple } from 'react-icons/fa';
-import icon from '/JIQ_main_logo_no_bg.png';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ServicePackages } from "@/components/ServicePackages";
 import { webPackages, appPackages } from '@/lib/data';
-
-const promoNote = "Promotion: 85% OFF for 2025 (prices return to normal next year)";
-
-// Helper to display both ZAR and USD & strikethrough
-function PriceDisplay({ oldZar, oldUsd }: { oldZar: number, oldUsd: number }) {
-  const newZar = Math.round(oldZar * 0.15);
-  const newUsd = Math.round(oldUsd * 0.15);
-  return (
-    <div className="text-center sm:text-left">
-      <span className="line-through text-sm text-muted-foreground mr-2">
-        R{oldZar.toLocaleString()} (~${oldUsd.toLocaleString()})
-      </span>
-      <div className="text-2xl sm:text-3xl font-bold text-primary mt-1">
-        R{newZar.toLocaleString()} (~${newUsd.toLocaleString()})
-      </div>
-    </div>
-  );
-}
+import logoWhite from "@/assets/logo-white.png";
 
 const Services = () => {
   useEffect(() => {
@@ -44,19 +26,19 @@ const Services = () => {
     {
       icon: Globe,
       title: "Web Applications",
-      description: "Custom web applications built with modern technologies to streamline your business operations and enhance customer experiences.",
-      features: ["Responsive Design", "Cloud Deployment", "SEO Optimized", "Analytics Integration"]
+      description: "Professional websites and web applications built with modern technologies to enhance your online presence and streamline business operations.",
+      features: ["Responsive Design", "Cloud Deployment", "SEO Optimised", "Analytics Integration"]
     },
     {
       icon: Smartphone,
       title: "Mobile Apps",
-      description: "Native and cross-platform mobile applications that connect you with your customers wherever they are.",
+      description: "Native and cross-platform mobile applications that connect you with your customers across South Africa and beyond.",
       features: ["iOS & Android", "Cross-Platform", "Push Notifications", "Offline Capability"]
     },
     {
       icon: Brain,
       title: "AI & Automation Tools",
-      description: "Intelligent automation solutions that reduce manual work and improve efficiency across your organization.",
+      description: "Intelligent automation solutions that reduce manual work and improve efficiency across your organisation.",
       features: ["Process Automation", "AI Chatbots", "Data Analysis", "Smart Workflows"]
     },
     {
@@ -69,7 +51,7 @@ const Services = () => {
       icon: Headphones,
       title: "Tech Support & Training",
       description: "Ongoing technical support and user training to ensure your team gets the most out of your technology investments.",
-      features: ["24/7 Support", "User Training", "System Maintenance", "Performance Monitoring"]
+      features: ["Reliable Support", "User Training", "System Maintenance", "Performance Monitoring"]
     }
   ];
 
@@ -79,8 +61,8 @@ const Services = () => {
         {/* === Header === */}
         <div className="text-center mb-20 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="logo-space-small w-24 h-24 bg-primary rounded-full shadow-xl group">
-              <img src={icon} alt="JuveniQ Logo" className="h-24 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
+              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -88,30 +70,30 @@ const Services = () => {
           </h1>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             From web applications to AI automation, we provide comprehensive 
-            technology solutions tailored to your business needs.
+            technology solutions tailored to South African business needs.
           </p>
         </div>
 
         {/* === Mission Anchor === */}
         <div className="text-center mb-16 fade-in">
           <p className="text-lg text-muted-foreground italic max-w-3xl mx-auto">
-            “<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>” — We build only what you need, so you can focus on what matters.
+            "<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>" — We build only what you need, so you can focus on what matters most.
           </p>
         </div>
 
         {/* === Core Services Grid === */}
-        <div className="grid grid-cols-1 border-secondary lg:grid-cols-2 gap-8 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <Card
                 key={service.title}
-                className="card-3d lift border-3 border-secondary group  hover:border-primary/40 transition-all duration-300"
+                className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8">
                   <div className="flex items-start space-x-6 mb-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="h-8 w-8 text-primary" />
                     </div>
                     <div>
@@ -125,8 +107,8 @@ const Services = () => {
                   </div>
                   <div className="space-y-2 mt-4">
                     {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center group">
-                        <Check className="h-5 w-5 text-primary mr-3 transition-transform group-hover:translate-x-1" />
+                      <div key={feature} className="flex items-center">
+                        <Check className="h-5 w-5 text-primary mr-3" />
                         <span className="text-muted-foreground">{feature}</span>
                       </div>
                     ))}
@@ -141,24 +123,23 @@ const Services = () => {
         <div className="mb-20">
           <div className="text-center mb-10 fade-in">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              JuveniQ Service Packages
+              Service Packages
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-4">
-              Ready-made solutions for African businesses — simple, affordable, and scalable.
+              Ready-made solutions for South African businesses — professional, reliable, and scalable.
             </p>
-           
           </div>
 
-          <Tabs defaultValue="web" className=" bg-secondary w-full">
-            <TabsList className="flex gap-2 justify-center mb-8 flex-wrap">
-              <TabsTrigger value="web" className="flex text-accent items-center gap-2 text-base px-6 py-3">
+          <Tabs defaultValue="web" className="w-full">
+            <TabsList className="flex gap-2 justify-center mb-8 flex-wrap bg-muted p-1 rounded-lg">
+              <TabsTrigger value="web" className="flex items-center gap-2 text-base px-6 py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 <Globe className="h-5 w-5" />
-                Web Packs
+                Web Packages
               </TabsTrigger>
-              <TabsTrigger value="apps" className="flex text-accent items-center gap-2 text-base px-6 py-3">
+              <TabsTrigger value="apps" className="flex items-center gap-2 text-base px-6 py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 Mobile Apps
-                <FaApple className="h-5 w-5 opacity-70 -ml-1" />
-                <FaAndroid className="h-5 w-5 opacity-70 -ml-1" />
+                <FaApple className="h-4 w-4" />
+                <FaAndroid className="h-4 w-4" />
               </TabsTrigger>
             </TabsList>
 
@@ -169,31 +150,28 @@ const Services = () => {
               <ServicePackages packages={appPackages} />
             </TabsContent>
           </Tabs>
-
-          
         </div>
 
         {/* === CTA Section === */}
-        <div className="text-center bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-12 lg:p-16 card-3d shadow-xl relative overflow-hidden fade-in-up">
-          {/* Floating accent shape */}
-          <div className="pointer-events-none absolute -top-16 -right-16 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
-
-          <h2 className="text-4xl font-bold text-foreground mb-6">
-            Need Something Custom?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Every business is unique. Let us create a tailored solution that perfectly 
-            fits your specific requirements and budget.
-          </p>
-          <Link to="/contact">
-            <Button
-              size="lg"
-              className="btn-primary lift px-8 py-6 text-lg gap-3 group"
-            >
-              Discuss Your Project
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-          </Link>
+        <div className="text-center bg-primary rounded-2xl p-12 lg:p-16 shadow-xl relative overflow-hidden fade-in-up">
+          <div className="relative z-10">
+            <h2 className="text-4xl font-bold text-primary-foreground mb-6">
+              Need Something Custom?
+            </h2>
+            <p className="text-xl text-primary-foreground/90 mb-10 max-w-3xl mx-auto leading-relaxed">
+              Every business is unique. Let us create a tailored solution that perfectly 
+              fits your specific requirements and budget.
+            </p>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/95 lift px-8 py-6 text-lg gap-3 group font-semibold"
+              >
+                Discuss Your Project
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
