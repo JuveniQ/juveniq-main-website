@@ -127,15 +127,15 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <MapPin size={16} className="mr-2 text-white/70 mt-1" />
-                <span className="text-white/70">eMalahleni, South Africa</span>
+                <span className="text-white/70">Gauteng, South Africa</span>
               </li>
               <li className="flex items-start group">
                 <Mail size={16} className="mr-2 text-white/70 mt-1" />
                 <a
-                  href="mailto:juveniq105@gmail.com"
+                  href="mailto:contact@juveniq.co.za"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  juveniq105@gmail.com
+                  contact@juveniq.co.za
                 </a>
               </li>
             </ul>
