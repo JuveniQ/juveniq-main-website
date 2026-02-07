@@ -16,7 +16,7 @@ import {
   Github,
   Instagram
 } from "lucide-react";
-import logoWhite from "@/assets/logo-white.png";
+
 
 const Contact = () => {
   useEffect(() => {
@@ -62,7 +62,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Office Location",
-      details: "eMalahleni, South Africa",
+      details: "Gauteng, South Africa",
       action: "#",
     },
     {
@@ -102,9 +102,6 @@ const Contact = () => {
         {/* === Header === */}
         <div className="text-center mb-16 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
-              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
-            </div>
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Get In Touch

@@ -61,15 +61,12 @@ const Services = () => {
         {/* === Header === */}
         <div className="text-center mb-20 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
-              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
-            </div>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Our Services
           </h1>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            From web applications to AI automation, we provide comprehensive 
+            From web applications to AI automation, we provide comprehensive
             technology solutions tailored to South African business needs.
           </p>
         </div>
@@ -159,7 +156,7 @@ const Services = () => {
               Need Something Custom?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Every business is unique. Let us create a tailored solution that perfectly 
+              Every business is unique. Let us create a tailored solution that perfectly
               fits your specific requirements and budget.
             </p>
             <Link to="/contact">

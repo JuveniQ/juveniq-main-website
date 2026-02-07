@@ -37,9 +37,6 @@ const About = () => {
         {/* === Header === */}
         <div className="text-center mb-20 fade-in">
           <div className="mb-8 flex justify-center">
-            <div className="w-24 h-24 rounded-full bg-primary shadow-xl flex items-center justify-center group">
-              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
-            </div>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             About JuveniQ
