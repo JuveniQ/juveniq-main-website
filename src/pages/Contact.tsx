@@ -5,6 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import {
   Mail,
   Phone,
   MapPin,
@@ -302,43 +308,82 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                question: "What's your typical project timeline?",
-                answer:
-                  "Most projects take 2-8 weeks depending on complexity. We'll provide a detailed timeline during our initial consultation.",
-              },
-              {
-                question: "Do you provide ongoing support?",
-                answer:
-                  "Yes! All our packages include support periods, and we offer extended maintenance plans for long-term partnerships.",
-              },
-              {
-                question: "Can you work with existing systems?",
-                answer:
-                  "Absolutely. We specialise in integrating with existing software and databases to enhance your current setup.",
-              },
-              {
-                question: "What technologies do you use?",
-                answer:
-                  "We use modern, proven technologies like React, Node.js, Python, and cloud platforms to ensure reliability and scalability.",
-              },
-            ].map((faq, index) => (
-              <Card
-                key={index}
-                className="card-3d lift border-primary/20 hover:border-primary/40 transition-all duration-300"
-              >
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">
-                    {faq.question}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Card className="card-3d lift border-primary/20 hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="text-2xl">Our Common Questions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Accordion type="single" collapsible className="w-full">
+                  {[
+                    {
+                      id: "faq-1",
+                      question: "What's your typical project timeline?",
+                      answer:
+                        "Most projects take 2-8 weeks depending on complexity. Basic websites typically take 2-4 weeks, while standard sites take 5-8 weeks. Premium web apps and mobile apps take 12-16 weeks. We'll provide a detailed timeline during our initial consultation.",
+                    },
+                    {
+                      id: "faq-2",
+                      question: "Do you provide ongoing support?",
+                      answer:
+                        "Yes! All our packages include support periods (1-6 months depending on the package), and we offer extended maintenance plans for long-term partnerships. We provide bug fixes, updates, security patches, and technical assistance.",
+                    },
+                    {
+                      id: "faq-3",
+                      question: "Can you work with existing systems?",
+                      answer:
+                        "Absolutely. We specialise in integrating with existing software and databases to enhance your current setup. Whether you need to upgrade a legacy system or add new features, we can help modernise your technology without disrupting your business.",
+                    },
+                    {
+                      id: "faq-4",
+                      question: "What technologies do you use?",
+                      answer:
+                        "We use modern, proven technologies including React and TypeScript for web frontends, Node.js and Python for backends, cloud platforms like AWS and Netlify for deployment, and databases like PostgreSQL and MongoDB. We choose the best tools for each project's specific needs.",
+                    },
+                    {
+                      id: "faq-5",
+                      question: "How much do your services cost?",
+                      answer:
+                        "Our pricing varies based on project scope and complexity. Basic websites start around R1,000-R4,250, standard sites range from R4,750-R9,000, and premium web apps start at R10,000+. Mobile apps range from R30,000 to R100,000+ depending on features. We offer flexible packages to fit various budgets, and we're happy to work with small businesses and startups.",
+                    },
+                    {
+                      id: "faq-6",
+                      question: "Do you offer solutions for small businesses and startups?",
+                      answer:
+                        "Yes! We specialise in serving South African small businesses, entrepreneurs, educators, and NGOs. Our approach is community-focused and we're committed to helping local businesses and startups grow with technology that's affordable and tailored to their needs.",
+                    },
+                    {
+                      id: "faq-7",
+                      question: "Can you help with both web and mobile apps?",
+                      answer:
+                        "Absolutely! We offer end-to-end solutions including web applications, mobile apps (iOS & Android), e-commerce platforms, AI automation tools, and business systems. Whether you need just a website, just an app, or a complete digital solution, we can help.",
+                    },
+                    {
+                      id: "faq-8",
+                      question: "What's included in your support and maintenance packages?",
+                      answer:
+                        "Our support packages include bug fixes, security patches, software updates, performance monitoring, and technical assistance. We provide different support tiers—from basic bug-fix support to comprehensive maintenance plans—so you can choose what works best for your business.",
+                    },
+                    {
+                      id: "faq-9",
+                      question: "How do you ensure my data and website are secure?",
+                      answer:
+                        "Security is a priority. We implement industry-standard practices including SSL encryption, secure databases, regular security audits, automated backups, and compliance with best practices. All our cloud deployments use trusted providers with enterprise-grade security standards.",
+                    },
+                   
+                  ].map((faq) => (
+                    <AccordionItem key={faq.id} value={faq.id}>
+                      <AccordionTrigger className="text-foreground font-semibold hover:text-primary transition-colors">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
