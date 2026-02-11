@@ -3,12 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { AlertTriangle, ArrowRight, Briefcase, Home, Mail } from "lucide-react";
 import BentoTile from "@/components/motion/BentoTile";
 import BentoGrid from "@/components/motion/BentoGrid";
+import { scrollViewportToTop, useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 const NotFound = () => {
   const location = useLocation();
+  useScrollToTop();
 
   useEffect(() => {
-    console.error("404 route:", location.pathname);
+    scrollViewportToTop();
   }, [location.pathname]);
 
   return (

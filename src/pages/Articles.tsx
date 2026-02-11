@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { CalendarDays, Clock3 } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
@@ -6,18 +6,20 @@ import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import SmartImage from "@/components/SmartImage";
 import RouteSeo from "@/components/RouteSeo";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { articleCategories, articles } from "@/lib/data";
 
 const Articles = () => {
-  const [active, setActive] = useState<(typeof articleCategories)[number]>("All");
+  const [activeCategory, setActiveCategory] = useState<(typeof articleCategories)[number]>("All");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useScrollToTop();
 
   const filtered = useMemo(
-    () => (active === "All" ? articles : articles.filter((item) => item.category === active)),
-    [active],
+    () =>
+      activeCategory === "All"
+        ? articles
+        : articles.filter((article) => article.category === activeCategory),
+    [activeCategory],
   );
 
   return (
@@ -86,10 +88,10 @@ const Articles = () => {
               key={category}
               type="button"
               aria-label={`Filter articles by ${category}`}
-              aria-pressed={active === category}
-              onClick={() => setActive(category)}
+              aria-pressed={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
               className={`ring-cyan rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-200 ${
-                active === category
+                activeCategory === category
                   ? "border-cyan-300/45 bg-cyan-300/14 text-cyan-200"
                   : "border-white/20 bg-slate-800/75 text-slate-300 hover:border-cyan-300/35 hover:bg-slate-700/75"
               }`}

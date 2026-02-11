@@ -16,9 +16,9 @@ const navItems = [
 
 const Header = () => {
   const location = useLocation();
-  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const active = (href: string) => location.pathname === href;
+  const isRouteActive = (href: string) => location.pathname === href;
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/12 bg-slate-950/76 backdrop-blur-xl">
@@ -41,7 +41,7 @@ const Header = () => {
                 to={item.href}
                 aria-label={`Navigate to ${item.label}`}
                 className={`ring-cyan led-hover rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
-                  active(item.href)
+                  isRouteActive(item.href)
                     ? "led-border bg-cyan-300/16 text-cyan-100 shadow-[0_0_14px_hsl(var(--led-blue)/0.2)]"
                     : "border-transparent text-slate-300 hover:bg-white/5 hover:text-slate-100"
                 }`}
@@ -63,18 +63,18 @@ const Header = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              onClick={() => setOpen((prev) => !prev)}
+              onClick={() => setIsMenuOpen((previousState) => !previousState)}
               className="ring-cyan ring-led led-hover inline-flex rounded-lg border border-white/20 bg-slate-900/70 p-2 text-slate-100"
               aria-label="Toggle menu"
-              aria-expanded={open}
+              aria-expanded={isMenuOpen}
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
         <AnimatePresence>
-          {open && (
+          {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -88,9 +88,9 @@ const Header = () => {
                     key={item.href}
                     to={item.href}
                     aria-label={`Navigate to ${item.label}`}
-                    onClick={() => setOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                     className={`ring-cyan led-hover rounded-lg border px-3 py-2 text-sm font-semibold ${
-                      active(item.href)
+                      isRouteActive(item.href)
                         ? "led-border bg-cyan-300/16 text-cyan-100 shadow-[0_0_12px_hsl(var(--led-blue)/0.22)]"
                         : "border-transparent text-slate-300 hover:bg-white/5 hover:text-slate-100"
                     }`}
@@ -100,7 +100,7 @@ const Header = () => {
                 ))}
               </div>
               <MagneticButton className="mt-3 w-full">
-                <Link to="/contact" aria-label="Book strategy call" onClick={() => setOpen(false)} className="btn-cyan ring-cyan w-full">
+                <Link to="/contact" aria-label="Book strategy call" onClick={() => setIsMenuOpen(false)} className="btn-cyan ring-cyan w-full">
                   Book Strategy Call
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>

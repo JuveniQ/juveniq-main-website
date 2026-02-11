@@ -6,14 +6,17 @@ import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import RouteSeo from "@/components/RouteSeo";
+import { scrollViewportToTop, useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { articles, getArticleBySlug } from "@/lib/data";
 
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
   const article = getArticleBySlug(slug);
 
+  useScrollToTop();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollViewportToTop();
   }, [slug]);
 
   if (!article) {

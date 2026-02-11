@@ -26,6 +26,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookieConsentBanner from "./components/CookieConsentBanner";
 import AnalyticsLoader from "./components/AnalyticsLoader";
 import FloatingContactButton from "./components/FloatingContactButton";
+import AppErrorBoundary from "./components/AppErrorBoundary";
 
 const queryClient = new QueryClient();
 const App = () => {
@@ -38,32 +39,34 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <AnalyticsLoader />
-          {!isBootReady && <BrandLoader onComplete={markBootComplete} />}
-          <div className="site-shell min-h-screen flex flex-col w-full">
-            <SiteBackground intensity="medium" showLines showNodes showCode />
-            <Header />
-            <main className="flex-1">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/solutions" element={<Solutions />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/process" element={<Process />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/case-studies" element={<CaseStudies />} />
-                <Route path="/articles" element={<Articles />} />
-                <Route path="/articles/:slug" element={<ArticleDetail />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <FloatingContactButton />
-            <Footer />
-            <CookieConsentBanner />
-          </div>
+          <AppErrorBoundary>
+            <AnalyticsLoader />
+            {!isBootReady && <BrandLoader onComplete={markBootComplete} />}
+            <div className="site-shell min-h-screen flex flex-col w-full">
+              <SiteBackground intensity="medium" showLines showNodes showCode />
+              <Header />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/solutions" element={<Solutions />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/process" element={<Process />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/case-studies" element={<CaseStudies />} />
+                  <Route path="/articles" element={<Articles />} />
+                  <Route path="/articles/:slug" element={<ArticleDetail />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <FloatingContactButton />
+              <Footer />
+              <CookieConsentBanner />
+            </div>
+          </AppErrorBoundary>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

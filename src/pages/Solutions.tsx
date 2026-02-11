@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Factory, Store } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
@@ -7,14 +6,13 @@ import MagneticButton from "@/components/motion/MagneticButton";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import SmartImage from "@/components/SmartImage";
 import RouteSeo from "@/components/RouteSeo";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { solutions } from "@/lib/data";
 
 const iconMap = [Store, Building2, Factory];
 
 const Solutions = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="site-shell section-pad">

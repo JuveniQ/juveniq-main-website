@@ -13,17 +13,26 @@ type RouteSeoProps = {
 
 const BASE_URL = companyProfile.canonicalDomain.replace(/\/$/, "");
 
+/**
+ * Converts relative asset paths into absolute URLs for social meta tags.
+ */
 const toAbsoluteUrl = (value: string) => {
   if (/^https?:\/\//i.test(value)) return value;
   const normalized = value.startsWith("/") ? value : `/${value}`;
   return `${BASE_URL}${normalized}`;
 };
 
+/**
+ * Normalizes route paths into canonical URLs.
+ */
 const toCanonicalUrl = (path: string) => {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return normalized === "/" ? `${BASE_URL}/` : `${BASE_URL}${normalized}`;
 };
 
+/**
+ * Creates or updates a meta tag so route-level metadata stays synchronized.
+ */
 const upsertMeta = (selector: string, attrs: Record<string, string>) => {
   let element = document.head.querySelector(selector) as HTMLMetaElement | null;
   if (!element) {
@@ -35,6 +44,9 @@ const upsertMeta = (selector: string, attrs: Record<string, string>) => {
   });
 };
 
+/**
+ * Ensures a single canonical link element exists and updates its value.
+ */
 const upsertCanonical = (href: string) => {
   let link = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
   if (!link) {

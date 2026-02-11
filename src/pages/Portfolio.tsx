@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
@@ -6,12 +5,11 @@ import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
 import SmartImage from "@/components/SmartImage";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { caseStudies } from "@/lib/data";
 
 const Portfolio = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useScrollToTop();
 
   const lead = caseStudies.find((item) => item.slug === "gigkasi") ?? caseStudies[0];
 

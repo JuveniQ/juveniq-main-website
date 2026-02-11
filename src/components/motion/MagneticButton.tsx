@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { usePointerCapability } from "@/hooks/use-pointer-capability";
 import { cn } from "@/lib/utils";
 
 type MagneticButtonProps = {
@@ -17,19 +18,22 @@ const MagneticButton = ({
 }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const [enabled, setEnabled] = useState(false);
+  const { hasFinePointer } = usePointerCapability();
   const [point, setPoint] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: fine)");
-    const update = () => setEnabled(media.matches && !reduceMotion);
-    update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, [reduceMotion]);
+  const isInteractionEnabled = useMemo(
+    () => hasFinePointer && !reduceMotion,
+    [hasFinePointer, reduceMotion],
+  );
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!isInteractionEnabled) {
+      setPoint({ x: 0, y: 0 });
+    }
+  }, [isInteractionEnabled]);
+
+  useEffect(() => {
+    if (!isInteractionEnabled) return;
     const handleMove = (event: MouseEvent) => {
       if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
@@ -53,7 +57,7 @@ const MagneticButton = ({
 
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
-  }, [enabled, radius, strength]);
+  }, [isInteractionEnabled, radius, strength]);
 
   return (
     <motion.div

@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { GaugeCircle, Handshake, ShieldCheck, Workflow } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import SmartImage from "@/components/SmartImage";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 const values = [
   {
@@ -29,9 +29,7 @@ const values = [
 ];
 
 const About = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="site-shell section-pad">

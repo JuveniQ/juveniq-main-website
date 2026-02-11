@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
+import { usePointerCapability } from "@/hooks/use-pointer-capability";
 import { cn } from "@/lib/utils";
 
 type BorderFollowCardProps = HTMLAttributes<HTMLDivElement> & {
@@ -8,15 +9,7 @@ type BorderFollowCardProps = HTMLAttributes<HTMLDivElement> & {
 
 const BorderFollowCard = ({ children, className, ...props }: BorderFollowCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: fine)");
-    const setMatches = () => setEnabled(media.matches);
-    setMatches();
-    media.addEventListener("change", setMatches);
-    return () => media.removeEventListener("change", setMatches);
-  }, []);
+  const { hasFinePointer } = usePointerCapability();
 
   const glowStyle = useMemo(
     () => ({
@@ -27,7 +20,7 @@ const BorderFollowCard = ({ children, className, ...props }: BorderFollowCardPro
   );
 
   const handleMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!enabled || !ref.current) return;
+    if (!hasFinePointer || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;
     const y = ((event.clientY - rect.top) / rect.height) * 100;
@@ -46,7 +39,7 @@ const BorderFollowCard = ({ children, className, ...props }: BorderFollowCardPro
       style={glowStyle}
       {...props}
     >
-      {enabled && (
+      {hasFinePointer && (
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
@@ -7,12 +6,11 @@ import PulseDot from "@/components/motion/PulseDot";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
 import SmartImage from "@/components/SmartImage";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { caseStudies } from "@/lib/data";
 
 const CaseStudies = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="site-shell section-pad">
