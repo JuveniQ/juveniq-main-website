@@ -1,18 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 type BrandLoaderProps = {
   onComplete: () => void;
 };
 
-const MIN_TIME = 1600;
-const MAX_TIME = 2200;
+const MIN_TIME = 3000;
+const MAX_TIME = 3600;
 
 const BrandLoader = ({ onComplete }: BrandLoaderProps) => {
   const reduceMotion = useReducedMotion();
   const [visible, setVisible] = useState(true);
 
-  const duration = useMemo(() => (reduceMotion ? 280 : MIN_TIME), [reduceMotion]);
+  const duration = MIN_TIME;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -50,8 +50,12 @@ const BrandLoader = ({ onComplete }: BrandLoaderProps) => {
               <motion.div
                 className="mx-auto h-20 w-20 rounded-full border border-cyan-300/35 bg-cyan-300/10 blur-[1px]"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.8, scale: 1 }}
-                transition={{ duration: reduceMotion ? 0.2 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+                animate={reduceMotion ? { opacity: 0.7, scale: 1 } : { opacity: [0.5, 0.9, 0.6], scale: [0.92, 1.03, 1] }}
+                transition={{
+                  duration: reduceMotion ? 0.28 : 2.2,
+                  ease: "easeInOut",
+                  repeat: reduceMotion ? 0 : Infinity,
+                }}
               />
 
               <motion.img
@@ -81,9 +85,9 @@ const BrandLoader = ({ onComplete }: BrandLoaderProps) => {
                 <motion.span
                   className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-transparent via-cyan-200/90 to-transparent"
                   initial={{ x: "-50%" }}
-                  animate={{ x: "170%" }}
+                  animate={{ x: "180%" }}
                   transition={{
-                    duration: reduceMotion ? 0.4 : 0.95,
+                    duration: reduceMotion ? 0.55 : 1.4,
                     ease: "easeOut",
                     repeat: reduceMotion ? 0 : Infinity,
                   }}
