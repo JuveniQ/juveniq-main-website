@@ -1,123 +1,117 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import logoBlack from "@/assets/logo-black.png";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import MagneticButton from "@/components/motion/MagneticButton";
+import BrandLogo from "@/components/BrandLogo";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Articles", href: "/articles" },
+  { label: "Contact", href: "/contact" },
+];
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [open, setOpen] = useState(false);
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact", href: "/contact" },
-  ];
-
-  const isActive = (href: string) => location.pathname === href;
+  const active = (href: string) => location.pathname === href;
 
   return (
-    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-sm transition-colors duration-300">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <header className="sticky top-0 z-50 border-b border-white/12 bg-slate-950/76 backdrop-blur-xl">
+      <nav className="section-shell">
+        <div className="flex h-[74px] items-center justify-between">
+          <Link to="/" className="inline-flex items-center gap-2.5">
+            <span className="inline-flex rounded-lg border border-white/20 bg-slate-900/75 px-2 py-1">
+              <BrandLogo variant="darkBg" size="md" />
+            </span>
+            <span className="hidden font-montserrat text-xl font-bold text-slate-100 sm:inline" aria-label="JuveniQ">
+              Juveni
+              <span className="font-quando font-normal">Q</span>
+            </span>
+          </Link>
 
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <img
-                src={logoBlack}
-                alt="JuveniQ Logo"
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-              />
-              <span className="text-2xl font-montserrat font-bold text-foreground">
-                Juveni
-                <span className="font-quando text-primary">Q</span> 
-              </span>
-            </Link>
+          <div className="hidden items-center gap-1 lg:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                aria-label={`Navigate to ${item.label}`}
+                className={`ring-cyan led-hover rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
+                  active(item.href)
+                    ? "led-border bg-cyan-300/16 text-cyan-100 shadow-[0_0_14px_hsl(var(--led-blue)/0.2)]"
+                    : "border-transparent text-slate-300 hover:bg-white/5 hover:text-slate-100"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`nav-a px-3 py-2 text-sm font-medium transition-colors duration-300
-                    ${isActive(item.href)
-                      ? "active text-primary"
-                      : "text-foreground hover:text-primary"
-                    }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+          <div className="hidden items-center gap-3 lg:flex">
+            <MagneticButton>
+              <Link to="/contact" aria-label="Book strategy call" className="btn-cyan ring-cyan">
+                Book Strategy Call
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </MagneticButton>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link to="/contact">
-              <Button className="btn-primary lift px-6 py-3 text-sm">
-                Get Quote
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary p-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md"
-              aria-expanded={isMenuOpen}
+              type="button"
+              onClick={() => setOpen((prev) => !prev)}
+              className="ring-cyan ring-led led-hover inline-flex rounded-lg border border-white/20 bg-slate-900/70 p-2 text-slate-100"
               aria-label="Toggle menu"
+              aria-expanded={open}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden overflow-hidden transition-all duration-300 ease-out">
-            <div
-              className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-border bg-background/95 backdrop-blur-sm rounded-b-xl shadow-lg"
-              style={{
-                animation: 'fade-in .3s ease-out forwards',
-                opacity: 0,
-                transform: 'translateY(-8px)',
-              }}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="mb-4 rounded-2xl border border-white/12 bg-slate-900/90 p-3 backdrop-blur-xl lg:hidden"
             >
-              {navigation.map((item, index) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-3 rounded-md text-base font-medium transition-all duration-200 relative
-                    ${isActive(item.href)
-                      ? "text-primary bg-primary/5 font-semibold border-l-4 border-primary"
-                      : "text-foreground hover:text-primary hover:bg-muted"
+              <div className="grid gap-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    aria-label={`Navigate to ${item.label}`}
+                    onClick={() => setOpen(false)}
+                    className={`ring-cyan led-hover rounded-lg border px-3 py-2 text-sm font-semibold ${
+                      active(item.href)
+                        ? "led-border bg-cyan-300/16 text-cyan-100 shadow-[0_0_12px_hsl(var(--led-blue)/0.22)]"
+                        : "border-transparent text-slate-300 hover:bg-white/5 hover:text-slate-100"
                     }`}
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-3">
-                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                  <Button className="w-full btn-primary lift text-sm">
-                    Get Quote
-                  </Button>
-                </Link>
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
-            </div>
-          </div>
-        )}
+              <MagneticButton className="mt-3 w-full">
+                <Link to="/contact" aria-label="Book strategy call" onClick={() => setOpen(false)} className="btn-cyan ring-cyan w-full">
+                  Book Strategy Call
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </MagneticButton>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
 };
 
 export default Header;
+

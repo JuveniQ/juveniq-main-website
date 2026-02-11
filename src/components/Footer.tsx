@@ -1,152 +1,113 @@
 import { Link } from "react-router-dom";
-import {
-  Mail,
-  Phone,
-  MapPin,
+import { Facebook, Github, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import BrandLogo from "@/components/BrandLogo";
+import { companyProfile, socialLinks } from "@/lib/company";
+
+const socialIcons = {
   Facebook,
-  Linkedin,
-  Github,
+  GitHub: Github,
+  LinkedIn: Linkedin,
   Instagram,
-} from "lucide-react";
-import logoWhite from "@/assets/logo-white.png";
-import { useState, useEffect } from "react";
+} as const;
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const footer = document.querySelector("#footer");
-    if (footer) observer.observe(footer);
-
-    return () => {
-      if (footer) observer.unobserve(footer);
-    };
-  }, []);
-
   return (
-    <footer
-      id="footer"
-      className="bg-primary text-primary-foreground relative overflow-hidden"
-    >
-      <div
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-all duration-1000 ease-out
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2 flex flex-col">
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center space-x-3 group">
-                <img src={logoWhite} alt="JuveniQ Logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
-                <span className="text-2xl font-montserrat font-bold text-white">
-                  Juveni
-                  <span className="font-quando">Q</span>
-                </span>
+    <footer className="mt-16 border-t border-white/15 bg-slate-950/85 backdrop-blur-xl">
+      <div className="section-shell pb-10">
+        <div className="grid gap-8 border-t border-white/15 pt-8 md:grid-cols-4">
+          <section className="space-y-4 md:col-span-2">
+            <Link to="/" className="inline-flex items-center gap-3">
+              <span className="inline-flex rounded-lg border border-white/20 bg-slate-900/70 px-2 py-1">
+                <BrandLogo variant="darkBg" size="lg" />
+              </span>
+              <span className="text-xl font-bold text-slate-100" aria-label="JuveniQ">
+                Juveni
+                <span className="font-quando font-normal">Q</span>
+              </span>
+            </Link>
+            <p className="max-w-md text-sm leading-relaxed text-slate-300">
+              Building practical AI and software systems for African businesses, local teams, and
+              enterprise operations that need reliable digital execution.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map((item) => {
+                const Icon = socialIcons[item.label];
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="ring-cyan led-hover inline-flex rounded-lg border border-white/20 bg-slate-800/75 p-2 text-slate-300 transition-colors hover:border-cyan-300/45 hover:text-cyan-300"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="space-y-3 text-sm text-slate-300">
+            <h3 className="font-semibold text-slate-100">Navigation</h3>
+            <div className="grid gap-1">
+              <Link to="/about" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                About
+              </Link>
+              <Link to="/process" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Process
+              </Link>
+              <Link to="/case-studies" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Case Studies
+              </Link>
+              <Link to="/articles" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Articles
+              </Link>
+              <Link to="/contact" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Contact
+              </Link>
+              <Link to="/privacy-policy" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="ring-cyan rounded px-1 py-1 hover:text-cyan-300">
+                Terms of Service
               </Link>
             </div>
+          </section>
 
-            <p className="text-white/80 mb-6 max-w-md mt-4 leading-relaxed">
-              Empowering South African businesses with simple, impactful technology
-              solutions. From web applications to AI automation, we make tech
-              work for you.
+          <section className="space-y-3 text-sm text-slate-300">
+            <h3 className="font-semibold text-slate-100">Contact</h3>
+            {companyProfile.phoneNumbers.map((item) => (
+              <a
+                key={item.tel}
+                href={`tel:${item.tel}`}
+                className="ring-cyan flex items-center gap-2 rounded px-1 py-1 hover:text-cyan-300"
+              >
+                <Phone className="h-4 w-4" /> {item.label}
+              </a>
+            ))}
+            <a
+              href={`mailto:${companyProfile.supportEmail}`}
+              className="ring-cyan flex items-center gap-2 rounded px-1 py-1 hover:text-cyan-300"
+            >
+              <Mail className="h-4 w-4" /> {companyProfile.supportEmail}
+            </a>
+            <p className="flex items-center gap-2 px-1 py-1 text-slate-400">
+              <MapPin className="h-4 w-4" /> {companyProfile.registeredAddress}
             </p>
-
-            <div className="flex space-x-5 mt-2">
-              {[
-                { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=100066476117731" },
-                { Icon: Github, href: "https://github.com/JuveniQ/" },
-                { Icon: Linkedin, href: "https://www.linkedin.com/company/juveniq" },
-                { Icon: Instagram, href: "https://instagram.com/juveniq" },
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-all duration-200 transform-gpu hover:scale-110"
-                >
-                  <social.Icon size={20} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { name: "About Us", path: "/about" },
-                { name: "Services", path: "/services" },
-                { name: "Portfolio", path: "/portfolio" },
-                { name: "Contact", path: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    to={item.path}
-                    className="block py-1 text-white/70 hover:text-white transition-colors duration-300"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Contact Info</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start group">
-                <Phone size={16} className="mr-2 text-white/70 mt-1" />
-                <a
-                  href="tel:+27607431268"
-                  className="text-white/70 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  +27 60 743 1268
-                </a>
-              </li>
-              <li className="flex items-start group">
-                <Phone size={16} className="mr-2 text-white/70 mt-1" />
-                <a
-                  href="tel:+27783322419"
-                  className="text-white/70 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  +27 78 332 2419
-                </a>
-              </li>
-              <li className="flex items-start">
-                <MapPin size={16} className="mr-2 text-white/70 mt-1" />
-                <span className="text-white/70">Gauteng, South Africa</span>
-              </li>
-              <li className="flex items-start group">
-                <Mail size={16} className="mr-2 text-white/70 mt-1" />
-                <a
-                  href="mailto:contact@juveniq.co.za"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  contact@juveniq.co.za
-                </a>
-              </li>
-            </ul>
-          </div>
+          </section>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/20 mt-10 pt-8">
-          <p className="text-white/60 text-center text-sm md:text-base">
-            © 2025 JuveniQ. All rights reserved. Proudly South African.
-          </p>
+        <div className="mt-6 rounded-xl border border-white/15 bg-slate-900/70 p-4 text-xs text-slate-300">
+          <p className="font-semibold text-slate-200">Company Disclosure</p>
+          <p className="mt-1">Legal Company Name: {companyProfile.legalName}</p>
+          <p>Registration Number: {companyProfile.registrationNumber}</p>
+          <p>Registered Address: {companyProfile.registeredAddress}</p>
+        </div>
+
+        <div className="mt-8 border-t border-white/15 pt-4 text-center text-xs text-slate-500">
+          Copyright 2026 Juveni
+          <span className="font-quando font-normal">Q</span>. All rights reserved.
         </div>
       </div>
     </footer>
@@ -154,3 +115,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

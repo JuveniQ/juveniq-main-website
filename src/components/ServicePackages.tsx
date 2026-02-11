@@ -1,60 +1,51 @@
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight, Check } from "lucide-react";
+import type { ServicePackage } from "@/lib/data";
+import BentoGrid from "@/components/motion/BentoGrid";
+import BentoTile from "@/components/motion/BentoTile";
+import MagneticButton from "@/components/motion/MagneticButton";
 
-type Package = {
-  type: string;
-  name: string;
-  description: string;
-  delivery: string;
-  minZar?: number;
-  maxZar?: number;
-  features: string[];
+type ServicePackagesProps = {
+  packages: ServicePackage[];
 };
 
-export function ServicePackages({ packages }: { packages: Package[] }) {
+export const ServicePackages = ({ packages }: ServicePackagesProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {packages.map((pkg, index) => (
-        <Card
-          key={pkg.name}
-          className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300 bg-background"
-          style={{ animationDelay: `${index * 0.15}s` }}
-        >
-          <CardHeader className="text-center pb-6">
-            <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              {pkg.type} Package
-            </div>
-            <CardTitle className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-              {pkg.name}
-            </CardTitle>
-            <div className="text-sm text-muted-foreground">
-              Delivery: {pkg.delivery}
-            </div>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <p className="mb-6 text-muted-foreground text-sm leading-relaxed">
-              {pkg.description}
-            </p>
-            <ul className="space-y-3 mb-8">
-              {pkg.features.map((feature) => (
-                <li key={feature} className="flex items-start group/item">
-                  <Check className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground text-sm">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <Link to="/contact">
-              <Button className="btn-primary lift w-full text-base gap-2 group/btn">
-                Get Started
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </Button>
+    <BentoGrid className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {packages.map((item) => (
+        <BentoTile key={item.name} className="h-full space-y-4">
+          <div className="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1">
+            <span className="meta-chip">{item.type} Package</span>
+          </div>
+
+          <header className="space-y-2">
+            <h3 className="text-2xl">{item.name}</h3>
+            <p className="copy-default">{item.summary}</p>
+          </header>
+
+          <div className="space-y-1 font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-200/80">
+            <p>Timeline: {item.timeline}</p>
+            <p>Ideal For: {item.idealFor}</p>
+          </div>
+
+          <ul className="space-y-2 text-sm text-slate-200">
+            {item.includes.map((feature) => (
+              <li key={feature} className="flex items-start gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <MagneticButton className="mt-2 w-full">
+            <Link to="/contact" className="btn-cyan ring-cyan w-full">
+              Book Strategy Call
+              <ArrowRight className="h-4 w-4" />
             </Link>
-          </CardContent>
-        </Card>
+          </MagneticButton>
+        </BentoTile>
       ))}
-    </div>
+    </BentoGrid>
   );
-}
+};
+

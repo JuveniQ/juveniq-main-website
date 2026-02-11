@@ -1,238 +1,213 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  ArrowRight, Globe, Smartphone, Brain, Wrench,
-  Lightbulb, Users, Zap, Shield, Briefcase, School, Heart, 
-  ChevronRight, ChevronsRight, Star
-} from "lucide-react";
-import heroBanner from "@/assets/juveniq-banner-cape-town.png";
+import { ArrowRight, Bot, Database, Network, ShieldCheck, Workflow } from "lucide-react";
+import BentoGrid from "@/components/motion/BentoGrid";
+import BentoTile from "@/components/motion/BentoTile";
+import MagneticButton from "@/components/motion/MagneticButton";
+import ScanlineHeading from "@/components/motion/ScanlineHeading";
+import HeroBackdrop from "@/components/HeroBackdrop";
+import MetricsBand from "@/components/MetricsBand";
+import SmartImage from "@/components/SmartImage";
+import RouteSeo from "@/components/RouteSeo";
+
+const capabilityTiles = [
+  {
+    title: "Software Engineering",
+    summary:
+      "Web and mobile systems built for reliability, speed, and clear long-term maintainability.",
+    icon: Network,
+  },
+  {
+    title: "AI Workflow Integration",
+    summary:
+      "Practical automation pipelines that improve turnaround time and reduce repetitive tasks.",
+    icon: Bot,
+  },
+  {
+    title: "Data and Operations Layer",
+    summary:
+      "Structured data flows and dashboards for teams managing active service or enterprise workloads.",
+    icon: Database,
+  },
+  {
+    title: "Security and QA Discipline",
+    summary:
+      "Delivery checkpoints for accessibility, performance, and predictable release quality.",
+    icon: ShieldCheck,
+  },
+];
 
 const Home = () => {
-  const contentStartRef = useRef(null);
-
   useEffect(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const services = [
-    {
-      icon: Globe,
-      title: "Web Applications",
-      description: "Professional websites and web apps tailored for South African businesses"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile solutions for iOS and Android"
-    },
-    {
-      icon: Brain,
-      title: "AI & Automation",
-      description: "Intelligent tools to streamline your operations and boost productivity"
-    },
-    {
-      icon: Wrench,
-      title: "Tech Support",
-      description: "Reliable ongoing support and training for your team"
-    }
-  ];
-
-  const whyJuveniQ = [
-    { icon: Lightbulb, title: "Tailored Simplicity", desc: "We build only what you need—no bloated features, just smart, simple tools that work." },
-    { icon: Users, title: "Community-Focused", desc: "We empower local businesses and uplift South African communities through technology." },
-    { icon: Zap, title: "End-to-End Service", desc: "From design to deployment to support—we handle everything so you can focus on growth." },
-    { icon: Shield, title: "People First", desc: "We listen, educate, and ensure you're always in control of your technology." }
-  ];
-
-  const targetAudience = [
-    { icon: Briefcase, label: "Small Businesses", desc: "Shops, salons, restaurants, logistics" },
-    { icon: School, label: "Educators", desc: "Tutors, schools, training centres" },
-    { icon: Heart, label: "NGOs", desc: "Community projects, outreach programmes" },
-    { icon: Star, label: "Entrepreneurs", desc: "Startups, freelancers, creatives" }
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* === Hero Banner === */}
-      <section className="w-full relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBanner})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-        </div>
+    <div className="site-shell">
+      <RouteSeo
+        title="JuveniQ | AI & Software Engineering for Growth Teams"
+        description="JuveniQ builds practical AI and software systems for local businesses and enterprise operations across Africa."
+        path="/"
+        image="/images/hero/africa-tech-hero.webp"
+        imageAlt="African technology team collaborating on software delivery"
+      />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40 relative z-10">
-          <div className="max-w-2xl fade-in" style={{ '--delay': '0.2s' } as React.CSSProperties}>
-            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Empowering South Africa with{" "}
-              <span className="text-white/90">
-                Simple Tech, Real Impact
-              </span>
-            </h1>
-            <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
-              We don't just build software—we build partnerships. JuveniQ delivers technology solutions that drive real business growth across South Africa.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-white/90 lift px-8 py-6 text-lg gap-3 group font-semibold">
-                  Get a Quote
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link to="/portfolio">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 lift px-8 py-6 text-lg">
-                  View Our Work
-                </Button>
-              </Link>
+      <section className="section-shell pt-3 pb-12 md:pt-5 md:pb-16">
+        <HeroBackdrop
+          image="/images/hero/africa-tech-hero.webp"
+          overlayVariant="soft"
+          minHeight="clamp(380px, 62vh, 620px)"
+        >
+          <div className="grid w-full gap-4 lg:grid-cols-12 lg:items-end">
+            <div className="space-y-5 rounded-2xl border border-[hsl(var(--heading)/0.22)] bg-white/92 p-5 shadow-[0_18px_38px_-24px_rgba(5,11,23,0.25)] backdrop-blur-md dark:border-white/20 dark:bg-slate-900/72 dark:shadow-[0_18px_38px_-24px_rgba(5,11,23,0.9)] md:p-7 lg:col-span-8">
+              <p className="eyebrow">Africa Software Solutions</p>
+              <ScanlineHeading as="h1" className="hero-title max-w-[20ch] text-[hsl(var(--heading))] dark:text-white [text-wrap:balance]">
+                Building practical AI and software systems for local and enterprise teams.
+              </ScanlineHeading>
+              <p className="copy-default max-w-[65ch] text-slate-700 dark:text-slate-200">
+                JuveniQ helps businesses ship useful digital products with clear architecture,
+                strong user experience, and reliable execution.
+              </p>
+              <div className="grid gap-2 text-sm text-[hsl(var(--heading))] dark:text-slate-100 sm:grid-cols-2">
+                <div className="surface-relief px-3 py-2.5">Product architecture aligned to operations</div>
+                <div className="surface-relief px-3 py-2.5">Performance-safe delivery for real users</div>
+              </div>
+              <div className="flex flex-wrap gap-3 pt-1">
+                <MagneticButton>
+                  <Link to="/contact" className="btn-cyan ring-cyan ring-led">
+                    Book Strategy Call
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </MagneticButton>
+                <MagneticButton>
+                  <Link to="/portfolio" className="btn-ghost-dark ring-cyan ring-led">
+                    Portfolio
+                  </Link>
+                </MagneticButton>
+              </div>
+            </div>
+
+            <div className="grid gap-2 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
+              <div className="rounded-2xl border border-[hsl(var(--heading)/0.22)] bg-white/90 p-4 led-hover dark:border-white/20 dark:bg-slate-900/78">
+                <p className="meta-chip led-line">Live Delivery</p>
+                <p className="mt-1 text-base font-semibold text-[hsl(var(--heading))] dark:text-slate-100">
+                  Structured milestones with weekly technical visibility.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[hsl(var(--heading)/0.22)] bg-white/90 p-4 led-hover dark:border-white/20 dark:bg-slate-900/78">
+                <p className="meta-chip led-line">Operational Fit</p>
+                <p className="mt-1 text-base font-semibold text-[hsl(var(--heading))] dark:text-slate-100">
+                  Systems designed around real team behavior and workflow constraints.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </HeroBackdrop>
       </section>
 
-      {/* === Why JuveniQ? === */}
-      <section className="py-24 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">Why Choose Juveni<span className='font-bold font-quando'>Q</span>?</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We don't just build software—we build lasting partnerships with South African businesses.
+      <section className="section-shell pb-12 md:pb-14">
+        <BentoGrid className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {capabilityTiles.map((tile) => {
+            const Icon = tile.icon;
+            return (
+              <BentoTile key={tile.title} className="space-y-3">
+                <div className="inline-flex rounded-xl border border-cyan-300/25 bg-cyan-300/10 p-2.5 text-cyan-300">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h2 className="text-2xl text-[hsl(var(--heading))] dark:text-slate-100">{tile.title}</h2>
+                <p className="copy-default text-slate-700 dark:text-slate-300">{tile.summary}</p>
+              </BentoTile>
+            );
+          })}
+        </BentoGrid>
+      </section>
+
+      <section className="section-shell pb-12 md:pb-16">
+        <BentoGrid className="grid gap-4 lg:grid-cols-12">
+          <BentoTile itemClassName="bento-support" className="space-y-3">
+            <p className="eyebrow">How We Work</p>
+            <h2 className="title-lg text-[hsl(var(--heading))] dark:text-slate-100">Clear process, technical discipline, practical outcomes.</h2>
+            <p className="copy-default text-slate-700 dark:text-slate-300">
+              We keep delivery transparent from discovery to support so stakeholders understand scope,
+              tradeoffs, and expected results at every stage.
             </p>
-          </div>
+            <div className="grid gap-2 text-sm">
+              <div className="rounded-xl border border-[hsl(var(--heading)/0.2)] bg-white p-3 text-slate-700 dark:border-white/20 dark:bg-slate-800/75 dark:text-slate-200">
+                Discovery and scope definition
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--heading)/0.2)] bg-white p-3 text-slate-700 dark:border-white/20 dark:bg-slate-800/75 dark:text-slate-200">
+                Structured design and development
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--heading)/0.2)] bg-white p-3 text-slate-700 dark:border-white/20 dark:bg-slate-800/75 dark:text-slate-200">
+                QA, launch, and support cycle
+              </div>
+            </div>
+          </BentoTile>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyJuveniQ.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Card
-                  key={index}
-                  className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <CardContent className="p-6 text-center h-full flex flex-col items-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-5 text-primary group-hover:scale-110 transition-transform">
-                      <Icon size={28} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground text-center flex-grow">
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === Target Audience === */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">Who We Serve</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We design solutions for South African businesses and communities with real challenges and ambitious goals.
+          <BentoTile itemClassName="bento-support" className="space-y-3">
+            <p className="eyebrow">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Delivery Focus
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {targetAudience.map((audience, index) => {
-              const Icon = audience.icon;
-              return (
-                <Card
-                  key={index}
-                  className="card-3d lift group border-primary/20 text-center p-6 hover:bg-primary/5 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary group-hover:scale-110 transition-transform">
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {audience.label}
-                  </h3>
-                  <p className="text-muted-foreground">{audience.desc}</p>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === Services Section === */}
-      <section className="py-24 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              What We Do Best
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              We specialise in creating technology solutions that are simple, effective, and tailored to South African business needs.
+            <h2 className="title-lg text-[hsl(var(--heading))] dark:text-slate-100">Simple Tech. Real Impact.</h2>
+            <p className="copy-default text-slate-700 dark:text-slate-300">
+              We design software that teams can actually use, maintain, and scale without
+              unnecessary complexity.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <Card
-                  key={service.title}
-                  className="card-3d lift group cursor-pointer border-primary/20 bg-background"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-8 text-center h-full flex flex-col">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4 transition-colors duration-300 group-hover:text-primary">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
+            <Link to="/services" className="btn-ghost-dark ring-cyan mt-1 w-fit">
+              Explore Services
+              <Workflow className="h-4 w-4" />
+            </Link>
+          </BentoTile>
+        </BentoGrid>
       </section>
 
-      {/* === CTA Section === */}
-      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:60px_60px]"></div>
-        </div>
+      <section className="section-shell pb-8 md:pb-12">
+        <BentoGrid className="grid gap-4 lg:grid-cols-12">
+          <BentoTile itemClassName="lg:col-span-7" className="space-y-3">
+            <p className="eyebrow">Technical Clarity</p>
+            <h2 className="title-lg text-[hsl(var(--heading))] dark:text-slate-100">Builds that stay readable, maintainable, and scalable.</h2>
+            <p className="copy-default text-slate-700 dark:text-slate-300">
+              We focus on clear module boundaries, practical integration strategy, and release visibility
+              so teams can keep momentum after launch.
+            </p>
+            <div className="grid gap-2 md:grid-cols-2">
+              <div className="rounded-xl border border-[hsl(var(--heading)/0.2)] bg-white p-3 text-sm text-slate-700 dark:border-white/20 dark:bg-slate-800/75 dark:text-slate-200">
+                Structured release checkpoints and QA workflows.
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--heading)/0.2)] bg-white p-3 text-sm text-slate-700 dark:border-white/20 dark:bg-slate-800/75 dark:text-slate-200">
+                Architecture choices mapped to real constraints.
+              </div>
+            </div>
+          </BentoTile>
+          <BentoTile itemClassName="lg:col-span-5" className="p-0">
+            <div className="duotone-wrap h-full">
+              <SmartImage
+                src="/images/pages/home-product-strategy.webp"
+                alt="Engineering team in a product strategy review session"
+                className="h-full min-h-[290px] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </BentoTile>
+        </BentoGrid>
+      </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Grow Your Business?</h2>
-          <p className="text-xl mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed">
-            Let's build a technology solution that works for your business—simple, scalable, and built to last.
+      <section className="section-shell pb-4">
+        <BentoTile className="space-y-2 border-[hsl(var(--heading)/0.22)] bg-white/95 dark:border-white/25 dark:bg-slate-800/75">
+          <p className="eyebrow">Delivery Metrics</p>
+          <h2 className="title-lg text-[hsl(var(--heading))] dark:text-slate-100">Measured execution for product and operations teams.</h2>
+          <p className="copy-default text-slate-700 dark:text-slate-200">
+            These are practical indicators we monitor to keep delivery consistent and useful over time.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/contact">
-              <Button className="bg-white text-primary hover:bg-white/95 lift px-8 py-6 text-lg gap-3 group font-semibold">
-                Start Your Project
-                <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 lift px-8 py-6 text-lg gap-3 group"
-              >
-                View All Services
-                <ChevronsRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </div>
-        </div>
+        </BentoTile>
+      </section>
+      <section className="pb-12 md:pb-16">
+        <MetricsBand variant="home" />
       </section>
     </div>
   );
 };
 
 export default Home;
+
