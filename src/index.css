@@ -131,41 +131,39 @@
 
   .site-bg-base {
     background:
-      radial-gradient(circle at 8% 7%, rgba(255, 255, 255, 0.09), transparent 34%),
-      radial-gradient(circle at 90% 10%, rgba(186, 210, 240, 0.11), transparent 38%),
-      radial-gradient(circle at 70% 80%, rgba(52, 118, 190, 0.17), transparent 33%),
+      radial-gradient(circle at 12% 9%, hsl(var(--led-blue) / 0.14), transparent 40%),
+      radial-gradient(circle at 86% 14%, hsl(var(--accent-cyan) / 0.1), transparent 42%),
       linear-gradient(170deg, rgba(7, 16, 34, 1) 0%, rgba(9, 20, 41, 0.98) 45%, rgba(6, 13, 29, 1) 100%);
     animation: bg-drift 18s ease-in-out infinite alternate;
   }
 
   .dark .site-bg-base {
     background:
-      radial-gradient(circle at 8% 7%, rgba(255, 255, 255, 0.09), transparent 34%),
-      radial-gradient(circle at 90% 10%, rgba(186, 210, 240, 0.11), transparent 38%),
-      radial-gradient(circle at 70% 80%, rgba(52, 118, 190, 0.17), transparent 33%),
+      radial-gradient(circle at 12% 9%, hsl(var(--led-blue) / 0.14), transparent 40%),
+      radial-gradient(circle at 86% 14%, hsl(var(--accent-cyan) / 0.1), transparent 42%),
       linear-gradient(170deg, rgba(7, 16, 34, 1) 0%, rgba(9, 20, 41, 0.98) 45%, rgba(6, 13, 29, 1) 100%);
   }
 
   .site-bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(167, 189, 224, 0.09) 1px, transparent 1px);
+      linear-gradient(rgba(119, 149, 196, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(92, 126, 176, 0.06) 1px, transparent 1px);
     background-size: 84px 84px;
-    opacity: 0.12;
+    opacity: 0.07;
     animation: grid-shift 20s linear infinite;
     transform-origin: center;
   }
 
   .dark .site-bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(167, 189, 224, 0.09) 1px, transparent 1px);
-    opacity: 0.12;
+      linear-gradient(rgba(119, 149, 196, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(92, 126, 176, 0.06) 1px, transparent 1px);
+    opacity: 0.07;
   }
 
   .site-bg-lines {
-    opacity: 0.12;
-    background-image: url("data:image/svg+xml,%3Csvg width='860' height='560' viewBox='0 0 860 560' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23BFD4F4' stroke-opacity='0.26' stroke-width='1.1'%3E%3Cpath d='M14 118h210l48 48h168l36-36h252'/%3E%3Cpath d='M48 284h122l52 52h196l36-34h198'/%3E%3Cpath d='M82 432h176l38-38h154l46 46h250'/%3E%3C/g%3E%3Cg fill='%23FFFFFF' fill-opacity='0.42'%3E%3Ccircle cx='272' cy='166' r='3'/%3E%3Ccircle cx='454' cy='334' r='3'/%3E%3Ccircle cx='496' cy='118' r='3'/%3E%3Ccircle cx='296' cy='394' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg width='860' height='560' viewBox='0 0 860 560' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%237C9ACE' stroke-opacity='0.16' stroke-width='1.1'%3E%3Cpath d='M14 118h210l48 48h168l36-36h252'/%3E%3Cpath d='M48 284h122l52 52h196l36-34h198'/%3E%3Cpath d='M82 432h176l38-38h154l46 46h250'/%3E%3C/g%3E%3Cg fill='%236788B3' fill-opacity='0.24'%3E%3Ccircle cx='272' cy='166' r='3'/%3E%3Ccircle cx='454' cy='334' r='3'/%3E%3Ccircle cx='496' cy='118' r='3'/%3E%3Ccircle cx='296' cy='394' r='3'/%3E%3C/g%3E%3C/svg%3E");
     background-size: min(900px, 100vw) auto;
     background-repeat: repeat;
     background-position: center;
@@ -173,12 +171,12 @@
   }
 
   .dark .site-bg-lines {
-    opacity: 0.12;
+    opacity: 0.08;
   }
 
   .site-bg-nodes {
-    opacity: 0.12;
-    background-image: url("data:image/svg+xml,%3Csvg width='820' height='540' viewBox='0 0 820 540' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23A7BDE0' stroke-opacity='0.2' stroke-width='1'%3E%3Cpath d='M82 94h112l24 24h76l20-20h136'/%3E%3Cpath d='M176 268h84l22 22h96l28-28h92'/%3E%3Cpath d='M56 408h96l18-18h84l22 22h142'/%3E%3C/g%3E%3Cg fill='%23FFFFFF' fill-opacity='0.5'%3E%3Ccircle cx='217' cy='118' r='2.6'/%3E%3Ccircle cx='324' cy='118' r='2.6'/%3E%3Ccircle cx='405' cy='262' r='2.6'/%3E%3Ccircle cx='274' cy='412' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg width='820' height='540' viewBox='0 0 820 540' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%237C9ACE' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M82 94h112l24 24h76l20-20h136'/%3E%3Cpath d='M176 268h84l22 22h96l28-28h92'/%3E%3Cpath d='M56 408h96l18-18h84l22 22h142'/%3E%3C/g%3E%3Cg fill='%235F7CA8' fill-opacity='0.26'%3E%3Ccircle cx='217' cy='118' r='2.6'/%3E%3Ccircle cx='324' cy='118' r='2.6'/%3E%3Ccircle cx='405' cy='262' r='2.6'/%3E%3Ccircle cx='274' cy='412' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
     background-size: min(980px, 100vw) auto;
     background-position: center;
     background-repeat: repeat;
@@ -186,48 +184,48 @@
   }
 
   .dark .site-bg-nodes {
-    opacity: 0.12;
+    opacity: 0.08;
   }
 
   .site-bg-code {
-    opacity: 0.08;
-    background-image: url("data:image/svg+xml,%3Csvg width='980' height='420' viewBox='0 0 980 420' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D8E7FF' fill-opacity='0.34' font-family='monospace' font-size='11'%3E%3Ctext x='16' y='32'%3Econst flow = parse(input).map(step =%26gt step.next())%3B%3C/text%3E%3Ctext x='16' y='66'%3Eif (status === %22active%22) queue.push(task)%3B // sync%3C/text%3E%3Ctext x='16' y='100'%3ESELECT id%2C state%2C latency_ms FROM pipelines WHERE region = %22AFR%22%3B%3C/text%3E%3Ctext x='16' y='134'%3Ebuild.release(%22stable%22).withChecks(qa%2C perf%2C access)%3B%3C/text%3E%3Ctext x='16' y='168'%3Efor (const node of graph) monitor(node)%3B%3C/text%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg width='980' height='420' viewBox='0 0 980 420' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%237EA1D5' fill-opacity='0.24' font-family='monospace' font-size='11'%3E%3Ctext x='16' y='32'%3Econst flow = parse(input).map(step =%26gt step.next())%3B%3C/text%3E%3Ctext x='16' y='66'%3Eif (status === %22active%22) queue.push(task)%3B // sync%3C/text%3E%3Ctext x='16' y='100'%3ESELECT id%2C state%2C latency_ms FROM pipelines WHERE region = %22AFR%22%3B%3C/text%3E%3Ctext x='16' y='134'%3Ebuild.release(%22stable%22).withChecks(qa%2C perf%2C access)%3B%3C/text%3E%3Ctext x='16' y='168'%3Efor (const node of graph) monitor(node)%3B%3C/text%3E%3C/g%3E%3C/svg%3E");
     background-size: 1100px auto;
     background-repeat: repeat;
     animation: code-scroll 30s linear infinite;
   }
 
   .dark .site-bg-code {
-    opacity: 0.08;
+    opacity: 0.06;
   }
 
   .site-bg-led-lines {
-    opacity: 0.08;
+    opacity: 0.06;
     background-image:
-      linear-gradient(112deg, transparent 0%, hsl(var(--led-blue) / 0.2) 44%, transparent 100%),
-      linear-gradient(172deg, transparent 0%, hsl(var(--led-blue) / 0.14) 50%, transparent 100%);
-    filter: blur(8px);
+      linear-gradient(112deg, transparent 0%, hsl(var(--led-blue) / 0.15) 44%, transparent 100%),
+      linear-gradient(172deg, transparent 0%, hsl(var(--led-blue) / 0.1) 50%, transparent 100%);
+    filter: blur(6px);
     animation: led-shift 18s ease-in-out infinite alternate;
   }
 
   .dark .site-bg-led-lines {
-    opacity: 0.1;
-    filter: blur(14px);
+    opacity: 0.07;
+    filter: blur(10px);
   }
 
   .site-bg-white-glow {
     background:
-      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.14), transparent 31%),
-      radial-gradient(circle at 78% 74%, rgba(255, 255, 255, 0.1), transparent 30%),
-      radial-gradient(circle at 84% 18%, rgba(188, 225, 247, 0.12), transparent 24%);
-    filter: blur(2px);
+      radial-gradient(circle at 12% 18%, rgba(34, 61, 106, 0.2), transparent 34%),
+      radial-gradient(circle at 78% 74%, rgba(8, 32, 66, 0.18), transparent 33%),
+      radial-gradient(circle at 84% 18%, hsl(var(--accent-cyan) / 0.08), transparent 27%);
+    filter: blur(1.75px);
   }
 
   .dark .site-bg-white-glow {
     background:
-      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.14), transparent 31%),
-      radial-gradient(circle at 78% 74%, rgba(255, 255, 255, 0.1), transparent 30%),
-      radial-gradient(circle at 84% 18%, rgba(188, 225, 247, 0.12), transparent 24%);
+      radial-gradient(circle at 12% 18%, rgba(34, 61, 106, 0.2), transparent 34%),
+      radial-gradient(circle at 78% 74%, rgba(8, 32, 66, 0.18), transparent 33%),
+      radial-gradient(circle at 84% 18%, hsl(var(--accent-cyan) / 0.08), transparent 27%);
   }
 
   .section-shell {
@@ -264,7 +262,7 @@
     pointer-events: none;
     background:
       radial-gradient(circle at 20% 20%, rgba(50, 214, 255, 0.13), transparent 35%),
-      radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.11), transparent 34%),
+      radial-gradient(circle at 80% 10%, hsl(var(--led-blue) / 0.12), transparent 34%),
       radial-gradient(circle at 60% 70%, rgba(50, 214, 255, 0.08), transparent 30%);
     filter: blur(18px);
   }
@@ -329,8 +327,8 @@
 
   .hero-overlay-bloom {
     background:
-      radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.14), transparent 29%),
-      radial-gradient(circle at 78% 30%, rgba(50, 214, 255, 0.14), transparent 34%);
+      radial-gradient(circle at 12% 20%, rgba(10, 28, 58, 0.34), transparent 34%),
+      radial-gradient(circle at 78% 30%, rgba(50, 214, 255, 0.1), transparent 36%);
   }
 
   .dark .hero-overlay-soft {
@@ -347,8 +345,8 @@
 
   .dark .hero-overlay-bloom {
     background:
-      radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.14), transparent 29%),
-      radial-gradient(circle at 78% 30%, rgba(50, 214, 255, 0.14), transparent 34%);
+      radial-gradient(circle at 12% 20%, rgba(10, 28, 58, 0.34), transparent 34%),
+      radial-gradient(circle at 78% 30%, rgba(50, 214, 255, 0.1), transparent 36%);
   }
 
   .bento-hero-grid {
@@ -511,10 +509,10 @@
 
 @keyframes bg-drift {
   from {
-    transform: translate3d(-1.4%, -1.2%, 0) scale(1.01);
+    transform: translate3d(-0.8%, -0.6%, 0) scale(1);
   }
   to {
-    transform: translate3d(1.4%, 1.2%, 0) scale(1.02);
+    transform: translate3d(0.8%, 0.6%, 0) scale(1.01);
   }
 }
 
