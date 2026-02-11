@@ -1,15 +1,10 @@
 import { useCallback, useState } from "react";
 
-const INTRO_KEY = "juveniq_intro_seen";
-
 export const useBrandLoaderState = () => {
-  const [isBootReady, setIsBootReady] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return sessionStorage.getItem(INTRO_KEY) === "true";
-  });
+  // Always show loader on a hard refresh/new tab load.
+  const [isBootReady, setIsBootReady] = useState(false);
 
   const markBootComplete = useCallback(() => {
-    sessionStorage.setItem(INTRO_KEY, "true");
     setIsBootReady(true);
   }, []);
 
