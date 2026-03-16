@@ -121,7 +121,7 @@ export const articles: Article[] = [
     category: "Web3",
     readTime: "7 min",
     publishedAt: "2026-02-17",
-    tags: ["Marketplace", "Trust", "GigKasi"],
+    tags: ["Marketplace", "Trust", "Delivery"],
     coverImage: "/images/articles/trust-marketplace.webp",
     sections: [
       {
@@ -182,4 +182,3 @@ export const articleCategories = [
 
 export const getArticleBySlug = (slug: string) =>
   articles.find((article) => article.slug === slug);
-

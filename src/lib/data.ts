@@ -20,5 +20,4 @@ export { articles, articleCategories, getArticleBySlug } from "./content/article
 
 import { caseStudies } from "./content/case-studies";
 
-export const projects = caseStudies.filter((item) => item.slug === "gigkasi");
-
+export const projects = caseStudies.filter((item) => item.slug === "kota-os");
