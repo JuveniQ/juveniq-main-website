@@ -8,40 +8,53 @@ const capabilityTiles = [
     summary:
       "Web and mobile systems built for reliability, speed, and clear long-term maintainability.",
     icon: Network,
+    image: "/images/sections/software-engineering.webp",
   },
   {
     title: "AI Workflow Integration",
     summary:
       "Practical automation pipelines that improve turnaround time and reduce repetitive tasks.",
     icon: Bot,
+    image: "/images/sections/ai-workflow.webp",
   },
   {
     title: "Data and Operations Layer",
     summary:
       "Structured data flows and dashboards for teams managing active service or enterprise workloads.",
     icon: Database,
+    image: "/images/sections/data-operations.webp",
   },
   {
     title: "Security and QA Discipline",
     summary:
       "Delivery checkpoints for accessibility, performance, and predictable release quality.",
     icon: ShieldCheck,
+    image: "/images/sections/security-qa.webp",
   },
 ];
 
 const HomeCapabilitiesSection = () => {
   return (
-    <section className="section-shell pb-12 md:pb-14">
+    <section className="section-shell section-pad border-t border-border/60">
       <BentoGrid className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {capabilityTiles.map((capabilityTile) => {
           const Icon = capabilityTile.icon;
           return (
-            <BentoTile key={capabilityTile.title} className="space-y-3">
-              <div className="inline-flex rounded-xl border border-cyan-300/25 bg-cyan-300/10 p-2.5 text-cyan-300">
-                <Icon className="h-5 w-5" />
+            <BentoTile key={capabilityTile.title} className="p-0">
+              <div className="relative overflow-hidden rounded-2xl">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${capabilityTile.image})` }}
+                />
+                <div className="absolute inset-0 photo-band-overlay-clarity" />
+                <div className="relative z-10 space-y-3 p-5 text-white">
+                  <div className="inline-flex text-cyan-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h2 className="text-2xl text-white">{capabilityTile.title}</h2>
+                  <p className="copy-default text-white/80">{capabilityTile.summary}</p>
+                </div>
               </div>
-              <h2 className="text-2xl text-slate-100">{capabilityTile.title}</h2>
-              <p className="copy-default text-slate-300">{capabilityTile.summary}</p>
             </BentoTile>
           );
         })}
@@ -51,4 +64,3 @@ const HomeCapabilitiesSection = () => {
 };
 
 export default HomeCapabilitiesSection;
-

@@ -15,8 +15,8 @@ const Home = () => {
         title="JuveniQ | AI & Software Engineering for Growth Teams"
         description="JuveniQ builds practical AI and software systems for local businesses and enterprise operations across Africa."
         path="/"
-        image="/images/hero/africa-tech-hero.webp"
-        imageAlt="African technology team collaborating on software delivery"
+        image="/images/hero/africa-tech-team.webp"
+        imageAlt="Black technology team collaborating in a modern office"
       />
       <HomeHeroSection />
       <HomeCapabilitiesSection />
