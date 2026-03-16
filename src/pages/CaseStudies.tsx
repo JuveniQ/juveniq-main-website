@@ -5,12 +5,20 @@ import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { Link } from "react-router-dom";
 import SectionPhotoBand from "@/components/SectionPhotoBand";
+import RouteSeo from "@/components/RouteSeo";
 
 const CaseStudies = () => {
   useScrollToTop();
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="Case Studies | South Africa Software Delivery"
+        description="Technical delivery notes and system breakdowns from South African software projects and operational platforms."
+        path="/case-studies"
+        image="/images/case-studies/service-intake.webp"
+        imageAlt="Operations workflow and service intake planning"
+      />
       <SectionPhotoBand image="/images/case-studies/service-intake.webp" overlayVariant="dark">
         <div className="max-w-2xl space-y-3">
           <p className="eyebrow border-white/35 bg-white/10 text-white/85">Case Studies</p>

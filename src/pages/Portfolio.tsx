@@ -5,6 +5,7 @@ import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
 import SmartImage from "@/components/SmartImage";
+import RouteSeo from "@/components/RouteSeo";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { caseStudies } from "@/lib/data";
 
@@ -15,6 +16,13 @@ const Portfolio = () => {
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="Products | South Africa Software Products by JuveniQ"
+        description="Product delivery highlights including Kota-OS, a South African POS system built for reliable offline operations."
+        path="/portfolio"
+        image="/images/products/kota-os/home.jpeg"
+        imageAlt="Kota-OS product interface preview"
+      />
       <section className="section-shell">
         <BentoGrid className="grid gap-4">
           <BentoTile className="space-y-3">

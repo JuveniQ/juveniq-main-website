@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div className="site-shell">
       <RouteSeo
-        title="JuveniQ | AI & Software Engineering for Growth Teams"
-        description="JuveniQ builds practical AI and software systems for local businesses and enterprise operations across Africa."
+        title="JuveniQ | Software Engineering & AI Automation South Africa"
+        description="JuveniQ is a South African software engineering company delivering custom software, AI workflow automation, and operational systems for local and enterprise teams."
         path="/"
         image="/images/hero/africa-tech-team.webp"
         imageAlt="Black technology team collaborating in a modern office"

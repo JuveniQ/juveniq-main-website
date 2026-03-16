@@ -17,8 +17,8 @@ const Solutions = () => {
   return (
     <div className="site-shell section-pad">
       <RouteSeo
-        title="Solutions | JuveniQ"
-        description="Explore JuveniQ solution tracks: local business platforms, enterprise operations systems, and AI-enabled workflow automation."
+        title="Solutions | Software Systems for South African Teams"
+        description="Solution tracks for South African businesses and enterprises: local platforms, operations systems, and AI-enabled workflow automation."
         path="/solutions"
         image="/images/pages/solutions-digital-ops.webp"
         imageAlt="Digital operations planning board and architecture workflow"
@@ -31,8 +31,8 @@ const Solutions = () => {
             Solution frameworks for local business operations and enterprise systems.
           </ScanlineHeading>
           <p className="copy-default text-white/80">
-            We design software based on real operational patterns across Africa-focused teams,
-            service businesses, and enterprise workflows.
+            We design software based on real operational patterns across South African teams,
+            service businesses, and enterprise workflows, including systems integration and automation needs.
           </p>
         </div>
       </SectionPhotoBand>

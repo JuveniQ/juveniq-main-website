@@ -3,6 +3,7 @@ import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import SectionPhotoBand from "@/components/SectionPhotoBand";
+import RouteSeo from "@/components/RouteSeo";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 const values = [
@@ -33,6 +34,13 @@ const About = () => {
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="About JuveniQ | South Africa Software Engineering Company"
+        description="JuveniQ is a South African software engineering and AI automation company focused on practical delivery for local and enterprise teams."
+        path="/about"
+        image="/images/pages/about-team-planning.webp"
+        imageAlt="Technology team collaborating in a modern office"
+      />
       <SectionPhotoBand image="/images/pages/about-team-planning.webp" overlayVariant="dark">
         <div className="max-w-2xl space-y-3">
           <p className="eyebrow border-white/35 bg-white/10 text-white/85">About JuveniQ</p>

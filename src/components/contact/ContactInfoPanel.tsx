@@ -11,7 +11,7 @@ const ContactInfoPanel = () => {
         Book a strategy call and define the right technical path.
       </ScanlineHeading>
       <p className="copy-default text-muted-foreground">
-        Share your goals, constraints, and timeline. We will respond with a practical plan.
+        Share your goals, constraints, and timeline. We will respond with a practical plan for teams across South Africa.
       </p>
 
       <div className="space-y-2 text-sm text-muted-foreground">

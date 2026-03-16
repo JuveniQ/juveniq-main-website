@@ -7,28 +7,29 @@ import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
 import SectionPhotoBand from "@/components/SectionPhotoBand";
+import RouteSeo from "@/components/RouteSeo";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { appPackages, webPackages } from "@/lib/data";
 
 const tracks = [
   {
     title: "Web Product Delivery",
-    text: "Modern websites and web systems engineered for growth, speed, and clarity.",
+    text: "Custom software development for websites and web platforms engineered for growth, speed, and clarity.",
     icon: LayoutTemplate,
   },
   {
     title: "Mobile Applications",
-    text: "Cross-platform mobile experiences for service operations and customer workflows.",
+    text: "Mobile app development for service operations, customer workflows, and field teams.",
     icon: Smartphone,
   },
   {
     title: "AI and Automation",
-    text: "Practical automation modules that improve process speed and consistency.",
+    text: "AI automation and workflow integration that improves process speed and consistency.",
     icon: Bot,
   },
   {
     title: "Operational Workflows",
-    text: "System design for teams managing approvals, requests, and delivery operations.",
+    text: "Business process automation and system design for approvals, requests, and delivery operations.",
     icon: Workflow,
   },
 ];
@@ -38,6 +39,13 @@ const Services = () => {
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="Services | Custom Software Development South Africa"
+        description="Custom software development, web and mobile apps, AI workflow automation, and systems integration for South African businesses and enterprise operations."
+        path="/services"
+        image="/images/pages/services-engineering.webp"
+        imageAlt="Software engineering workspace with technical planning"
+      />
       <SectionPhotoBand image="/images/pages/services-engineering.webp" overlayVariant="dark">
         <div className="max-w-2xl space-y-3">
           <p className="eyebrow border-white/35 bg-white/10 text-white/85">Services</p>
@@ -45,7 +53,7 @@ const Services = () => {
             Software, AI, and engineering support built for practical outcomes.
           </ScanlineHeading>
           <p className="copy-default text-white/80">
-            We deliver structured technology services for local businesses and enterprise teams
+            We deliver structured technology services for South African businesses and enterprise teams
             that need reliable systems and clear execution.
           </p>
         </div>
@@ -65,6 +73,32 @@ const Services = () => {
               </BentoTile>
             );
           })}
+        </BentoGrid>
+      </section>
+
+      <section className="section-shell section-pad border-t border-border/60">
+        <BentoGrid className="grid gap-4 lg:grid-cols-12">
+          <BentoTile itemClassName="lg:col-span-7" className="space-y-3">
+            <p className="eyebrow">Service Areas</p>
+            <h2 className="title-lg text-foreground">Software delivery across South Africa.</h2>
+            <p className="copy-default text-muted-foreground">
+              We support teams nationwide through remote delivery, with experience across
+              Johannesburg, Pretoria, Cape Town, Durban, Gqeberha, and Bloemfontein.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="border-b border-border pb-2">Gauteng, Western Cape, KwaZulu-Natal, Eastern Cape</li>
+              <li className="border-b border-border pb-2">Free State, Limpopo, Mpumalanga, North West</li>
+              <li>Northern Cape and multi-location enterprise teams</li>
+            </ul>
+          </BentoTile>
+          <BentoTile itemClassName="lg:col-span-5" className="space-y-3">
+            <p className="eyebrow">Industries</p>
+            <h3 className="text-2xl text-foreground">Local and enterprise use cases.</h3>
+            <p className="copy-default text-muted-foreground">
+              Retail and hospitality, logistics and distribution, professional services,
+              manufacturing, and regulated operations.
+            </p>
+          </BentoTile>
         </BentoGrid>
       </section>
 

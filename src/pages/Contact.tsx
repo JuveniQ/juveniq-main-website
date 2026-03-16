@@ -5,6 +5,7 @@ import ContactInfoPanel from "@/components/contact/ContactInfoPanel";
 import ContactInquiryForm from "@/components/contact/ContactInquiryForm";
 import ContactPrepChecklist from "@/components/contact/ContactPrepChecklist";
 import type { ContactFaq } from "@/components/contact/types";
+import RouteSeo from "@/components/RouteSeo";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import {
   INITIAL_CONTACT_FORM_VALUES,
@@ -101,6 +102,13 @@ const Contact = () => {
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="Contact | JuveniQ South Africa"
+        description="Book a strategy call for custom software development, AI automation, and operational systems in South Africa."
+        path="/contact"
+        image="/images/hero/africa-tech-team.webp"
+        imageAlt="Black technology team collaborating in a modern office"
+      />
       <section className="section-shell">
         <BentoGrid className="grid gap-4 lg:grid-cols-12">
           <ContactInfoPanel />

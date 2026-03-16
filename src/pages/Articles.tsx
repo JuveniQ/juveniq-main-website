@@ -26,8 +26,8 @@ const Articles = () => {
   return (
     <div className="site-shell section-pad">
       <RouteSeo
-        title="Articles | JuveniQ Engineering Insights"
-        description="Implementation-focused articles on architecture, AI workflows, enterprise delivery, and trustworthy marketplace systems."
+        title="Articles | South Africa Software Engineering Insights"
+        description="Implementation-focused articles on architecture, AI workflows, enterprise delivery, and trustworthy marketplace systems for South African teams."
         path="/articles"
         image="/images/articles/local-first-architecture.webp"
         imageAlt="Engineering article cover on local-first software architecture"

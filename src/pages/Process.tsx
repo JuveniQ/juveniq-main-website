@@ -6,6 +6,7 @@ import PulseDot from "@/components/motion/PulseDot";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
 import SectionPhotoBand from "@/components/SectionPhotoBand";
+import RouteSeo from "@/components/RouteSeo";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { processSteps } from "@/lib/data";
 
@@ -14,6 +15,13 @@ const Process = () => {
 
   return (
     <div className="site-shell section-pad">
+      <RouteSeo
+        title="Process | South Africa Software Delivery"
+        description="A practical delivery process for South African teams: discovery, design, build, QA, launch, and support with clear technical checkpoints."
+        path="/process"
+        image="/images/pages/process-planning.webp"
+        imageAlt="Project planning and delivery workflow"
+      />
       <SectionPhotoBand image="/images/pages/process-planning.webp" overlayVariant="dark">
         <div className="max-w-2xl space-y-3">
           <p className="eyebrow border-white/35 bg-white/10 text-white/85">Process</p>
