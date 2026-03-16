@@ -318,11 +318,11 @@
   }
 
   .hero-overlay-soft {
-    background: rgba(3, 9, 31, 0.28);
+    background: rgba(255, 255, 255, 0.78);
   }
 
   .hero-overlay-deep {
-    background: rgba(3, 9, 31, 0.5);
+    background: rgba(255, 255, 255, 0.94);
   }
 
   .hero-overlay-bloom {
@@ -330,11 +330,11 @@
   }
 
   .dark .hero-overlay-soft {
-    background: rgba(3, 9, 31, 0.28);
+    background: rgba(255, 255, 255, 0.78);
   }
 
   .dark .hero-overlay-deep {
-    background: rgba(3, 9, 31, 0.5);
+    background: rgba(255, 255, 255, 0.94);
   }
 
   .dark .hero-overlay-bloom {
