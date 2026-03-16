@@ -1,4 +1,5 @@
-import { MessageCircle, PhoneCall } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { companyProfile } from "@/lib/company";
 
@@ -17,15 +18,15 @@ const FloatingContactButton = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Open WhatsApp chat with JuveniQ"
-        className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-900/85 text-cyan-200 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-cyan-300/60 hover:text-cyan-100 shadow-[0_0_0_1px_rgba(34,211,238,0.18),0_0_18px_rgba(34,211,238,0.20)]"
+        className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-primary text-white shadow-[0_10px_24px_-12px_rgba(2,5,186,0.45)] transition hover:-translate-y-0.5 hover:border-white/50 hover:shadow-[0_0_18px_hsl(var(--led-blue)/0.28)]"
       >
-        <PhoneCall className="h-5 w-5" />
+        <FaWhatsapp className="h-5 w-5" />
       </a>
 
       <Link
         to="/contact"
         aria-label="Open contact page"
-        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/35 bg-slate-900/85 text-cyan-200 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-cyan-300/60 hover:text-cyan-100 shadow-[0_0_0_1px_rgba(34,211,238,0.16),0_0_16px_rgba(34,211,238,0.16)]"
+        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-primary text-white shadow-[0_10px_24px_-12px_rgba(2,5,186,0.45)] transition hover:-translate-y-0.5 hover:border-white/50 hover:shadow-[0_0_18px_hsl(var(--led-blue)/0.28)]"
       >
         <MessageCircle className="h-5 w-5" />
       </Link>

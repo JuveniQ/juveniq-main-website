@@ -9,7 +9,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Solutions", href: "/solutions" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Products", href: "/portfolio" },
   { label: "Articles", href: "/articles" },
   { label: "Contact", href: "/contact" },
 ];
@@ -21,14 +21,14 @@ const Header = () => {
   const isRouteActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/12 bg-slate-950/76 backdrop-blur-xl">
+    <header className="nav-shell text-white">
       <nav className="section-shell">
         <div className="flex h-[74px] items-center justify-between">
           <Link to="/" className="inline-flex items-center gap-2.5">
-            <span className="inline-flex rounded-lg border border-white/20 bg-slate-900/75 px-2 py-1">
+            <span className="inline-flex rounded-lg border border-white/30 bg-white/10 px-2 py-1">
               <BrandLogo variant="darkBg" size="md" />
             </span>
-            <span className="hidden font-montserrat text-xl font-bold text-slate-100 sm:inline" aria-label="JuveniQ">
+            <span className="hidden font-montserrat text-xl font-bold text-white sm:inline" aria-label="JuveniQ">
               Juveni
               <span className="font-quando font-normal">Q</span>
             </span>
@@ -42,8 +42,8 @@ const Header = () => {
                 aria-label={`Navigate to ${item.label}`}
                 className={`ring-cyan led-hover rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
                   isRouteActive(item.href)
-                    ? "led-border bg-cyan-300/16 text-cyan-100 shadow-[0_0_14px_hsl(var(--led-blue)/0.2)]"
-                    : "border-transparent text-slate-300 hover:bg-white/5 hover:text-slate-100"
+                    ? "led-border bg-white/12 text-white shadow-[0_0_14px_hsl(var(--led-blue)/0.2)]"
+                    : "border-transparent text-white/75 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -53,7 +53,7 @@ const Header = () => {
 
           <div className="hidden items-center gap-3 lg:flex">
             <MagneticButton>
-              <Link to="/contact" aria-label="Book strategy call" className="btn-cyan ring-cyan">
+              <Link to="/contact" aria-label="Book strategy call" className="btn-secondary ring-cyan">
                 Book Strategy Call
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
@@ -64,7 +64,7 @@ const Header = () => {
             <button
               type="button"
               onClick={() => setIsMenuOpen((previousState) => !previousState)}
-              className="ring-cyan ring-led led-hover inline-flex rounded-lg border border-white/20 bg-slate-900/70 p-2 text-slate-100"
+              className="ring-cyan ring-led led-hover inline-flex rounded-lg border border-white/30 bg-white/10 p-2 text-white"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
