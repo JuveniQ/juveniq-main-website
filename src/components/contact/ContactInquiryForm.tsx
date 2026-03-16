@@ -30,8 +30,8 @@ const ContactInquiryForm = ({
 }: ContactInquiryFormProps) => {
   return (
     <BentoTile itemClassName="lg:col-span-7" className="space-y-4">
-      <h2 className="text-2xl text-slate-100">Project Inquiry</h2>
-      <p className="copy-default text-slate-300">
+      <h2 className="text-2xl text-foreground">Project Inquiry</h2>
+      <p className="copy-default text-muted-foreground">
         Tell us what you are building and what outcomes you need.
       </p>
       <form

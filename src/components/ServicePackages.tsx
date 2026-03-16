@@ -23,12 +23,12 @@ export const ServicePackages = ({ packages }: ServicePackagesProps) => {
             <p className="copy-default">{item.summary}</p>
           </header>
 
-          <div className="space-y-1 font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-200/80">
+          <div className="border-l-2 border-cyan-300/60 pl-3 font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-200/80">
             <p>Timeline: {item.timeline}</p>
             <p>Ideal For: {item.idealFor}</p>
           </div>
 
-          <ul className="space-y-2 text-sm text-slate-200">
+          <ul className="space-y-2 text-sm text-muted-foreground">
             {item.includes.map((feature) => (
               <li key={feature} className="flex items-start gap-2">
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />

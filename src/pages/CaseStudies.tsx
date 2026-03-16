@@ -1,103 +1,67 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
-import PulseDot from "@/components/motion/PulseDot";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
-import MagneticButton from "@/components/motion/MagneticButton";
-import SmartImage from "@/components/SmartImage";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
-import { caseStudies } from "@/lib/data";
+import { Link } from "react-router-dom";
+import SectionPhotoBand from "@/components/SectionPhotoBand";
 
 const CaseStudies = () => {
   useScrollToTop();
 
   return (
     <div className="site-shell section-pad">
-      <section className="section-shell">
-        <BentoGrid className="grid gap-4">
+      <SectionPhotoBand image="/images/case-studies/service-intake.webp" overlayVariant="dark">
+        <div className="max-w-2xl space-y-3">
+          <p className="eyebrow border-white/35 bg-white/10 text-white/85">Case Studies</p>
+          <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-white">
+            Deep technical breakdowns and delivery insight.
+          </ScanlineHeading>
+          <p className="copy-default text-white/80">
+            We publish structured delivery notes, architecture decisions, and operational outcomes so teams understand what works.
+          </p>
+        </div>
+      </SectionPhotoBand>
+
+      <section className="section-shell section-pad border-t border-border/60">
+        <BentoGrid className="grid gap-4 md:grid-cols-2">
           <BentoTile className="space-y-3">
-            <p className="eyebrow">Case Studies</p>
-            <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-slate-100">
-              Product delivery examples across live and in-progress systems.
-            </ScanlineHeading>
-            <p className="copy-default text-slate-300">
-              A practical look at how we approach challenge mapping, architecture, and implementation outcomes.
+            <p className="meta-chip">Case Study</p>
+            <h2 className="text-2xl text-foreground">Kota-OS Delivery Notes</h2>
+            <p className="copy-default text-muted-foreground">
+              A focused breakdown on offline-first POS architecture, rapid checkout flow decisions,
+              and operational reporting for township vendors.
             </p>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="border-b border-border pb-2">Local-first data model and sync boundaries.</li>
+              <li className="border-b border-border pb-2">Fast order capture and modifier handling.</li>
+              <li>Reporting exports and owner-ready summaries.</li>
+            </ul>
+            <Link to="/portfolio" className="btn-ghost-dark ring-cyan w-fit">
+              View Product
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </BentoTile>
+          <BentoTile className="space-y-3">
+            <p className="meta-chip">Engineering Approach</p>
+            <h2 className="text-2xl text-foreground">How we structure delivery</h2>
+            <p className="copy-default text-muted-foreground">
+              Each case study focuses on architecture decisions, operational constraints, and
+              measurable outcomes rather than marketing narratives.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="border-b border-border pb-2">Workflow mapping and constraint analysis.</li>
+              <li className="border-b border-border pb-2">Staged implementation with QA checkpoints.</li>
+              <li>Operational handoff and support documentation.</li>
+            </ul>
           </BentoTile>
         </BentoGrid>
       </section>
 
-      <section className="section-shell section-pad">
-        <BentoGrid className="grid gap-4">
-          {caseStudies.map((item) => (
-            <BentoTile key={item.slug} className="grid gap-4 lg:grid-cols-12">
-              <div className="duotone-wrap lg:col-span-4">
-                <SmartImage
-                  src={item.image}
-                  alt={`${item.name} preview`}
-                  className="h-full min-h-[220px] w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="lg:col-span-8 space-y-3">
-                <div className="flex items-center gap-2">
-                  {item.status === "in-progress" && <PulseDot />}
-                  <span className="meta-chip">{item.status === "in-progress" ? "In Progress" : "Live System"}</span>
-                </div>
-                <h2 className="title-lg text-slate-100">{item.name}</h2>
-                <p className="copy-default text-slate-300">{item.summary}</p>
-
-                <div className="grid gap-2 text-sm text-slate-200 md:grid-cols-3">
-                  <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">
-                    <p className="meta-chip">Challenge</p>
-                    <p className="mt-1 text-slate-300">{item.challenge}</p>
-                  </div>
-                  <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">
-                    <p className="meta-chip">Approach</p>
-                    <p className="mt-1 text-slate-300">{item.approach}</p>
-                  </div>
-                  <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">
-                    <p className="meta-chip">Outcome</p>
-                    <p className="mt-1 text-slate-300">{item.outcome}</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {item.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-cyan-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-3 pt-1">
-                  <MagneticButton>
-                    <Link to="/contact" className="btn-cyan ring-cyan">
-                      {item.ctaLabel}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </MagneticButton>
-                  {item.ctaUrl && (
-                    <a href={item.ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost-dark ring-cyan">
-                      Live Product
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </BentoTile>
-          ))}
-        </BentoGrid>
-      </section>
-
-      <section className="section-shell pb-8">
+      <section className="section-shell section-pad border-t border-border/60">
         <BentoTile className="space-y-3">
-          <h2 className="title-lg text-slate-100">Need a deeper technical breakdown?</h2>
-          <p className="copy-default text-slate-300">
+          <h2 className="title-lg text-foreground">Need a deeper technical breakdown?</h2>
+          <p className="copy-default text-muted-foreground">
             We can walk your team through architecture choices, rollout constraints, and delivery
             checkpoints based on your own product context.
           </p>

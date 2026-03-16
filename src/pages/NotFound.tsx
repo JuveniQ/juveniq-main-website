@@ -18,11 +18,11 @@ const NotFound = () => {
       <section className="section-shell">
         <BentoGrid className="grid gap-4 lg:grid-cols-12">
           <BentoTile itemClassName="lg:col-span-7" className="space-y-4">
-            <div className="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 p-3 text-cyan-300">
+            <div className="inline-flex text-cyan-300">
               <AlertTriangle className="h-6 w-6" />
             </div>
-            <h1 className="title-lg text-slate-100">Page Not Found (404)</h1>
-            <p className="copy-default text-slate-300">
+            <h1 className="title-lg text-foreground">Page Not Found (404)</h1>
+            <p className="copy-default text-muted-foreground">
               The route `{location.pathname}` could not be found. You can continue from a primary section below.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -41,15 +41,17 @@ const NotFound = () => {
 
           <BentoTile itemClassName="lg:col-span-5" className="space-y-3">
             <p className="eyebrow">Quick Routes</p>
-            <Link to="/" className="ring-cyan ring-led led-hover flex items-center gap-2 rounded-xl border border-white/20 bg-slate-800/75 p-3 text-slate-200">
-              <Home className="h-4 w-4 text-cyan-300" /> Home
-            </Link>
-            <Link to="/services" className="ring-cyan ring-led led-hover flex items-center gap-2 rounded-xl border border-white/20 bg-slate-800/75 p-3 text-slate-200">
-              <Briefcase className="h-4 w-4 text-cyan-300" /> Services
-            </Link>
-            <Link to="/contact" className="ring-cyan ring-led led-hover flex items-center gap-2 rounded-xl border border-white/20 bg-slate-800/75 p-3 text-slate-200">
-              <Mail className="h-4 w-4 text-cyan-300" /> Contact
-            </Link>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <Link to="/" className="ring-cyan ring-led led-hover flex items-center gap-2 border-b border-border pb-2">
+                <Home className="h-4 w-4 text-cyan-300" /> Home
+              </Link>
+              <Link to="/services" className="ring-cyan ring-led led-hover flex items-center gap-2 border-b border-border pb-2">
+                <Briefcase className="h-4 w-4 text-cyan-300" /> Services
+              </Link>
+              <Link to="/contact" className="ring-cyan ring-led led-hover flex items-center gap-2">
+                <Mail className="h-4 w-4 text-cyan-300" /> Contact
+              </Link>
+            </div>
           </BentoTile>
         </BentoGrid>
       </section>

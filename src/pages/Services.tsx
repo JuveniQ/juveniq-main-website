@@ -6,7 +6,7 @@ import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
 import MagneticButton from "@/components/motion/MagneticButton";
-import SmartImage from "@/components/SmartImage";
+import SectionPhotoBand from "@/components/SectionPhotoBand";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { appPackages, webPackages } from "@/lib/data";
 
@@ -38,70 +38,57 @@ const Services = () => {
 
   return (
     <div className="site-shell section-pad">
-      <section className="section-shell">
-        <BentoGrid className="grid gap-4 lg:grid-cols-12">
-          <BentoTile itemClassName="lg:col-span-8" className="space-y-4">
-            <p className="eyebrow">Services</p>
-            <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-slate-100">
-              Software, AI, and engineering support built for practical outcomes.
-            </ScanlineHeading>
-            <p className="copy-default text-slate-300">
-              We deliver structured technology services for local businesses and enterprise teams
-              that need reliable systems and clear execution.
-            </p>
-          </BentoTile>
+      <SectionPhotoBand image="/images/pages/services-engineering.webp" overlayVariant="dark">
+        <div className="max-w-2xl space-y-3">
+          <p className="eyebrow border-white/35 bg-white/10 text-white/85">Services</p>
+          <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-white">
+            Software, AI, and engineering support built for practical outcomes.
+          </ScanlineHeading>
+          <p className="copy-default text-white/80">
+            We deliver structured technology services for local businesses and enterprise teams
+            that need reliable systems and clear execution.
+          </p>
+        </div>
+      </SectionPhotoBand>
 
-          <BentoTile itemClassName="lg:col-span-4" className="p-0">
-            <div className="duotone-wrap h-full">
-              <SmartImage
-                src="/images/pages/services-engineering.webp"
-                alt="Engineering team planning project delivery"
-                className="h-full min-h-[280px] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </BentoTile>
-        </BentoGrid>
-      </section>
-
-      <section className="section-shell section-pad">
+      <section className="section-shell section-pad border-t border-border/60">
         <BentoGrid className="grid gap-4 md:grid-cols-2">
           {tracks.map((track) => {
             const Icon = track.icon;
             return (
               <BentoTile key={track.title} className="space-y-3">
-                <div className="inline-flex rounded-xl border border-cyan-300/30 bg-cyan-300/10 p-2.5 text-cyan-300">
+                <div className="inline-flex text-cyan-300">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h2 className="text-2xl text-slate-100">{track.title}</h2>
-                <p className="copy-default text-slate-300">{track.text}</p>
+                <h2 className="text-2xl text-foreground">{track.title}</h2>
+                <p className="copy-default text-muted-foreground">{track.text}</p>
               </BentoTile>
             );
           })}
         </BentoGrid>
       </section>
 
-      <section className="section-shell pb-12 md:pb-16">
+      <section className="section-shell section-pad border-t border-border/60">
         <BentoTile className="space-y-5">
           <header className="space-y-2">
             <p className="eyebrow">Packages</p>
-            <h2 className="title-lg text-slate-100">Delivery packages based on scope and complexity.</h2>
-            <p className="copy-default text-slate-300">
+            <h2 className="title-lg text-foreground">Delivery packages based on scope and complexity.</h2>
+            <p className="copy-default text-muted-foreground">
               We align pricing and timeline after project scoping to keep recommendations realistic.
             </p>
           </header>
 
           <Tabs defaultValue="web" className="w-full">
-            <TabsList className="grid w-full max-w-[320px] grid-cols-2 rounded-xl border border-white/20 bg-slate-800/75 p-1">
+            <TabsList className="grid w-full max-w-[320px] grid-cols-2 border-b border-border bg-transparent p-0">
               <TabsTrigger
                 value="web"
-                className="rounded-lg font-mono text-xs uppercase tracking-[0.12em] data-[state=active]:bg-cyan-300/18 data-[state=active]:text-cyan-200"
+                className="rounded-none border-b-2 border-transparent font-mono text-xs uppercase tracking-[0.12em] data-[state=active]:border-cyan-300 data-[state=active]:text-cyan-300"
               >
                 Web
               </TabsTrigger>
               <TabsTrigger
                 value="apps"
-                className="rounded-lg font-mono text-xs uppercase tracking-[0.12em] data-[state=active]:bg-cyan-300/18 data-[state=active]:text-cyan-200"
+                className="rounded-none border-b-2 border-transparent font-mono text-xs uppercase tracking-[0.12em] data-[state=active]:border-cyan-300 data-[state=active]:text-cyan-300"
               >
                 Mobile
               </TabsTrigger>
@@ -116,36 +103,36 @@ const Services = () => {
         </BentoTile>
       </section>
 
-      <section className="section-shell pb-12 md:pb-14">
+      <section className="section-shell section-pad border-t border-border/60">
         <BentoGrid className="grid gap-4 md:grid-cols-3">
           <BentoTile className="space-y-3">
             <p className="meta-chip">Engagement</p>
-            <h3 className="text-2xl text-slate-100">Project Delivery</h3>
-            <p className="copy-default text-slate-300">
+            <h3 className="text-2xl text-foreground">Project Delivery</h3>
+            <p className="copy-default text-muted-foreground">
               End-to-end execution for clearly scoped products and release milestones.
             </p>
           </BentoTile>
           <BentoTile className="space-y-3">
             <p className="meta-chip">Engagement</p>
-            <h3 className="text-2xl text-slate-100">Retained Support</h3>
-            <p className="copy-default text-slate-300">
+            <h3 className="text-2xl text-foreground">Retained Support</h3>
+            <p className="copy-default text-muted-foreground">
               Ongoing engineering support for evolving products, bug management, and iteration cycles.
             </p>
           </BentoTile>
           <BentoTile className="space-y-3">
             <p className="meta-chip">Engagement</p>
-            <h3 className="text-2xl text-slate-100">Technical Advisory</h3>
-            <p className="copy-default text-slate-300">
+            <h3 className="text-2xl text-foreground">Technical Advisory</h3>
+            <p className="copy-default text-muted-foreground">
               Architecture and product guidance for teams preparing scale, integrations, or modernization.
             </p>
           </BentoTile>
         </BentoGrid>
       </section>
 
-      <section className="section-shell pb-8">
-        <BentoTile className="mesh-glow space-y-3">
-          <h2 className="title-lg text-slate-100">Need a custom roadmap?</h2>
-          <p className="copy-default text-slate-300">
+      <section className="section-shell section-pad border-t border-border/60">
+        <BentoTile className="space-y-3">
+          <h2 className="title-lg text-foreground">Need a custom roadmap?</h2>
+          <p className="copy-default text-muted-foreground">
             We can scope the right architecture and delivery model around your actual business context.
           </p>
           <MagneticButton className="w-fit">

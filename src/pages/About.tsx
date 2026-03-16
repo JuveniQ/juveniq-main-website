@@ -2,7 +2,7 @@ import { GaugeCircle, Handshake, ShieldCheck, Workflow } from "lucide-react";
 import BentoGrid from "@/components/motion/BentoGrid";
 import BentoTile from "@/components/motion/BentoTile";
 import ScanlineHeading from "@/components/motion/ScanlineHeading";
-import SmartImage from "@/components/SmartImage";
+import SectionPhotoBand from "@/components/SectionPhotoBand";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 const values = [
@@ -33,80 +33,55 @@ const About = () => {
 
   return (
     <div className="site-shell section-pad">
-      <section className="section-shell">
-        <BentoGrid className="grid gap-4 lg:grid-cols-12">
-          <BentoTile itemClassName="lg:col-span-7" className="space-y-4">
-            <p className="eyebrow">About JuveniQ</p>
-            <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-slate-100">
-              Building software that local and enterprise teams can trust.
-            </ScanlineHeading>
-            <p className="copy-default text-slate-300">
-              JuveniQ is a South African technology company focused on practical software delivery,
-              AI workflow integration, and long-term system reliability.
-            </p>
-            <p className="copy-default text-slate-300">
-              Our goal is simple: make technology useful, clear, and effective for businesses that
-              need real results, not unnecessary complexity.
-            </p>
-          </BentoTile>
+      <SectionPhotoBand image="/images/pages/about-team-planning.webp" overlayVariant="dark">
+        <div className="max-w-2xl space-y-3">
+          <p className="eyebrow border-white/35 bg-white/10 text-white/85">About JuveniQ</p>
+          <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-white">
+            Building software that local and enterprise teams can trust.
+          </ScanlineHeading>
+          <p className="copy-default text-white/80">
+            JuveniQ is a South African technology company focused on practical software delivery,
+            AI workflow integration, and long-term system reliability.
+          </p>
+          <p className="copy-default text-white/80">
+            Our goal is simple: make technology useful, clear, and effective for businesses that
+            need real results, not unnecessary complexity.
+          </p>
+        </div>
+      </SectionPhotoBand>
 
-          <BentoTile itemClassName="lg:col-span-5" className="p-0">
-            <div className="duotone-wrap h-full">
-              <SmartImage
-                src="/images/pages/about-team-planning.webp"
-                alt="Engineering team planning product delivery"
-                className="h-full min-h-[320px] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </BentoTile>
-        </BentoGrid>
-      </section>
-
-      <section className="section-shell section-pad">
+      <section className="section-shell section-pad border-t border-border/60">
         <BentoGrid className="grid gap-4 md:grid-cols-2">
           {values.map((item) => {
             const Icon = item.icon;
             return (
               <BentoTile key={item.title} className="space-y-3">
-                <div className="inline-flex rounded-xl border border-cyan-300/30 bg-cyan-300/10 p-2.5 text-cyan-300">
+                <div className="inline-flex text-cyan-300">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h2 className="text-2xl text-slate-100">{item.title}</h2>
-                <p className="copy-default text-slate-300">{item.description}</p>
+                <h2 className="text-2xl text-foreground">{item.title}</h2>
+                <p className="copy-default text-muted-foreground">{item.description}</p>
               </BentoTile>
             );
           })}
         </BentoGrid>
       </section>
 
-      <section className="section-shell pb-8">
-        <BentoGrid className="grid gap-4 lg:grid-cols-12">
-          <BentoTile itemClassName="lg:col-span-7" className="space-y-3">
-            <p className="eyebrow">Working Model</p>
-            <h2 className="title-lg text-slate-100">How we collaborate with teams.</h2>
-            <p className="copy-default text-slate-300">
-              We begin with business and workflow understanding, then translate priorities into phased
-              technical delivery plans with clear check-ins and visible quality gates.
-            </p>
-            <div className="grid gap-2 text-sm text-slate-200 sm:grid-cols-2">
-              <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">Planning sessions focused on real constraints.</div>
-              <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">Consistent progress communication and demos.</div>
-              <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">Iterative release strategy with practical scope.</div>
-              <div className="rounded-xl border border-white/20 bg-slate-800/75 p-3">Post-launch optimization and support continuity.</div>
-            </div>
-          </BentoTile>
-          <BentoTile itemClassName="lg:col-span-5" className="p-0">
-            <div className="duotone-wrap h-full">
-              <SmartImage
-                src="/images/pages/about-collaboration.webp"
-                alt="Technology team in a focused project planning conversation"
-                className="h-full min-h-[300px] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </BentoTile>
-        </BentoGrid>
+      <section className="section-shell section-pad border-t border-border/60">
+        <div className="max-w-2xl space-y-3">
+          <p className="eyebrow">Working Model</p>
+          <h2 className="title-lg text-foreground">How we collaborate with teams.</h2>
+          <p className="copy-default text-muted-foreground">
+            We begin with business and workflow understanding, then translate priorities into phased
+            technical delivery plans with clear check-ins and visible quality gates.
+          </p>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li className="border-b border-border pb-2">Planning sessions focused on real constraints.</li>
+            <li className="border-b border-border pb-2">Consistent progress communication and demos.</li>
+            <li className="border-b border-border pb-2">Iterative release strategy with practical scope.</li>
+            <li>Post-launch optimization and support continuity.</li>
+          </ul>
+        </div>
       </section>
     </div>
   );
