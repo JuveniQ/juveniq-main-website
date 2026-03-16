@@ -22,7 +22,7 @@ const HomeHeroSection = () => {
               </ScanlineHeading>
               <p className="copy-default max-w-[65ch] text-muted-foreground">
                 JuveniQ helps South African teams ship useful digital products with clear architecture,
-                strong user experience, and reliable execution.
+                strong user experience, and reliable execution across websites, mobile apps, and automation.
               </p>
               <div className="grid gap-2 text-sm text-foreground sm:grid-cols-2">
                 <p>Product architecture aligned to operations</p>

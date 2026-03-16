@@ -33,6 +33,12 @@ const contactFaqs: ContactFaq[] = [
       "Yes. We often integrate with existing services, databases, and internal workflows to avoid unnecessary rebuilds.",
   },
   {
+    id: "where-to-start",
+    question: "Where can I get website or software services in South Africa?",
+    answer:
+      "JuveniQ provides website development, custom software, and AI automation for South African teams. Book a strategy call and we will map the best approach for your goals.",
+  },
+  {
     id: "budget",
     question: "Do you work with different budget sizes?",
     answer:

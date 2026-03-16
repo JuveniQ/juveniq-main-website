@@ -76,6 +76,7 @@ const RouteSeo = ({
     upsertMeta('meta[name="robots"]', { name: "robots", content: robots });
     upsertMeta('meta[property="og:type"]', { property: "og:type", content: ogType });
     upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "JuveniQ" });
+    upsertMeta('meta[property="og:locale"]', { property: "og:locale", content: "en_ZA" });
     upsertMeta('meta[property="og:title"]', { property: "og:title", content: title });
     upsertMeta('meta[property="og:description"]', { property: "og:description", content: description });
     upsertMeta('meta[property="og:url"]', { property: "og:url", content: canonical });

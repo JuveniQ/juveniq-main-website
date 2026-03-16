@@ -110,6 +110,9 @@ const Services = () => {
             <p className="copy-default text-muted-foreground">
               We align pricing and timeline after project scoping to keep recommendations realistic.
             </p>
+            <p className="copy-default text-muted-foreground">
+              Common requests include website development, custom software, AI automation, and system integration.
+            </p>
           </header>
 
           <Tabs defaultValue="web" className="w-full">
