@@ -6,8 +6,8 @@ import { ThemeProvider } from './components/theme-provider.tsx'
 createRoot(document.getElementById("root")!).render(
   <ThemeProvider
     attribute="class"
-    defaultTheme="dark"
-    forcedTheme="dark"
+    defaultTheme="light"
+    forcedTheme="light"
     enableSystem={false}
     disableTransitionOnChange
   >

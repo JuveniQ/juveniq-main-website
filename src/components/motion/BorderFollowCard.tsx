@@ -33,7 +33,7 @@ const BorderFollowCard = ({ children, className, ...props }: BorderFollowCardPro
       ref={ref}
       onMouseMove={handleMove}
       className={cn(
-        "group led-hover relative overflow-hidden rounded-2xl border border-white/20 bg-slate-900/75 backdrop-blur-xl transition-colors duration-200",
+        "group led-hover relative overflow-hidden rounded-2xl border border-transparent bg-transparent p-5 transition-colors duration-200",
         className,
       )}
       style={glowStyle}
