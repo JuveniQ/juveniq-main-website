@@ -1,191 +1,134 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { ExternalLink, ArrowRight } from "lucide-react";
-import { useEffect } from "react";
-import { projects } from "@/lib/data";
-import logoWhite from "@/assets/logo-white.png";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import BentoGrid from "@/components/motion/BentoGrid";
+import BentoTile from "@/components/motion/BentoTile";
+import ScanlineHeading from "@/components/motion/ScanlineHeading";
+import MagneticButton from "@/components/motion/MagneticButton";
+import SmartImage from "@/components/SmartImage";
+import RouteSeo from "@/components/RouteSeo";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { caseStudies } from "@/lib/data";
 
 const Portfolio = () => {
-  useEffect(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 });
-  }, []);
+  useScrollToTop();
+
+  const lead = caseStudies[0];
 
   return (
-    <div className="min-h-screen py-12 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* === Header === */}
-        <div className="text-center mb-16 fade-in">
-          <div className="mb-8 flex justify-center">
-            <div className="w-24 h-24 bg-primary rounded-full shadow-xl flex items-center justify-center group">
-              <img src={logoWhite} alt="JuveniQ Logo" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
-            </div>
-          </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Our Portfolio
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Discover how we've helped businesses across South Africa transform their operations with custom technology solutions.
-          </p>
-        </div>
+    <div className="site-shell section-pad">
+      <RouteSeo
+        title="Products | South Africa Software Products by JuveniQ"
+        description="Product delivery highlights including Kota-OS, a South African POS system built for reliable offline operations."
+        path="/portfolio"
+        image="/images/products/kota-os/home.jpeg"
+        imageAlt="Kota-OS product interface preview"
+      />
+      <section className="section-shell">
+        <BentoGrid className="grid gap-4">
+          <BentoTile className="space-y-3">
+            <p className="eyebrow">Products</p>
+            <ScanlineHeading as="h1" className="hero-title max-w-[18ch] text-foreground">
+              Products built for real operations and daily use.
+            </ScanlineHeading>
+            <p className="copy-default text-muted-foreground">
+              Featured product delivery from our team, focused on clear workflows and reliability.
+            </p>
+          </BentoTile>
+        </BentoGrid>
+      </section>
 
-        {/* === Slogan Anchor === */}
-        <div className="text-center mb-16 fade-in">
-          <p className="text-lg text-muted-foreground italic max-w-2xl mx-auto">
-            "<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>" — We build tools that solve real problems for real people.
-          </p>
-        </div>
-
-        {/* === Projects Grid === */}
-        <div className="space-y-16 mb-20">
-          {projects.map((project, index) => (
-            <Card
-              key={project.title}
-              className="card-3d lift overflow-hidden border-primary/20 hover:border-primary/40 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                {/* Image */}
-                <div className="relative h-64 lg:h-full bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary text-primary-foreground px-3 py-1 text-sm">
-                      {project.category}
-                    </Badge>
+      <section className="section-shell section-pad border-t border-border/60">
+        <BentoGrid className="grid gap-4">
+          <BentoTile className="p-0">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
+              <div className="h-full max-h-[220px] flex items-center justify-center lg:max-h-[240px] lg:self-start">
+                <SmartImage
+                  src="/images/products/kota-os/logo.webp"
+                  alt={`${lead.name} preview`}
+                  className="h-full w-full object-contain p-6"
+                />
+              </div>
+              <div className="space-y-3 p-5 md:p-6">
+                <div className="meta-chip">{lead.category}</div>
+                <h2 className="title-lg text-foreground">{lead.name}</h2>
+                <p className="copy-default text-muted-foreground">{lead.summary}</p>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div>
+                    <p className="meta-chip">Challenge</p>
+                    <p className="mt-1">{lead.challenge}</p>
+                  </div>
+                  <div>
+                    <p className="meta-chip">Approach</p>
+                    <p className="mt-1">{lead.approach}</p>
+                  </div>
+                  <div>
+                    <p className="meta-chip">Outcome</p>
+                    <p className="mt-1">{lead.outcome}</p>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-8 lg:p-12">
-                  <CardHeader className="p-0 mb-6">
-                    <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                      {project.title}
-                    </CardTitle>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-                  </CardHeader>
+                <div className="flex flex-wrap gap-2">
+                  {lead.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-cyan-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                  <CardContent className="p-0">
-                    {/* Technologies */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider">
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <Badge
-                            key={tech}
-                            variant="outline"
-                            className="border-primary/30 text-primary text-sm px-2 py-1"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Key Features */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
-                        Key Features
-                      </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {project.features.map((feature) => (
-                          <li key={feature} className="flex items-center text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Business Impact */}
-                    <div className="mb-8">
-                      <h4 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider">
-                        Business Impact
-                      </h4>
-                      <p className="text-primary font-medium italic">
-                        "{project.impact}"
-                      </p>
-                    </div>
-
-                    {/* Action Buttons */}
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
-                        <Button
-                          variant="outline"
-                          className="flex items-center gap-2 border-primary text-primary hover:bg-primary/5 lift px-6 py-2 text-sm"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          View Project
-                        </Button>
-                      </a>
-                    )}
-                  </CardContent>
+                <div className="flex flex-wrap gap-3 pt-1">
+                  <MagneticButton>
+                    <Link to="/case-studies" className="btn-cyan ring-cyan">
+                      View Case Studies
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </MagneticButton>
+                  {lead.ctaUrl && (
+                    <a href={lead.ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost-dark ring-cyan">
+                      Live Product
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </div>
-            </Card>
-          ))}
-        </div>
+            </div>
+          </BentoTile>
+        </BentoGrid>
+      </section>
 
-        {/* === Stats Section === */}
-        <div className="bg-secondary rounded-2xl p-8 lg:p-12 mb-16 shadow-lg fade-in">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Our Impact in Numbers</h2>
-            <p className="text-lg text-muted-foreground">
-              Real results for real businesses across South Africa
+      <section className="section-shell section-pad border-t border-border/60">
+        <BentoGrid className="grid gap-4 lg:grid-cols-12">
+          <BentoTile itemClassName="lg:col-span-7" className="space-y-3">
+            <h3 className="text-2xl text-foreground">Engineering Focus in This Delivery</h3>
+            <p className="copy-default text-muted-foreground">
+              Kota-OS prioritizes rapid checkout, offline reliability, and reporting clarity for busy
+              food vendors operating under real-world connectivity constraints.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { number: "50+", label: "Projects Completed" },
-              { number: "30+", label: "Happy Clients" },
-              { number: "1", label: "Country Served" },
-              { number: "99%", label: "Client Satisfaction" }
-            ].map((stat, index) => (
-              <div
-                key={stat.label}
-                className="text-center"
-              >
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* === CTA Section === */}
-        <div className="text-center bg-primary rounded-2xl p-12 shadow-xl fade-in-up">
-          <h2 className="text-3xl font-bold text-primary-foreground mb-4">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Let's discuss how we can create a custom solution that drives real results for your business.
-          </p>
-          <Link to="/contact">
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/95 lift px-8 py-3 text-lg gap-3 group font-semibold"
-            >
-              Start Your Project
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-          </Link>
-        </div>
-      </div>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="border-b border-border pb-2">Offline-first sales flow with consistent local data.</li>
+              <li className="border-b border-border pb-2">Fast item entry and modifier logic for high-volume service.</li>
+              <li className="border-b border-border pb-2">Inventory tracking aligned to daily stock usage.</li>
+              <li>Reporting exports designed for owner decision-making.</li>
+            </ul>
+          </BentoTile>
+          <BentoTile itemClassName="lg:col-span-5" className="space-y-3">
+            <p className="eyebrow">Need a similar build?</p>
+            <h3 className="title-lg text-foreground">We can scope your product architecture clearly.</h3>
+            <p className="copy-default text-muted-foreground">
+              If you are planning a marketplace or operational system, we can define the best release path.
+            </p>
+            <Link to="/contact" className="btn-ghost-dark ring-cyan w-fit">
+              Discuss Your Project
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </BentoTile>
+        </BentoGrid>
+      </section>
     </div>
   );
 };
 
 export default Portfolio;
+

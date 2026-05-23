@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": [
+    "src/vite-env.d.ts",
+    "src/hooks/**/*.ts",
+    "src/hooks/**/*.tsx",
+    "src/lib/**/*.ts",
+    "src/lib/**/*.tsx",
+    "src/components/AnalyticsLoader.tsx",
+    "src/components/AppErrorBoundary.tsx",
+    "src/components/Header.tsx",
+    "src/components/RouteSeo.tsx",
+    "src/components/motion/**/*.tsx"
+  ],
+  "exclude": [
+    "src/hooks/use-toast.ts"
+  ]
+}

@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,9 +13,26 @@ import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import BrandLoader from "./components/BrandLoader";
+import { useBrandLoaderState } from "./hooks/use-brand-loader";
+import { useLenis } from "./hooks/use-lenis";
+const Solutions = lazy(() => import("./pages/Solutions"));
+const Process = lazy(() => import("./pages/Process"));
+const Articles = lazy(() => import("./pages/Articles"));
+const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
+const CaseStudies = lazy(() => import("./pages/CaseStudies"));
+import SiteBackground from "./components/SiteBackground";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookieConsentBanner from "./components/CookieConsentBanner";
+import AnalyticsLoader from "./components/AnalyticsLoader";
+import FloatingContactButton from "./components/FloatingContactButton";
+import AppErrorBoundary from "./components/AppErrorBoundary";
 
 const queryClient = new QueryClient();
 const App = () => {
+  const { isBootReady, markBootComplete } = useBrandLoaderState();
+  useLenis();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -22,20 +40,36 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen flex flex-col w-full">
-            <Header />
-            <main className="flex-1">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+          <AppErrorBoundary>
+            <AnalyticsLoader />
+            {!isBootReady && <BrandLoader onComplete={markBootComplete} />}
+            <div className="site-shell min-h-screen flex flex-col w-full">
+              <SiteBackground intensity="low" showLines={false} showNodes={false} showCode={false} />
+              <Header />
+              <main className="flex-1">
+                <Suspense fallback={null}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/solutions" element={<Solutions />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/process" element={<Process />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/case-studies" element={<CaseStudies />} />
+                    <Route path="/articles" element={<Articles />} />
+                    <Route path="/articles/:slug" element={<ArticleDetail />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms-of-service" element={<TermsOfService />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+              </main>
+              <FloatingContactButton />
+              <Footer />
+              <CookieConsentBanner />
+            </div>
+          </AppErrorBoundary>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
@@ -43,3 +77,4 @@ const App = () => {
 }
 
 export default App;
+
