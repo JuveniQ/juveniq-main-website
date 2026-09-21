@@ -1,393 +1,179 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FormEvent, useState } from "react";
+import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
+import PageMeta from "@/components/PageMeta";
+import { Container, Eyebrow, PageHeader } from "@/components/SiteElements";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  Send,
-  Facebook,
-  Linkedin,
-  MessageCircle,
-  Github,
-  Instagram
-} from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+const initialForm = {
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  projectType: "",
+  budget: "",
+  timeline: "",
+  message: "",
+};
 
 const Contact = () => {
-  useEffect(() => {
-    window.scrollTo({ behavior: "smooth", top: 0 });
-  }, []);
+  const [formData, setFormData] = useState(initialForm);
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const updateField = (name: keyof typeof initialForm, value: string) => {
+    setFormData((current) => ({ ...current, [name]: value }));
+    if (status === "error") setStatus("idle");
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Address",
-      details: "contact@juveniq.co.za",
-      action: "mailto:contact@juveniq.co.za",
-    },
-    {
-      icon: Phone,
-      title: "Phone Number #1",
-      details: "+27 60 743 1268",
-      action: "tel:+27607431268"
-    },
-    {
-      icon: Phone,
-      title: "Phone Number #2",
-      details: "+27 78 332 2419",
-      action: "tel:+27783322419"
-    },
-    {
-      icon: MapPin,
-      title: "Office Location",
-      details: "Gauteng, South Africa",
-      action: "#",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: "Mon - Fri: 8AM - 6PM",
-      action: "#",
-    },
-  ];
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("submitting");
 
-  const socialLinks = [
-    {
-      icon: Facebook,
-      name: "Facebook",
-      url: "https://www.facebook.com/profile.php?id=100066476117731",
-    },
-    {
-      icon: Github,
-      name: "GitHub",
-      url: "https://github.com/JuveniQ",
-    },
-    {
-      icon: Linkedin,
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/company/juveniq",
-    },
-    {
-      icon: Instagram,
-      name: 'Instagram',
-      url: 'https://instagram.com/juveniq',
+    try {
+      const response = await fetch("https://formspree.io/f/mvgrrkdq", {
+        method: "POST",
+        body: new FormData(event.currentTarget),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+      setStatus("success");
+      setFormData(initialForm);
+    } catch {
+      setStatus("error");
     }
-  ];
+  };
 
   return (
-    <div className="min-h-screen py-12 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* === Header === */}
-        <div className="text-center mb-16 fade-in">
-          <div className="mb-8 flex justify-center">
-          </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Get In Touch
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your business with technology? Let's discuss your project and create something amazing together.
-          </p>
-        </div>
+    <>
+      <PageMeta
+        title="Discuss a project"
+        description="Tell JuveniQ about the software problem, project or existing system your organisation needs help with."
+        path="/contact"
+      />
+      <PageHeader eyebrow="Project enquiries" title="Tell us what you are trying to improve.">
+        Share the business problem, the people affected and what a useful outcome would look like. You do not need a complete technical specification.
+      </PageHeader>
 
-        {/* === Slogan Anchor === */}
-        <div className="text-center mb-16 fade-in">
-          <p className="text-lg text-muted-foreground italic max-w-2xl mx-auto">
-            "<span className="font-semibold text-primary">Simple Tech. Real Impact.</span>" — We listen, we build, we support.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* === Contact Form === */}
-          <div className="fade-in-up" style={{ '--delay': '0.1s' } as React.CSSProperties}>
-            <Card className="card-3d lift border-primary/20 hover:border-primary/40 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground flex items-center">
-                  <MessageCircle className="mr-3 h-6 w-6 text-primary" />
-                  Send us a Message
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form
-                  action="https://formspree.io/f/mvgrrkdq"
-                  method="POST"
-                  className="space-y-6"
-                >
-                  <input type="hidden" name="_subject" value="New Contact Form Submission" />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name" className="text-foreground">
-                        Full Name *
-                      </Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="mt-2 border-border focus:border-primary focus:ring-primary"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email" className="text-foreground">
-                        Email Address *
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="mt-2 border-border focus:border-primary focus:ring-primary"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="subject" className="text-foreground">
-                      Subject *
-                    </Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      className="mt-2 border-border focus:border-primary focus:ring-primary"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message" className="text-foreground">
-                      Message *
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="mt-2 min-h-[120px] border-border focus:border-primary focus:ring-primary"
-                      placeholder="Tell us about your project, goals, and requirements..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full btn-primary lift px-6 py-3 text-lg gap-3 group"
-                  >
-                    Send Message
-                    <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* === Contact Info & Social === */}
-          <div className="space-y-8 fade-in-up" style={{ '--delay': '0.3s' } as React.CSSProperties}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <Card
-                    key={info.title}
-                    className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
-                  >
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {info.title}
-                      </h3>
-                      {info.action.startsWith("mailto:") || info.action.startsWith("tel:") ? (
-                        <a
-                          href={info.action}
-                          className="text-muted-foreground hover:text-primary transition-colors duration-300 block"
-                        >
-                          {info.details}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground">{info.details}</p>
-                      )}
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-
-            {/* === Map Placeholder === */}
-            <Card className="card-3d lift border-primary/20">
-              <CardContent className="p-0">
-                <div className="h-48 bg-secondary rounded-lg flex items-center justify-center relative overflow-hidden">
-                  <div className="text-center z-10">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                    <p className="text-foreground font-medium">eMalahleni, South Africa</p>
-                    <p className="text-sm text-muted-foreground">Serving clients across South Africa</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* === Social Links === */}
-            <Card className="card-3d lift border-primary/20">
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-foreground">
-                  Follow Us
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex justify-center space-x-6">
-                  {socialLinks.map((social) => {
-                    const Icon = social.icon;
-                    return (
-                      <a
-                        key={social.name}
-                        href={social.url}
-                        className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
-                        aria-label={social.name}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Icon className="h-6 w-6" />
-                      </a>
-                    );
-                  })}
-                </div>
-                <p className="text-sm text-muted-foreground mt-4 text-center">
-                  Stay updated with our latest projects and tech insights.
+      <section className="section-pad pt-0">
+        <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20">
+          <div>
+            {status === "success" ? (
+              <div className="border border-border bg-muted/55 p-8 sm:p-12" role="status">
+                <CheckCircle2 className="h-8 w-8 text-emerald-700" aria-hidden="true" />
+                <h2 className="mt-6 text-2xl font-semibold">Thank you. Your enquiry has been sent.</h2>
+                <p className="mt-3 max-w-xl leading-7 text-muted-foreground">
+                  We have received your project details and will respond using the contact information you provided.
                 </p>
-              </CardContent>
-            </Card>
+                <Button className="mt-7" variant="outline" onClick={() => setStatus("idle")}>
+                  Send another enquiry
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-7">
+                <input type="hidden" name="_subject" value="New JuveniQ project enquiry" />
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="form-field">
+                    <Label htmlFor="name">Name *</Label>
+                    <Input id="name" name="name" autoComplete="name" required value={formData.name} onChange={(e) => updateField("name", e.target.value)} />
+                  </div>
+                  <div className="form-field">
+                    <Label htmlFor="company">Company / organisation</Label>
+                    <Input id="company" name="company" autoComplete="organization" value={formData.company} onChange={(e) => updateField("company", e.target.value)} />
+                  </div>
+                  <div className="form-field">
+                    <Label htmlFor="email">Work email *</Label>
+                    <Input id="email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={(e) => updateField("email", e.target.value)} />
+                  </div>
+                  <div className="form-field">
+                    <Label htmlFor="phone">Phone</Label>
+                    <Input id="phone" name="phone" type="tel" autoComplete="tel" value={formData.phone} onChange={(e) => updateField("phone", e.target.value)} />
+                  </div>
+                  <div className="form-field">
+                    <Label htmlFor="projectType">Project type *</Label>
+                    <select id="projectType" name="projectType" required value={formData.projectType} onChange={(e) => updateField("projectType", e.target.value)}>
+                      <option value="">Select a project type</option>
+                      <option>Business Website</option>
+                      <option>Web Application</option>
+                      <option>Mobile Application</option>
+                      <option>Business System</option>
+                      <option>Automation / Integration</option>
+                      <option>Existing Software Support</option>
+                      <option>Not Sure Yet</option>
+                    </select>
+                  </div>
+                  <div className="form-field">
+                    <Label htmlFor="budget">Indicative budget</Label>
+                    <select id="budget" name="budget" value={formData.budget} onChange={(e) => updateField("budget", e.target.value)}>
+                      <option value="">Select a range</option>
+                      <option>R5k–R15k</option>
+                      <option>R15k–R50k</option>
+                      <option>R50k–R150k</option>
+                      <option>R150k+</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="form-field">
+                  <Label htmlFor="timeline">Desired timeline</Label>
+                  <Input id="timeline" name="timeline" placeholder="For example: within 3 months" value={formData.timeline} onChange={(e) => updateField("timeline", e.target.value)} />
+                </div>
+                <div className="form-field">
+                  <Label htmlFor="message">Project or problem description *</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={7}
+                    placeholder="What is happening today, who uses the process and what would you like to improve?"
+                    value={formData.message}
+                    onChange={(e) => updateField("message", e.target.value)}
+                  />
+                </div>
+                {status === "error" && (
+                  <p className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-800" role="alert">
+                    We could not send your enquiry. Your information is still here—please try again or email contact@juveniq.co.za.
+                  </p>
+                )}
+                <Button type="submit" size="lg" disabled={status === "submitting"}>
+                  {status === "submitting" ? (
+                    <><Loader2 className="animate-spin" aria-hidden="true" /> Sending enquiry</>
+                  ) : (
+                    <>Send enquiry <Send aria-hidden="true" /></>
+                  )}
+                </Button>
+              </form>
+            )}
           </div>
-        </div>
 
-        {/* === FAQs Section === */}
-        <div className="mt-20 fade-in-up" style={{ '--delay': '0.2s' } as React.CSSProperties}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Quick answers to questions you may have
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <Card className="card-3d lift border-primary/20 hover:border-primary/40 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-2xl">Our Common Questions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  {[
-                    {
-                      id: "faq-1",
-                      question: "What's your typical project timeline?",
-                      answer:
-                        "Most projects take 2-8 weeks depending on complexity. Basic websites typically take 2-4 weeks, while standard sites take 5-8 weeks. Premium web apps and mobile apps take 12-16 weeks. We'll provide a detailed timeline during our initial consultation.",
-                    },
-                    {
-                      id: "faq-2",
-                      question: "Do you provide ongoing support?",
-                      answer:
-                        "Yes! All our packages include support periods (1-6 months depending on the package), and we offer extended maintenance plans for long-term partnerships. We provide bug fixes, updates, security patches, and technical assistance.",
-                    },
-                    {
-                      id: "faq-3",
-                      question: "Can you work with existing systems?",
-                      answer:
-                        "Absolutely. We specialise in integrating with existing software and databases to enhance your current setup. Whether you need to upgrade a legacy system or add new features, we can help modernise your technology without disrupting your business.",
-                    },
-                    {
-                      id: "faq-4",
-                      question: "What technologies do you use?",
-                      answer:
-                        "We use modern, proven technologies including React and TypeScript for web frontends, Node.js and Python for backends, cloud platforms like AWS and Netlify for deployment, and databases like PostgreSQL and MongoDB. We choose the best tools for each project's specific needs.",
-                    },
-                    {
-                      id: "faq-5",
-                      question: "How much do your services cost?",
-                      answer:
-                        "Our pricing varies based on project scope and complexity. Basic websites start around R1,000-R4,250, standard sites range from R4,750-R9,000, and premium web apps start at R10,000+. Mobile apps range from R30,000 to R100,000+ depending on features. We offer flexible packages to fit various budgets, and we're happy to work with small businesses and startups.",
-                    },
-                    {
-                      id: "faq-6",
-                      question: "Do you offer solutions for small businesses and startups?",
-                      answer:
-                        "Yes! We specialise in serving South African small businesses, entrepreneurs, educators, and NGOs. Our approach is community-focused and we're committed to helping local businesses and startups grow with technology that's affordable and tailored to their needs.",
-                    },
-                    {
-                      id: "faq-7",
-                      question: "Can you help with both web and mobile apps?",
-                      answer:
-                        "Absolutely! We offer end-to-end solutions including web applications, mobile apps (iOS & Android), e-commerce platforms, AI automation tools, and business systems. Whether you need just a website, just an app, or a complete digital solution, we can help.",
-                    },
-                    {
-                      id: "faq-8",
-                      question: "What's included in your support and maintenance packages?",
-                      answer:
-                        "Our support packages include bug fixes, security patches, software updates, performance monitoring, and technical assistance. We provide different support tiers—from basic bug-fix support to comprehensive maintenance plans—so you can choose what works best for your business.",
-                    },
-                    {
-                      id: "faq-9",
-                      question: "How do you ensure my data and website are secure?",
-                      answer:
-                        "Security is a priority. We implement industry-standard practices including SSL encryption, secure databases, regular security audits, automated backups, and compliance with best practices. All our cloud deployments use trusted providers with enterprise-grade security standards.",
-                    },
-                   
-                  ].map((faq) => (
-                    <AccordionItem key={faq.id} value={faq.id}>
-                      <AccordionTrigger className="text-foreground font-semibold hover:text-primary transition-colors">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
+          <aside className="border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <Eyebrow>Contact details</Eyebrow>
+            <div className="mt-6 space-y-6">
+              <a className="contact-line" href="mailto:contact@juveniq.co.za">
+                <Mail aria-hidden="true" /><span><small>Email</small>contact@juveniq.co.za</span>
+              </a>
+              <a className="contact-line" href="tel:+27607431268">
+                <Phone aria-hidden="true" /><span><small>Phone</small>+27 60 743 1268</span>
+              </a>
+              <a className="contact-line" href="tel:+27783322419">
+                <Phone aria-hidden="true" /><span><small>Alternative phone</small>+27 78 332 2419</span>
+              </a>
+              <div className="contact-line">
+                <MapPin aria-hidden="true" /><span><small>Location</small>Gauteng, South Africa</span>
+              </div>
+            </div>
+            <div className="mt-10 border-t border-border pt-7 text-sm leading-6 text-muted-foreground">
+              <p>JuveniQ (Pty) Ltd</p>
+              <p>Registration No. K2025699085</p>
+            </div>
+          </aside>
+        </Container>
+      </section>
+    </>
   );
 };
 

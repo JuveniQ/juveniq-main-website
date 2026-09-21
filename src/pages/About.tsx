@@ -1,152 +1,114 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Users, Target, Heart, TrendingUp } from "lucide-react";
-import { useEffect } from "react";
-import logoWhite from "@/assets/logo-white.png";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import PageMeta from "@/components/PageMeta";
+import { ContactCTA, Container, Eyebrow, PageHeader } from "@/components/SiteElements";
 
-const About = () => {
-  useEffect(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 });
-  }, []);
+const principles = [
+  {
+    title: "Build for the actual problem",
+    copy: "Start with the work people need to do, not with a fashionable technology or a predetermined feature list.",
+  },
+  {
+    title: "Keep complexity justified",
+    copy: "Choose an architecture and scope that fit the problem today while leaving sensible room to grow.",
+  },
+  {
+    title: "Communicate clearly",
+    copy: "Make trade-offs, progress and technical decisions understandable throughout the engagement.",
+  },
+  {
+    title: "Support what we ship",
+    copy: "Treat deployment, maintenance and future improvement as part of responsible software delivery.",
+  },
+];
 
-  const values = [
-    {
-      icon: Heart,
-      title: "Integrity",
-      description: "We build trust through transparency, honesty, and ethical business practices in everything we do."
-    },
-    {
-      icon: Target,
-      title: "Simplicity",
-      description: "Complex problems deserve simple solutions. We focus on creating technology that just works."
-    },
-    {
-      icon: TrendingUp,
-      title: "Growth",
-      description: "We're committed to growing alongside our clients and the broader South African tech ecosystem."
-    },
-    {
-      icon: Users,
-      title: "Client Success",
-      description: "Your success is our success. We measure our impact by the positive change we create for you."
-    }
-  ];
+const About = () => (
+  <>
+    <PageMeta
+      title="About"
+      description="JuveniQ is a South African software company focused on practical digital solutions for businesses and organisations."
+      path="/about"
+    />
+    <PageHeader eyebrow="About JuveniQ" title="A practical software partner, based in South Africa.">
+      JuveniQ is a South African software company focused on practical digital solutions for businesses and organisations.
+    </PageHeader>
 
-  return (
-    <div className="min-h-screen py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* === Header === */}
-        <div className="text-center mb-20 fade-in">
-          <div className="mb-8 flex justify-center">
+    <section className="section-pad pt-0">
+      <Container>
+        <div className="grid gap-12 border-y border-border py-12 lg:grid-cols-2 lg:gap-24 lg:py-16">
+          <div>
+            <Eyebrow>What we do</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight">From an operational problem to software people can use.</h2>
           </div>
-          <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            About JuveniQ
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            We're a dynamic South African tech company on a mission to make
-            technology accessible and impactful for businesses across the country.
+          <div className="space-y-6 text-lg leading-8 text-muted-foreground">
+            <p>
+              The company designs and builds web platforms, mobile applications, internal business systems and automation. Work can cover the full delivery path: understanding the process, shaping the solution, engineering the product, deploying it and supporting it.
+            </p>
+            <p>
+              JuveniQ exists because many organisations are still forced to fit important work into spreadsheets, disconnected tools or software that was not designed for their context. The aim is straightforward: build technology that earns its place in the operation.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section className="section-pad border-y border-border bg-muted/55">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[21rem_1fr] lg:gap-20">
+          <div className="section-intro">
+            <Eyebrow>How we approach software</Eyebrow>
+            <h2>Clear thinking before complexity.</h2>
+            <p>These are practical working principles, not abstract values for a wall.</p>
+          </div>
+          <ol className="divide-y divide-border border-y border-border">
+            {principles.map((principle, index) => (
+              <li key={principle.title} className="grid gap-3 py-7 sm:grid-cols-[3rem_1fr]">
+                <span className="text-sm font-semibold text-primary">0{index + 1}</span>
+                <div>
+                  <h3 className="text-xl font-semibold">{principle.title}</h3>
+                  <p className="mt-3 leading-7 text-muted-foreground">{principle.copy}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Container>
+    </section>
+
+    <section className="section-pad">
+      <Container className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
+        <div className="max-w-2xl">
+          <Eyebrow>Company information</Eyebrow>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Built with long-term responsibility in mind.</h2>
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            JuveniQ is at a focused stage of growth. The company is building its track record through its own products and carefully scoped software engagements—without pretending to have a scale or history it has not earned.
           </p>
+          <Link className="text-link mt-7" to="/work">
+            See what we have built <ArrowRight aria-hidden="true" />
+          </Link>
         </div>
-
-        {/* === Mission & Vision === */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-          <div className="fade-in-up" style={{ '--delay': '0.1s' } as React.CSSProperties}>
-            <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
-              <Heart className="text-primary" size={28} />
-              Our Mission
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              To democratise technology access for South African businesses by providing
-              simple, affordable, and impactful software solutions. We believe that
-              every business, regardless of size, deserves access to world-class technology.
-            </p>
+        <dl className="company-details">
+          <div>
+            <dt>Legal name</dt>
+            <dd>JuveniQ (Pty) Ltd</dd>
           </div>
-          <div className="fade-in-up" style={{ '--delay': '0.3s' } as React.CSSProperties}>
-            <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
-              <Target className="text-primary" size={28} />
-              Our Vision
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              To become South Africa's most trusted technology partner, known for creating
-              solutions that drive real business growth and positive social impact
-              across the nation.
-            </p>
+          <div>
+            <dt>Registration number</dt>
+            <dd>K2025699085</dd>
           </div>
-        </div>
-
-        {/* === Founders Story === */}
-        <div className="bg-secondary rounded-2xl p-8 lg:p-16 mb-24 shadow-lg relative overflow-hidden">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center z-10 relative">
-            Our Story
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-                alt="Team working together"
-                className="rounded-xl w-full h-80 object-cover shadow-xl"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                JuveniQ was founded by a team of passionate technologists with a shared
-                vision for using innovation to empower South African businesses.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                After witnessing countless small businesses struggle with outdated systems
-                and expensive software solutions, the team set out to create a company
-                that would bridge the technology gap for local entrepreneurs.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                From our base in Mpumalanga, JuveniQ has grown into a
-                trusted partner for businesses, NGOs, and individuals across South Africa.
-              </p>
-            </div>
+          <div>
+            <dt>Location</dt>
+            <dd>Gauteng, South Africa</dd>
           </div>
-        </div>
-
-        {/* === Core Values === */}
-        <div className="mb-20">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Our Core Values
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              These principles guide every decision we make and every solution we build.
-            </p>
+          <div>
+            <dt>Website</dt>
+            <dd>juveniq.co.za</dd>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <Card
-                  key={value.title}
-                  className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <CardContent className="p-8">
-                    <div className="flex items-start space-x-6">
-                      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                          {value.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {value.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </dl>
+      </Container>
+    </section>
+    <ContactCTA />
+  </>
+);
 
 export default About;
