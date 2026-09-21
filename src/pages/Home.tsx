@@ -1,238 +1,201 @@
-import { useEffect, useRef } from 'react';
+import { ArrowRight, Check, Link2, RefreshCw, Workflow } from "lucide-react";
 import { Link } from "react-router-dom";
+import PageMeta from "@/components/PageMeta";
+import ProjectPreview from "@/components/ProjectPreview";
+import { ContactCTA, Container, Eyebrow } from "@/components/SiteElements";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  ArrowRight, Globe, Smartphone, Brain, Wrench,
-  Lightbulb, Users, Zap, Shield, Briefcase, School, Heart, 
-  ChevronRight, ChevronsRight, Star
-} from "lucide-react";
-import heroBanner from "@/assets/juveniq-banner-cape-town.png";
+import { processSteps, projects, services } from "@/lib/data";
 
-const Home = () => {
-  const contentStartRef = useRef(null);
+const businessProblems = [
+  {
+    icon: Workflow,
+    title: "Replace manual processes",
+    description: "Digitise spreadsheets, paperwork and repetitive administrative workflows.",
+  },
+  {
+    icon: ArrowRight,
+    title: "Build customer-facing platforms",
+    description: "Create portals, booking systems, marketplaces and useful digital customer experiences.",
+  },
+  {
+    icon: Link2,
+    title: "Connect systems",
+    description: "Integrate APIs, databases, payments and third-party platforms.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Improve existing software",
+    description: "Modernise, maintain and extend software your organisation already depends on.",
+  },
+];
 
-  useEffect(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 });
-  }, []);
+const featuredProjects = projects.filter((project) => project.featured);
 
-  const services = [
-    {
-      icon: Globe,
-      title: "Web Applications",
-      description: "Professional websites and web apps tailored for South African businesses"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile solutions for iOS and Android"
-    },
-    {
-      icon: Brain,
-      title: "AI & Automation",
-      description: "Intelligent tools to streamline your operations and boost productivity"
-    },
-    {
-      icon: Wrench,
-      title: "Tech Support",
-      description: "Reliable ongoing support and training for your team"
-    }
-  ];
+const Home = () => (
+  <>
+    <PageMeta
+      title="Software that solves real business problems"
+      description="JuveniQ designs and builds web, mobile and business software for South African organisations."
+      path="/"
+    />
 
-  const whyJuveniQ = [
-    { icon: Lightbulb, title: "Tailored Simplicity", desc: "We build only what you need—no bloated features, just smart, simple tools that work." },
-    { icon: Users, title: "Community-Focused", desc: "We empower local businesses and uplift South African communities through technology." },
-    { icon: Zap, title: "End-to-End Service", desc: "From design to deployment to support—we handle everything so you can focus on growth." },
-    { icon: Shield, title: "People First", desc: "We listen, educate, and ensure you're always in control of your technology." }
-  ];
-
-  const targetAudience = [
-    { icon: Briefcase, label: "Small Businesses", desc: "Shops, salons, restaurants, logistics" },
-    { icon: School, label: "Educators", desc: "Tutors, schools, training centres" },
-    { icon: Heart, label: "NGOs", desc: "Community projects, outreach programmes" },
-    { icon: Star, label: "Entrepreneurs", desc: "Startups, freelancers, creatives" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* === Hero Banner === */}
-      <section className="w-full relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBanner})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40 relative z-10">
-          <div className="max-w-2xl fade-in" style={{ '--delay': '0.2s' } as React.CSSProperties}>
-            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Empowering South Africa with{" "}
-              <span className="text-white/90">
-                Simple Tech, Real Impact
-              </span>
-            </h1>
-            <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
-              We don't just build software—we build partnerships. JuveniQ delivers technology solutions that drive real business growth across South Africa.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-white/90 lift px-8 py-6 text-lg gap-3 group font-semibold">
-                  Get a Quote
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link to="/portfolio">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 lift px-8 py-6 text-lg">
-                  View Our Work
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* === Why JuveniQ? === */}
-      <section className="py-24 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">Why Choose Juveni<span className='font-bold font-quando'>Q</span>?</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We don't just build software—we build lasting partnerships with South African businesses.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyJuveniQ.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Card
-                  key={index}
-                  className="card-3d lift group border-primary/20 hover:border-primary/40 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <CardContent className="p-6 text-center h-full flex flex-col items-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-5 text-primary group-hover:scale-110 transition-transform">
-                      <Icon size={28} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground text-center flex-grow">
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === Target Audience === */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">Who We Serve</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We design solutions for South African businesses and communities with real challenges and ambitious goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {targetAudience.map((audience, index) => {
-              const Icon = audience.icon;
-              return (
-                <Card
-                  key={index}
-                  className="card-3d lift group border-primary/20 text-center p-6 hover:bg-primary/5 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary group-hover:scale-110 transition-transform">
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {audience.label}
-                  </h3>
-                  <p className="text-muted-foreground">{audience.desc}</p>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === Services Section === */}
-      <section className="py-24 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              What We Do Best
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              We specialise in creating technology solutions that are simple, effective, and tailored to South African business needs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <Card
-                  key={service.title}
-                  className="card-3d lift group cursor-pointer border-primary/20 bg-background"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-8 text-center h-full flex flex-col">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4 transition-colors duration-300 group-hover:text-primary">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === CTA Section === */}
-      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:60px_60px]"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Grow Your Business?</h2>
-          <p className="text-xl mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed">
-            Let's build a technology solution that works for your business—simple, scalable, and built to last.
+    <section className="hero">
+      <Container className="grid items-end gap-12 lg:grid-cols-[minmax(0,1fr)_21rem]">
+        <div className="max-w-4xl">
+          <Eyebrow>South African software engineering</Eyebrow>
+          <h1 className="hero-title">Software that solves real business problems.</h1>
+          <p className="hero-copy">
+            JuveniQ designs and builds web, mobile and business software for South African organisations. From customer-facing platforms to internal systems and automation, we help businesses replace manual processes with practical technology.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/contact">
-              <Button className="bg-white text-primary hover:bg-white/95 lift px-8 py-6 text-lg gap-3 group font-semibold">
-                Start Your Project
-                <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 lift px-8 py-6 text-lg gap-3 group"
-              >
-                View All Services
-                <ChevronsRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link to="/contact">
+                Discuss a project <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="text-foreground">
+              <Link to="/work">View our work</Link>
+            </Button>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
+
+        <div className="capability-list" aria-label="Core capabilities">
+          {["Web applications", "Mobile applications", "Business systems", "Automation"].map((item) => (
+            <div key={item} className="flex items-center gap-3 border-b border-white/15 py-3 last:border-0">
+              <Check className="h-4 w-4 text-blue-300" aria-hidden="true" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <section className="border-b border-border bg-white">
+      <Container className="credibility-strip">
+        <div>
+          <span className="credibility-label">Based in</span>
+          <strong>Gauteng, South Africa</strong>
+        </div>
+        <div>
+          <span className="credibility-label">Delivery</span>
+          <strong>Web &amp; mobile software</strong>
+        </div>
+        <div>
+          <span className="credibility-label">Engagement</span>
+          <strong>Build, launch &amp; support</strong>
+        </div>
+        <div>
+          <span className="credibility-label">Registered company</span>
+          <strong>JuveniQ (Pty) Ltd</strong>
+        </div>
+      </Container>
+    </section>
+
+    <section className="section-pad">
+      <Container>
+        <div className="section-intro">
+          <Eyebrow>Business outcomes</Eyebrow>
+          <h2>Technology should make your business easier to run.</h2>
+          <p>Good software starts with the problem, the people doing the work and the result the organisation needs.</p>
+        </div>
+        <div className="problem-list">
+          {businessProblems.map(({ icon: Icon, title, description }, index) => (
+            <article key={title} className="problem-item">
+              <div className="problem-number">0{index + 1}</div>
+              <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+              <div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <section className="section-pad border-y border-border bg-muted/55">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[22rem_1fr] lg:gap-20">
+          <div className="section-intro lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow>Core services</Eyebrow>
+            <h2>Practical engineering, from scope to support.</h2>
+            <p>Engagements are shaped around a defined business need—not a catalogue of features.</p>
+            <Link className="text-link mt-7" to="/services">
+              Explore our services <ArrowRight aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="divide-y divide-border border-y border-border">
+            {services.map((service, index) => (
+              <article key={service.title} className="service-line">
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.summary}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section className="section-pad">
+      <Container>
+        <div className="section-intro">
+          <Eyebrow>Selected work</Eyebrow>
+          <h2>Products built around specific operating realities.</h2>
+          <p>Kota-OS and Votio show how JuveniQ turns specialised workflows into complete, deployed software products.</p>
+        </div>
+        <div className="mt-14 space-y-20">
+          {featuredProjects.map((project, index) => (
+            <ProjectPreview key={project.slug} project={project} reverse={index % 2 === 1} />
+          ))}
+        </div>
+        <Link className="text-link mt-12" to="/work">
+          See all work <ArrowRight aria-hidden="true" />
+        </Link>
+      </Container>
+    </section>
+
+    <section className="section-pad border-y border-border bg-muted/55">
+      <Container>
+        <div className="section-intro">
+          <Eyebrow>How we deliver</Eyebrow>
+          <h2>From problem to working software.</h2>
+        </div>
+        <ol className="process-grid">
+          {processSteps.map((step) => (
+            <li key={step.number}>
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </Container>
+    </section>
+
+    <section className="section-pad">
+      <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="section-intro">
+          <Eyebrow>Who we work with</Eyebrow>
+          <h2>Software shaped around the way your team operates.</h2>
+        </div>
+        <div>
+          <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
+            We work with SMEs, growing businesses, startups, community organisations and teams that need software built around the way they actually operate.
+          </p>
+          <ul className="sector-list">
+            {["Retail & hospitality", "Professional services", "Community organisations", "Education", "Digital platforms"].map((sector) => (
+              <li key={sector}>{sector}</li>
+            ))}
+          </ul>
+        </div>
+      </Container>
+    </section>
+
+    <ContactCTA />
+  </>
+);
 
 export default Home;
