@@ -10,7 +10,7 @@ const Footer = () => (
             Juveni<span className="font-quando text-blue-300">Q</span>
           </Link>
           <p className="mt-5 leading-7 text-white/65">
-            A South African software partner building practical digital systems for real business problems.
+            A registered South African software company building practical systems around real business problems.
           </p>
           <div className="mt-7 flex gap-3">
             {[

@@ -5,24 +5,6 @@ import { ContactCTA, Container, Eyebrow, PageHeader } from "@/components/SiteEle
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/data";
 
-const websitePackages = [
-  {
-    name: "Basic website",
-    range: "R1,000–R4,250",
-    fit: "A focused business presence of approximately five pages.",
-  },
-  {
-    name: "Standard website",
-    range: "R4,750–R9,000",
-    fit: "A larger company site with content management and optional booking or commerce.",
-  },
-  {
-    name: "Advanced website",
-    range: "R10,000–R22,000",
-    fit: "A more involved website or portal with accounts, administration or custom integrations.",
-  },
-];
-
 const Services = () => (
   <>
     <PageMeta
@@ -76,25 +58,20 @@ const Services = () => (
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="section-intro">
-            <Eyebrow>Business websites</Eyebrow>
-            <h2>A separate, clearly defined website offering.</h2>
+            <Eyebrow>Commercial scoping</Eyebrow>
+            <h2>Projects are scoped individually.</h2>
             <p>
-              These existing ranges are a starting guide for conventional business websites. Final pricing depends on content, functionality, integrations and delivery requirements.
+              Each engagement starts with the business problem, requirements and delivery expectations—not a preset service tier.
             </p>
           </div>
-          <div className="divide-y divide-border border-y border-border">
-            {websitePackages.map((pkg) => (
-              <article key={pkg.name} className="grid gap-3 py-6 sm:grid-cols-[1fr_auto] sm:gap-8">
-                <div>
-                  <h3 className="text-lg font-semibold">{pkg.name}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{pkg.fit}</p>
-                </div>
-                <p className="font-semibold text-primary">{pkg.range}</p>
-              </article>
-            ))}
-            <div className="py-6 text-sm leading-6 text-muted-foreground">
-              Custom software and mobile applications are scoped per project because architecture, integrations, security, infrastructure and support needs vary.
-            </div>
+          <div className="border-y border-border py-8 sm:py-10">
+            <h3 className="text-xl font-semibold">A clear proposal for the work required.</h3>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              After understanding the problem and the intended outcome, we provide a clear scope, timeline and commercial proposal. The scope reflects the solution&apos;s functionality and complexity, technical requirements, deployment, support and delivery timeline.
+            </p>
+            <Link className="text-link mt-7" to="/contact">
+              Discuss your requirements <ArrowRight aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </Container>

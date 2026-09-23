@@ -26,11 +26,11 @@ const About = () => (
   <>
     <PageMeta
       title="About"
-      description="JuveniQ is a South African software company focused on practical digital solutions for businesses and organisations."
+      description="JuveniQ is a registered South African software company that designs and builds practical software systems."
       path="/about"
     />
-    <PageHeader eyebrow="About JuveniQ" title="A practical software partner, based in South Africa.">
-      JuveniQ is a South African software company focused on practical digital solutions for businesses and organisations.
+    <PageHeader eyebrow="About JuveniQ" title="A South African software company building practical systems.">
+      JuveniQ designs and builds software around real operational needs for businesses and organisations.
     </PageHeader>
 
     <section className="section-pad pt-0">
@@ -47,6 +47,12 @@ const About = () => (
             <p>
               JuveniQ exists because many organisations are still forced to fit important work into spreadsheets, disconnected tools or software that was not designed for their context. The aim is straightforward: build technology that earns its place in the operation.
             </p>
+            <div className="border-l-2 border-primary/35 pl-6">
+              <Eyebrow>Our mission</Eyebrow>
+              <p className="mt-3 text-foreground">
+                To make effective software more accessible to South African businesses by building practical, maintainable solutions around real operational needs.
+              </p>
+            </div>
           </div>
         </div>
       </Container>

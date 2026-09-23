@@ -60,7 +60,7 @@ const Home = () => (
         </div>
 
         <div className="capability-list" aria-label="Core capabilities">
-          {["Web applications", "Mobile applications", "Business systems", "Automation"].map((item) => (
+          {["Custom software", "Mobile applications", "Business systems", "Integration & automation"].map((item) => (
             <div key={item} className="flex items-center gap-3 border-b border-white/15 py-3 last:border-0">
               <Check className="h-4 w-4 text-blue-300" aria-hidden="true" />
               <span>{item}</span>

@@ -28,7 +28,7 @@ export const services: Service[] = [
   {
     title: "Custom Software Development",
     summary:
-      "Web platforms, portals, dashboards and internal systems designed around a specific business process.",
+      "Web platforms, portals, dashboards, internal systems and custom business applications.",
     problems:
       "A generic tool does not fit the way your team works, or manual processes are limiting growth and visibility.",
     deliverables: [
@@ -42,7 +42,7 @@ export const services: Service[] = [
   {
     title: "Mobile Application Development",
     summary:
-      "Cross-platform applications for customers, field teams and operational workflows.",
+      "Cross-platform software for customers, employees and operational teams.",
     problems:
       "People need to complete important tasks away from a desk or through a focused mobile experience.",
     deliverables: [
@@ -54,9 +54,9 @@ export const services: Service[] = [
     engagement: "Scoped per project based on platforms, features and integrations.",
   },
   {
-    title: "Business Process Automation",
+    title: "Systems Integration & Automation",
     summary:
-      "Connected workflows that reduce repetitive administration and keep information moving between systems.",
+      "APIs, workflow automation and integrations that keep information moving between existing business systems.",
     problems:
       "Teams repeatedly copy data, manage work in spreadsheets or rely on disconnected tools.",
     deliverables: [
@@ -68,9 +68,9 @@ export const services: Service[] = [
     engagement: "Starts with a process review and a clearly defined automation opportunity.",
   },
   {
-    title: "Software Support & Modernisation",
+    title: "Software Modernisation & Support",
     summary:
-      "Maintenance, enhancement and technical support for software your organisation already depends on.",
+      "Maintenance, enhancement and modernisation of software your organisation already depends on.",
     problems:
       "An existing system needs new features, better reliability or a practical route away from ageing technology.",
     deliverables: [

@@ -15,7 +15,6 @@ const initialForm = {
   email: "",
   phone: "",
   projectType: "",
-  budget: "",
   timeline: "",
   message: "",
 };
@@ -97,27 +96,18 @@ const Contact = () => {
                     <Label htmlFor="projectType">Project type *</Label>
                     <select id="projectType" name="projectType" required value={formData.projectType} onChange={(e) => updateField("projectType", e.target.value)}>
                       <option value="">Select a project type</option>
-                      <option>Business Website</option>
-                      <option>Web Application</option>
+                      <option>Web Platform / Application</option>
                       <option>Mobile Application</option>
                       <option>Business System</option>
-                      <option>Automation / Integration</option>
-                      <option>Existing Software Support</option>
+                      <option>Systems Integration / Automation</option>
+                      <option>Software Modernisation / Support</option>
                       <option>Not Sure Yet</option>
                     </select>
                   </div>
-                  <div className="form-field">
-                    <Label htmlFor="budget">Indicative budget</Label>
-                    <select id="budget" name="budget" value={formData.budget} onChange={(e) => updateField("budget", e.target.value)}>
-                      <option value="">Select a range</option>
-                      <option>R5k–R15k</option>
-                      <option>R15k–R50k</option>
-                      <option>R50k–R150k</option>
-                      <option>R150k+</option>
-                      <option>Not sure yet</option>
-                    </select>
-                  </div>
                 </div>
+                <p className="border-l-2 border-primary/35 pl-4 text-sm leading-6 text-muted-foreground">
+                  Projects are scoped individually. Once we understand the requirements and delivery expectations, we provide a clear scope, timeline and commercial proposal.
+                </p>
                 <div className="form-field">
                   <Label htmlFor="timeline">Desired timeline</Label>
                   <Input id="timeline" name="timeline" placeholder="For example: within 3 months" value={formData.timeline} onChange={(e) => updateField("timeline", e.target.value)} />
