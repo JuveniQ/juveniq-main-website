@@ -1,4 +1,6 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import ProjectStatus from "@/components/ProjectStatus";
 import type { Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +37,7 @@ const ProjectPreview = ({ project, reverse = false }: { project: Project; revers
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <span className="font-medium text-primary">{project.category}</span>
         <span className="h-1 w-1 rounded-full bg-border" aria-hidden="true" />
-        <span className="text-muted-foreground">{project.status}</span>
+        <ProjectStatus status={project.status} />
       </div>
       <h3 className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{project.title}</h3>
       <p className="mt-4 text-lg leading-8 text-foreground/85">{project.summary}</p>
@@ -47,11 +49,9 @@ const ProjectPreview = ({ project, reverse = false }: { project: Project; revers
           </li>
         ))}
       </ul>
-      {project.url && (
-        <a className="text-link mt-8 w-fit" href={project.url} target="_blank" rel="noopener noreferrer">
-          Visit {project.title} <ExternalLink aria-hidden="true" />
-        </a>
-      )}
+      <Link className="text-link mt-8 w-fit" to={`/work/${project.slug}`}>
+        View project <ArrowRight aria-hidden="true" />
+      </Link>
     </div>
   </article>
 );

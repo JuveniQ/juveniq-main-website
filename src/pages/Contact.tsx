@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { company } from "@/lib/company";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -126,7 +127,7 @@ const Contact = () => {
                 </div>
                 {status === "error" && (
                   <p className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-800" role="alert">
-                    We could not send your enquiry. Your information is still here—please try again or email contact@juveniq.co.za.
+                    We could not send your enquiry. Your information is still here—please try again or email {company.email}.
                   </p>
                 )}
                 <Button type="submit" size="lg" disabled={status === "submitting"}>
@@ -143,22 +144,22 @@ const Contact = () => {
           <aside className="border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <Eyebrow>Contact details</Eyebrow>
             <div className="mt-6 space-y-6">
-              <a className="contact-line" href="mailto:contact@juveniq.co.za">
-                <Mail aria-hidden="true" /><span><small>Email</small>contact@juveniq.co.za</span>
+              <a className="contact-line" href={`mailto:${company.email}`}>
+                <Mail aria-hidden="true" /><span><small>Email</small>{company.email}</span>
               </a>
-              <a className="contact-line" href="tel:+27607431268">
-                <Phone aria-hidden="true" /><span><small>Phone</small>+27 60 743 1268</span>
+              <a className="contact-line" href={company.phones[0].href}>
+                <Phone aria-hidden="true" /><span><small>Phone</small>{company.phones[0].label}</span>
               </a>
-              <a className="contact-line" href="tel:+27783322419">
-                <Phone aria-hidden="true" /><span><small>Alternative phone</small>+27 78 332 2419</span>
+              <a className="contact-line" href={company.phones[1].href}>
+                <Phone aria-hidden="true" /><span><small>Alternative phone</small>{company.phones[1].label}</span>
               </a>
               <div className="contact-line">
-                <MapPin aria-hidden="true" /><span><small>Location</small>Gauteng, South Africa</span>
+                <MapPin aria-hidden="true" /><span><small>Location</small>{company.location}</span>
               </div>
             </div>
             <div className="mt-10 border-t border-border pt-7 text-sm leading-6 text-muted-foreground">
-              <p>JuveniQ (Pty) Ltd</p>
-              <p>Registration No. K2025699085</p>
+              <p>{company.legalName}</p>
+              <p>Registration No. {company.registrationNumber}</p>
             </div>
           </aside>
         </Container>

@@ -266,6 +266,10 @@
     @apply absolute bottom-5 left-6 right-6 truncate text-xs font-medium uppercase tracking-[0.12em] text-white/55;
   }
 
+  .project-card-visual {
+    @apply min-h-56 p-7 sm:min-h-64;
+  }
+
   .process-grid {
     @apply mt-12 grid border-y border-border md:grid-cols-2 lg:grid-cols-4;
   }
@@ -296,9 +300,12 @@
     @apply mt-8 flex flex-wrap gap-2;
   }
 
-  .sector-list li,
-  .status-label {
+  .sector-list li {
     @apply border border-border bg-background px-3 py-2 text-xs font-medium text-muted-foreground;
+  }
+
+  .status-label {
+    @apply border px-3 py-2 text-xs font-semibold;
   }
 
   .cta-panel {
@@ -381,7 +388,7 @@
   }
 
   .footer-grid {
-    @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1fr_1fr];
+    @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.65fr_0.9fr_0.9fr_0.9fr];
   }
 
   .footer-heading {
@@ -407,6 +414,116 @@
   .footer-bottom {
     @apply mt-14 flex flex-col gap-3 border-t border-white/15 pt-7 text-xs text-white/45 sm:flex-row sm:justify-between;
   }
+
+  .legal-header {
+    @apply pb-14 pt-16 sm:pb-16 sm:pt-20 lg:pb-20 lg:pt-24;
+  }
+
+  .legal-layout {
+    @apply grid gap-10 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16;
+  }
+
+  .legal-toc {
+    @apply border-y border-border py-6 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-y-auto;
+  }
+
+  .legal-toc h2 {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  .legal-toc ol {
+    @apply mt-4 space-y-1;
+  }
+
+  .legal-toc a {
+    @apply block min-h-11 py-2 text-sm leading-6 text-muted-foreground transition-colors hover:text-primary;
+  }
+
+  .legal-content {
+    @apply min-w-0 divide-y divide-border border-y border-border;
+  }
+
+  .legal-section {
+    @apply scroll-mt-28 py-9 sm:py-11;
+  }
+
+  .legal-section > h2 {
+    @apply text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl;
+  }
+
+  .legal-prose {
+    @apply mt-5 max-w-3xl space-y-5 text-base leading-7 text-muted-foreground sm:text-[1.0625rem] sm:leading-8;
+    overflow-wrap: anywhere;
+  }
+
+  .legal-prose h3 {
+    @apply pt-2 text-lg font-semibold text-foreground;
+  }
+
+  .legal-prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .legal-prose a {
+    @apply font-medium text-primary underline underline-offset-4 hover:no-underline;
+  }
+
+  .legal-prose ul,
+  .legal-prose ol {
+    @apply space-y-2 pl-6;
+  }
+
+  .legal-prose ul {
+    @apply list-disc;
+  }
+
+  .legal-prose ol {
+    @apply list-decimal;
+  }
+
+  .legal-callout {
+    @apply border-l-4 border-primary bg-muted/70 px-5 py-5 text-foreground sm:px-6;
+  }
+
+  .legal-callout h3 {
+    @apply p-0 text-base font-semibold;
+  }
+
+  .legal-callout > div {
+    @apply mt-2 text-sm leading-7 text-muted-foreground;
+  }
+
+  .legal-card-grid {
+    @apply grid gap-px border border-border bg-border md:grid-cols-2;
+  }
+
+  .legal-card {
+    @apply flex min-h-64 flex-col bg-background p-7 sm:p-9;
+  }
+
+  .legal-card > svg {
+    @apply h-6 w-6 text-primary;
+  }
+
+  .legal-card h2 {
+    @apply mt-7 text-xl font-semibold tracking-tight sm:text-2xl;
+  }
+
+  .legal-card p {
+    @apply mt-4 flex-1 leading-7 text-muted-foreground;
+  }
+
+  .legal-definition-list {
+    @apply divide-y divide-border border-y border-border;
+  }
+
+  .legal-definition-list > div {
+    @apply grid gap-1 py-4 sm:grid-cols-[10rem_1fr] sm:gap-6;
+  }
+
+  .legal-definition-list dt {
+    @apply text-sm font-semibold text-foreground;
+  }
 }
 
 @media (min-width: 640px) {
@@ -423,5 +540,45 @@
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .legal-toc,
+  .skip-link {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .site-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .legal-header,
+  .section-pad {
+    padding-block: 1.5rem !important;
+  }
+
+  .legal-layout {
+    display: block;
+  }
+
+  .legal-section {
+    break-inside: avoid-page;
+    scroll-margin-top: 0;
+  }
+
+  .legal-section > h2,
+  .legal-prose,
+  .legal-prose strong,
+  .legal-prose a {
+    color: black !important;
   }
 }

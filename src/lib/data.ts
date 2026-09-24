@@ -14,6 +14,7 @@ export interface Project {
   imageAlt?: string;
   featured: boolean;
   accent: "amber" | "wine" | "navy";
+  seoDescription: string;
 }
 
 export interface Service {
@@ -105,6 +106,7 @@ export const projects: Project[] = [
     imageAlt: "Kota-OS product mark",
     featured: true,
     accent: "amber",
+    seoDescription: "Kota-OS is live point-of-sale and operations software built by JuveniQ for independent and township food businesses.",
   },
   {
     slug: "votio",
@@ -127,6 +129,7 @@ export const projects: Project[] = [
     imageAlt: "Votio product logo",
     featured: true,
     accent: "wine",
+    seoDescription: "Votio is a live online voting and campaign platform built by JuveniQ for awards, pageants and structured campaigns.",
   },
   {
     slug: "gigkasi",
@@ -143,6 +146,7 @@ export const projects: Project[] = [
     imageAlt: "GigKasi mobile application screens",
     featured: false,
     accent: "navy",
+    seoDescription: "GigKasi is an in-development JuveniQ marketplace product exploring local service-provider discovery.",
   },
   {
     slug: "jcv-maker",
@@ -160,6 +164,7 @@ export const projects: Project[] = [
     imageAlt: "JCV Maker interface",
     featured: false,
     accent: "navy",
+    seoDescription: "JCV Maker is a JuveniQ prototype for creating a structured CV in the browser and exporting it as a PDF.",
   },
 ];
 
