@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageMeta from "@/components/PageMeta";
 import { ContactCTA, Container, Eyebrow, PageHeader } from "@/components/SiteElements";
+import { company } from "@/lib/company";
 
 const principles = [
   {
@@ -89,26 +90,27 @@ const About = () => (
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
             JuveniQ is at a focused stage of growth. The company is building its track record through its own products and carefully scoped software engagements—without pretending to have a scale or history it has not earned.
           </p>
-          <Link className="text-link mt-7" to="/work">
-            See what we have built <ArrowRight aria-hidden="true" />
-          </Link>
+          <div className="mt-7 flex flex-wrap gap-x-7 gap-y-2">
+            <Link className="text-link" to="/work">See what we have built <ArrowRight aria-hidden="true" /></Link>
+            <Link className="text-link" to="/legal">Policies & company information <ArrowRight aria-hidden="true" /></Link>
+          </div>
         </div>
         <dl className="company-details">
           <div>
             <dt>Legal name</dt>
-            <dd>JuveniQ (Pty) Ltd</dd>
+            <dd>{company.legalName}</dd>
           </div>
           <div>
             <dt>Registration number</dt>
-            <dd>K2025699085</dd>
+            <dd>{company.registrationNumber}</dd>
           </div>
           <div>
             <dt>Location</dt>
-            <dd>Gauteng, South Africa</dd>
+            <dd>{company.location}</dd>
           </div>
           <div>
             <dt>Website</dt>
-            <dd>juveniq.co.za</dd>
+            <dd>{company.websiteLabel}</dd>
           </div>
         </dl>
       </Container>

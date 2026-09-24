@@ -36,7 +36,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   const isActive = (href: string) =>
-    location.pathname === href || (href === "/work" && location.pathname === "/portfolio");
+    location.pathname === href || (href === "/work" && (location.pathname === "/portfolio" || location.pathname.startsWith("/work/")));
 
   return (
     <header className="site-header">

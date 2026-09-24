@@ -7,7 +7,13 @@ import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import Portfolio from "@/pages/Portfolio";
+import ProjectDetail from "@/pages/ProjectDetail";
 import Services from "@/pages/Services";
+import LegalHub from "@/pages/legal/LegalHub";
+import Paia from "@/pages/legal/Paia";
+import Privacy from "@/pages/legal/Privacy";
+import RefundCancellation from "@/pages/legal/RefundCancellation";
+import Terms from "@/pages/legal/Terms";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,8 +37,17 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/work" element={<Portfolio />} />
+          <Route path="/work/:slug" element={<ProjectDetail />} />
           <Route path="/portfolio" element={<Navigate to="/work" replace />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/legal" element={<LegalHub />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund-cancellation-policy" element={<RefundCancellation />} />
+          <Route path="/paia" element={<Paia />} />
+          <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+          <Route path="/refunds" element={<Navigate to="/refund-cancellation-policy" replace />} />
+          <Route path="/terms-and-conditions" element={<Navigate to="/terms" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

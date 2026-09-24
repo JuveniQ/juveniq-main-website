@@ -5,6 +5,7 @@ import ProjectPreview from "@/components/ProjectPreview";
 import { ContactCTA, Container, Eyebrow } from "@/components/SiteElements";
 import { Button } from "@/components/ui/button";
 import { processSteps, projects, services } from "@/lib/data";
+import { company } from "@/lib/company";
 
 const businessProblems = [
   {
@@ -74,7 +75,7 @@ const Home = () => (
       <Container className="credibility-strip">
         <div>
           <span className="credibility-label">Based in</span>
-          <strong>Gauteng, South Africa</strong>
+          <strong>{company.location}</strong>
         </div>
         <div>
           <span className="credibility-label">Delivery</span>
@@ -86,7 +87,7 @@ const Home = () => (
         </div>
         <div>
           <span className="credibility-label">Registered company</span>
-          <strong>JuveniQ (Pty) Ltd</strong>
+          <strong>{company.legalName}</strong>
         </div>
       </Container>
     </section>
