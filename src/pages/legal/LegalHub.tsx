@@ -7,9 +7,14 @@ import { legalDocuments } from "@/lib/legal";
 
 const LegalHub = () => (
   <>
-    <PageMeta title="Legal & policies" description="JuveniQ terms, privacy practices, refund and cancellation policy, and PAIA access information." path="/legal" />
-    <PageHeader eyebrow="Legal & policies" title="Clear information for customers and visitors.">
-      Information about JuveniQ&apos;s terms, privacy practices, payments and access to company records.
+    <PageMeta
+      title="Legal & policies"
+      description="JuveniQ terms, privacy practices, refund and cancellation policy, and PAIA access information."
+      path="/legal"
+    />
+    <PageHeader eyebrow="Legal & policies" title="Terms, privacy and company information in one place.">
+      These documents explain how JuveniQ provides software and technology services, handles personal information,
+      manages payments and cancellations, and responds to formal information requests.
     </PageHeader>
     <section className="section-pad pt-0">
       <Container>
@@ -19,7 +24,9 @@ const LegalHub = () => (
               <FileCheck2 aria-hidden="true" />
               <h2>{document.title}</h2>
               <p>{document.description}</p>
-              <Link className="text-link mt-6" to={document.href}>{document.cta} <ArrowRight aria-hidden="true" /></Link>
+              <Link className="text-link mt-6" to={document.href}>
+                {document.cta} <ArrowRight aria-hidden="true" />
+              </Link>
             </article>
           ))}
         </div>
@@ -28,8 +35,16 @@ const LegalHub = () => (
           <div>
             <Eyebrow>Company information</Eyebrow>
             <p className="mt-3 font-semibold">{company.legalName}</p>
-            <p className="mt-1 text-sm leading-6 text-muted-foreground">Registration No. {company.registrationNumber} · {company.location}</p>
-            <a className="text-link mt-4" href={`mailto:${company.email}`}>{company.email}</a>
+            <p className="mt-1 text-sm leading-6 text-muted-foreground">
+              Registration No. {company.registrationNumber} · {company.location}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              For legal, privacy, refund and information-access enquiries, use the company contact below unless a
+              product or agreement gives a more specific channel.
+            </p>
+            <a className="text-link mt-4" href={`mailto:${company.email}`}>
+              {company.email}
+            </a>
           </div>
         </aside>
       </Container>
