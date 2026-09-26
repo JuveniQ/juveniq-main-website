@@ -1,4 +1,4 @@
-export type ProjectStatus = "Live" | "In development" | "Prototype";
+export type ProjectStatus = "Live" | "Pilot" | "In development" | "Prototype";
 
 export interface Project {
   slug: string;
@@ -88,17 +88,17 @@ export const projects: Project[] = [
   {
     slug: "kota-os",
     title: "Kota-OS",
-    category: "Point-of-sale and operations software",
-    status: "Live",
+    category: "Offline food-business operations",
+    status: "Pilot",
     summary:
-      "Operational software designed around the day-to-day needs of independent and township food businesses.",
+      "Food-business operations that keep working offline. Sell during service, track recipe ingredients and see what needs attention.",
     context:
-      "Food operators need a dependable way to capture sales, manage stock and understand performance without adding unnecessary complexity. Kota-OS brings those operational tasks into one focused product with offline-first use at its core.",
+      "Independent food operators need to keep serving when connectivity drops and still know what each sale used. Kota-OS links menu items to ingredients, records waste, flags low stock and turns daily activity into reports. A controlled Gauteng pilot is gathering feedback from real businesses during lunch and dinner service.",
     built: [
-      "Sales and order workflows",
-      "Inventory management",
-      "Operational reporting",
-      "Offline-first application behaviour",
+      "Sales and order workflows with offline access",
+      "Menu recipes linked to ingredient consumption",
+      "Waste recording and low stock alerts",
+      "Sales and operational reports",
     ],
     capabilities: ["Product design", "Business systems", "Offline workflows"],
     url: "https://kotaos.juveniq.co.za",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     imageAlt: "Kota-OS product mark",
     featured: true,
     accent: "amber",
-    seoDescription: "Kota-OS is live point-of-sale and operations software built by JuveniQ for independent and township food businesses.",
+    seoDescription: "Kota-OS helps independent food businesses keep operating offline, track recipe ingredients and waste, and spot low stock. Currently in a Gauteng pilot.",
   },
   {
     slug: "votio",

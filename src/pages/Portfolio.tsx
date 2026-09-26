@@ -8,6 +8,7 @@ import { projects, type ProjectStatus as ProjectStatusValue } from "@/lib/data";
 
 const groups: Array<{ status: ProjectStatusValue; eyebrow: string; title: string; description: string }> = [
   { status: "Live", eyebrow: "Products in market", title: "Live software products.", description: "Deployed products with public experiences visitors can explore." },
+  { status: "Pilot", eyebrow: "Field pilot", title: "Products being tested in service.", description: "Working software being observed with businesses in daily operations." },
   { status: "In development", eyebrow: "Product development", title: "Products in active development.", description: "Internal product work that is still being designed, built and refined." },
   { status: "Prototype", eyebrow: "Prototypes & experiments", title: "Ideas tested through working software.", description: "Early-stage tools used to explore a focused problem or product direction." },
 ];
