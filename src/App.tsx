@@ -10,6 +10,7 @@ import Portfolio from "@/pages/Portfolio";
 import ProjectDetail from "@/pages/ProjectDetail";
 import Services from "@/pages/Services";
 import LegalHub from "@/pages/legal/LegalHub";
+import KotaOsAccountDeletion from "@/pages/legal/KotaOsAccountDeletion";
 import Paia from "@/pages/legal/Paia";
 import Privacy from "@/pages/legal/Privacy";
 import RefundCancellation from "@/pages/legal/RefundCancellation";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/portfolio" element={<Navigate to="/work" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/legal" element={<LegalHub />} />
+          <Route path="/kota-os/account-deletion" element={<KotaOsAccountDeletion />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund-cancellation-policy" element={<RefundCancellation />} />
