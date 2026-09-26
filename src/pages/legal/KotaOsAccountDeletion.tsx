@@ -33,7 +33,7 @@ const KotaOsAccountDeletion = () => (
             <p className="mt-3">
               Email <a className="text-link" href={`mailto:${company.email}?subject=Kota-OS%20account%20deletion%20request`}>{company.email}</a> with
               the subject “Kota-OS account deletion request”. Include the email address or phone number used for your account and
-              request deletion of your account and associated data. We delete both by default after verifying account ownership.
+              we will verify account ownership, then delete the account and its associated data by default.
               Never send an OTP code or password.
             </p>
           </section>
