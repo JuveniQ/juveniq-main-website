@@ -8,6 +8,12 @@ export interface LegalNavigationItem {
 
 export const legalDocuments = [
   {
+    title: "Kota-OS account deletion",
+    description: "Delete your Kota-OS account and associated data in the app, or request deletion by email.",
+    href: "/kota-os/account-deletion",
+    cta: "How to delete your account",
+  },
+  {
     title: "Terms & Conditions",
     description: "Rules governing JuveniQ websites, products, subscriptions and software service engagements.",
     href: "/terms",
