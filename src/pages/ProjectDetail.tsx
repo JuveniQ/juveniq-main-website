@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 const statusCopy = {
   Live: "This is a live software product with a deployed public experience.",
+  Pilot: "Kota-OS is running a controlled pilot with Gauteng food businesses. Recruitment and feedback take place during real service.",
   "In development": "Development is ongoing. This is internal product work, not a completed client engagement.",
   Prototype: "This is a prototype used to explore and test a focused product idea.",
 } as const;
